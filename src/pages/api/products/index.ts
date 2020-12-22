@@ -15,12 +15,23 @@ export default async (req, res) => {
         res.status(200).send(res);
         return;
       }
-      case 'GET': {
-        const products = await db.one('SELECT * FROM products');
+      default: {
+        // const products = await db.any(
+        //   'SELECT * FROM product_masters JOIN product_variations USING (product_master_id)'
+        // );
+        // const products = await db.any(
+        //   'SELECT * FROM product_masters JOIN brands USING (brand_id)'
+        // );
+        const products = await db.any(
+          `SELECT *
+          FROM product_masters
+          JOIN brands using (brand_id)
+          JOIN (SELECT product_master_id, COUNT(*) as variation_count FROM product_variations GROUP BY product_master_id) AS counter
+          ON product_masters.product_master_id = counter.product_master_id
+          `
+        );
         res.status(200).json(products);
         return;
-      }
-      default: {
       }
     }
   } catch (e) {
