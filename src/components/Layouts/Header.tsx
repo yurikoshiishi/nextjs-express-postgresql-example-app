@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: theme.palette.background.paper,
     boxShadow: 'none',
-    borderBottom: theme.palette.divider,
+    borderBottom: `1px solid ${theme.palette.divider}`,
     height: theme.mixins.toolbar.minHeight,
   },
   toolbar: {

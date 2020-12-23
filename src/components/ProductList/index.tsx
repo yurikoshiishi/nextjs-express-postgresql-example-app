@@ -1,4 +1,6 @@
+import {Box} from '@material-ui/core';
 import {ProductMaster} from '../../types';
+import ProductListItem from './ProductListItem';
 
 interface ProductListProps {
   products: ProductMaster[];
@@ -6,13 +8,11 @@ interface ProductListProps {
 
 const ProductList: React.FC<ProductListProps> = ({products}) => {
   return (
-    <div>
+    <Box py={2}>
       {products.map((product) => (
-        <pre key={product.product_master_id}>
-          {JSON.stringify(product, null, 2)}
-        </pre>
+        <ProductListItem key={product.product_master_id} product={product} />
       ))}
-    </div>
+    </Box>
   );
 };
 

@@ -1,9 +1,17 @@
+import {NextPageContext} from 'next';
 import React from 'react';
+import {ProductDetailContext} from '../../types';
+import {fetchProductDetail} from '../../utils/api';
 
-interface ProductDetailProps {}
+interface ProductDetailPageProps {}
 
-const ProductDetail: React.FC<ProductDetailProps> = ({}) => {
-  return <div></div>;
+const ProductDetailPage: React.FC<ProductDetailPageProps> = ({}) => {
+  return <div>product</div>;
 };
 
-export default ProductDetail;
+export const getServerSideProps = async (ctx: ProductDetailContext) => {
+  const productDetail = await fetchProductDetail(ctx);
+  return {props: {productDetail}};
+};
+
+export default ProductDetailPage;

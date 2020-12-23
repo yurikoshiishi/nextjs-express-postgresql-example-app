@@ -35,3 +35,6 @@ yarn-error.log*
 
 # database
 *.sql
+
+#images
+public/images/

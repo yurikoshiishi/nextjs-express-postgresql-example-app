@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
     padding: theme.spacing(2),
-    borderTop: theme.palette.divider,
+    borderTop: `1px solid ${theme.palette.divider}`,
     textAlign: 'center',
   },
 }));
