@@ -1,17 +1,25 @@
-import {NextPageContext} from 'next';
 import React from 'react';
-import {ProductDetailContext} from '../../types';
+import ProductDetailContainer from '../../components/ProductDetailContainer';
+import {ProductDetail, ProductDetailContext} from '../../types';
 import {fetchProductDetail} from '../../utils/api';
 
-interface ProductDetailPageProps {}
+interface ProductDetailPageProps {
+  productDetail: ProductDetail;
+}
 
-const ProductDetailPage: React.FC<ProductDetailPageProps> = ({}) => {
-  return <div>product</div>;
+const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
+  productDetail,
+}) => {
+  return (
+    <div>
+      <ProductDetailContainer productDetail={productDetail} />
+    </div>
+  );
 };
 
 export const getServerSideProps = async (ctx: ProductDetailContext) => {
   const productDetail = await fetchProductDetail(ctx);
-  return {props: {productDetail}};
+  return {props: productDetail};
 };
 
 export default ProductDetailPage;

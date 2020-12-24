@@ -16,10 +16,19 @@ export interface ProductMaster {
   avg_total_rating: number;
 }
 
+export interface ProductVariation {
+  product_master_id: string;
+  brand_id: string;
+  flavor: string;
+  url_amazon?: string;
+  url_myprotein?: string;
+  url_iherb?: string;
+}
+
 export interface ProductDetail extends ProductMaster {
-  product_variation_ids: string[];
-  flavors: string[];
+  product_variations: ProductVariation[];
   reviews: Review[];
+  review_summary: ReviewSummary;
 }
 
 export interface Review {
@@ -31,6 +40,14 @@ export interface Review {
   total_rating: number;
   description: string;
   created_at: Date;
+}
+
+export interface ReviewSummary {
+  1: number;
+  2: number;
+  3: number;
+  4: number;
+  5: number;
 }
 
 export interface ProductDetailContext extends NextPageContext {

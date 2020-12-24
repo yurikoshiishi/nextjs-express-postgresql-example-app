@@ -4,7 +4,7 @@ import '../../styles/globals.css';
 import {ThemeProvider} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../theme';
-import DefaultLayout from '../components/Layouts/DefaultLayout';
+import DefaultLayout from '../components/layouts/DefaultLayout';
 
 const App = ({Component, pageProps}: AppProps) => {
   React.useEffect(() => {

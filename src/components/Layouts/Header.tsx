@@ -9,6 +9,8 @@ import {
   Button,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import Logo from '../elements/Logo';
+import Image from 'next/image';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -19,9 +21,6 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     height: theme.mixins.toolbar.minHeight,
-  },
-  nav: {
-    marginLeft: 'auto',
   },
 }));
 
@@ -44,17 +43,10 @@ const Header: React.FC<HeaderProps> = ({handleDrawerOpen}) => {
         >
           <MenuIcon color="action" />
         </IconButton>
-        <Link href="/">
-          <Button variant="text" color="primary">
-            <Typography variant="h6" noWrap>
-              プロテインレビュー
-            </Typography>
-          </Button>
-        </Link>
-        <div className={classes.nav}>
-          <Link href="/products/new">
-            <Button variant="contained" color="primary">
-              Post Review
+        <div>
+          <Link href="/">
+            <Button variant="text" color="primary">
+              <Logo />
             </Button>
           </Link>
         </div>

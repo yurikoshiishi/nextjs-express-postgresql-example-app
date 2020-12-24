@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-interface CreateProductProps {}
+interface CreateProductPageProps {}
 
-const CreateProduct: React.FC<CreateProductProps> = ({}) => {
+const CreateProductPage: React.FC<CreateProductPageProps> = ({}) => {
   return (
     <div>
       <Link href="/">Back to Top</Link>
@@ -11,4 +11,4 @@ const CreateProduct: React.FC<CreateProductProps> = ({}) => {
   );
 };
 
-export default CreateProduct;
+export default CreateProductPage;

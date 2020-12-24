@@ -6,4 +6,5 @@ const sql = (file) => {
   return new QueryFile(fullPath, {minify: true});
 };
 
-export const getProducts = sql('/src/sql/getProducts.sql');
+export const fetchProductMasters = sql('/src/sql/fetchProductMasters.sql');
+export const fetchProductDetail = sql('/src/sql/fetchProductDetail.sql');

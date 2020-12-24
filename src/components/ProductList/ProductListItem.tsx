@@ -1,17 +1,19 @@
 import React from 'react';
 import {ProductMaster} from '../../types';
-import {makeStyles, Box, Typography} from '@material-ui/core';
-import {Rating} from '@material-ui/lab';
+import {makeStyles, Typography, Box} from '@material-ui/core';
 import Image from 'next/image';
-import CardLink from '../Elements/CardLink';
-import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
+import CardLink from '../elements/CardLink';
 import RateReviewOutlinedIcon from '@material-ui/icons/RateReviewOutlined';
-import ProteinIcon from '../Icons/ProteinIcon';
-import TextLink from '../Elements/TextLink';
+import ProteinIcon from '../icons/ProteinIcon';
+import TextLink from '../elements/TextLink';
+import RatingStars from '../elements/RatingStars';
+import TextWithIcon from '../elements/TextWithIcon';
+import BrandLink from '../elements/BrandLink';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginBottom: theme.spacing(1),
+    cursor: 'pointer',
   },
   content: {
     display: 'flex',
@@ -38,7 +40,12 @@ const useStyles = makeStyles((theme) => ({
   textContainer: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
     flexGrow: 1,
+    [theme.breakpoints.down('xs')]: {
+      alignItems: 'stretch',
+    },
   },
   brandName: {
     marginBottom: theme.spacing(0.5),
@@ -46,52 +53,6 @@ const useStyles = makeStyles((theme) => ({
   },
   productName: {
     marginBottom: theme.spacing(1),
-  },
-  reviewContainer: {
-    display: 'flex',
-    alignItems: 'flex-end',
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column',
-      alignItems: 'stretch',
-    },
-    '& .reviewCount': {
-      ...theme.typography.body2,
-      color: theme.palette.text.secondary,
-      marginLeft: theme.spacing(1),
-    },
-  },
-  starContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: theme.palette.grey[100],
-    borderRadius: 16,
-    padding: theme.spacing(0.5, 2),
-    '& .rating': {
-      marginLeft: theme.spacing(1),
-      color: theme.palette.grey[700],
-      fontWeight: 600,
-    },
-    [theme.breakpoints.down('xs')]: {
-      justifyContent: 'center',
-      marginBottom: theme.spacing(0.5),
-    },
-  },
-  textWithIcon: {
-    marginBottom: theme.spacing(1),
-    display: 'flex',
-    alignItems: 'center',
-    '& svg': {
-      width: '1.125rem',
-      height: '1.125rem',
-      marginRight: theme.spacing(0.5),
-      color: theme.palette.text.secondary,
-      fill: theme.palette.text.secondary,
-    },
-    '& p': {
-      fontSize: '0.875rem',
-      color: theme.palette.text.secondary,
-      fontWeight: 500,
-    },
   },
 }));
 
@@ -105,6 +66,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({
     name,
     brand_id,
     brand_name_ja,
+    brand_name_en,
     review_count,
     variation_count,
     avg_total_rating,
@@ -116,46 +78,36 @@ const ProductListItem: React.FC<ProductListItemProps> = ({
       <div className={classes.content}>
         <div className={classes.imageContainer}>
           <Image
-            src={`/images/${product_master_id}.jpg`}
+            src={`/images/products/${product_master_id}.jpg`}
             alt={`${brand_name_ja}-${name}`}
             layout="fill"
             objectFit="contain"
           />
         </div>
         <div className={classes.textContainer}>
-          <TextLink href={`/products/brands/${brand_id}`}>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              className={classes.brandName}
-            >
-              {brand_name_ja}
+          <div>
+            <BrandLink
+              brand_id={brand_id}
+              brand_name_en={brand_name_en}
+              brand_name_ja={brand_name_ja}
+            />
+            <Typography variant="h3" className={classes.productName}>
+              {name}
             </Typography>
-          </TextLink>
-          <Typography variant="h3" className={classes.productName}>
-            {name}
-          </Typography>
-          <div className={classes.textWithIcon}>
-            <ProteinIcon />
-            <p>{variation_count}フレーバー</p>
           </div>
-          <div className={classes.textWithIcon}>
-            <RateReviewOutlinedIcon />
-            <p>{review_count}件のレビュー</p>
-          </div>
-          <div className={classes.reviewContainer}>
-            <div className={classes.starContainer}>
-              <Rating
-                name="平均評価"
-                value={avg_total_rating}
-                readOnly
-                precision={0.5}
-                size="small"
-                emptyIcon={<StarBorderOutlinedIcon fontSize="inherit" />}
-              />
-              <p className="rating">{avg_total_rating} / 5</p>
-            </div>
-          </div>
+          <Box mb={1}>
+            <TextWithIcon
+              icon={<ProteinIcon />}
+              text={`${variation_count}フレーバー`}
+            />
+          </Box>
+          <Box mb={1}>
+            <TextWithIcon
+              icon={<RateReviewOutlinedIcon />}
+              text={`${review_count}件のレビュー`}
+            />
+          </Box>
+          <RatingStars rating={avg_total_rating} />
         </div>
       </div>
     </CardLink>
