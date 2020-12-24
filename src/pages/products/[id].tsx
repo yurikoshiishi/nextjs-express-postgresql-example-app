@@ -18,8 +18,8 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
 };
 
 export const getServerSideProps = async (ctx: ProductDetailContext) => {
-  const productDetail = await fetchProductDetail(ctx);
-  return {props: productDetail};
+  const data = await fetchProductDetail(ctx);
+  return {props: {productDetail: data}};
 };
 
 export default ProductDetailPage;

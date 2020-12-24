@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {ProductDetailContext, ProductMaster} from '../types';
+import {ProductDetail, ProductDetailContext, ProductMaster} from '../types';
 
 const getAbsoluteUrl = (req, setLocalhost?: string) => {
   var protocol = 'https:';
@@ -25,10 +25,12 @@ export const fetchProductMasters = async (req): Promise<ProductMaster[]> => {
 
 export const fetchProductDetail = async (
   ctx: ProductDetailContext
-): Promise<object> => {
+): Promise<ProductDetail> => {
   const res = await axios(
-    `${getAbsoluteUrl(ctx.req).origin}/api/products/${ctx.params.id}`
+    `${getAbsoluteUrl(ctx.req).origin}/api/products/${ctx.params.id}?page=${
+      ctx.query.page || 1
+    }`
   );
   const productDetail = res.data;
-  return {productDetail};
+  return productDetail;
 };

@@ -139,8 +139,4 @@ theme.overrides = {
 
 theme = responsiveFontSizes(theme);
 
-if (process.env.NODE_ENV === 'development') {
-  console.log(theme);
-}
-
 export default theme;
