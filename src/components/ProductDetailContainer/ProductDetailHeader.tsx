@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme: CustomTheme) => ({
     },
   },
   content: {
+    flexGrow: 1,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',

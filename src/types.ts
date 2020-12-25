@@ -28,6 +28,7 @@ export interface ProductVariation {
 export interface ProductDetail extends ProductMaster {
   product_variations: ProductVariation[];
   reviews: Review[];
+  review_page_count: number;
   review_summary: ReviewSummary;
 }
 
@@ -35,11 +36,15 @@ export interface Review {
   review_id: string;
   product_master_id: string;
   product_variation_id: string;
+  flavor: string;
   taste_rating: number;
   mix_rating: number;
   total_rating: number;
   description: string;
-  created_at: Date;
+  url_amazon: string;
+  url_iherb: string;
+  url_myprotein: string;
+  created_at: string;
 }
 
 export interface ReviewSummary {

@@ -1,7 +1,6 @@
 import React from 'react';
 import {makeStyles, Typography} from '@material-ui/core';
-import {Rating} from '@material-ui/lab';
-import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
+import Rating from './Rating';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,14 +37,7 @@ const RatingStars: React.FC<RatingStarsProps> = ({rating, size}) => {
 
   return (
     <div className={classes.root}>
-      <Rating
-        name="評価"
-        value={Number(rating)}
-        readOnly
-        precision={0.5}
-        size={size || 'small'}
-        emptyIcon={<StarBorderOutlinedIcon fontSize="inherit" />}
-      />
+      <Rating rating={Number(rating)} size={size} />
       <Typography className="rating" variant={TYPOGRAPHY_MAP[size] || 'body2'}>
         {rating} / 5
       </Typography>

@@ -12,6 +12,7 @@ interface ProductDetailContainerProps {
 const ProductDetailContainer: React.FC<ProductDetailContainerProps> = ({
   productDetail,
 }) => {
+  const {reviews, review_page_count} = productDetail;
   return (
     <Card>
       <CardContent>
@@ -23,7 +24,7 @@ const ProductDetailContainer: React.FC<ProductDetailContainerProps> = ({
         <Box my={3}>
           <Divider />
         </Box>
-        <ReviewList />
+        <ReviewList reviews={reviews} review_page_count={review_page_count} />
       </CardContent>
     </Card>
   );
