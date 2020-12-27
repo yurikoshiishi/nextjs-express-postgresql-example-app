@@ -44,6 +44,7 @@ export interface Review {
   url_amazon: string;
   url_iherb: string;
   url_myprotein: string;
+  thumbsup_count: number;
   created_at: string;
 }
 

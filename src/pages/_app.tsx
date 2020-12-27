@@ -8,6 +8,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../theme';
 import DefaultLayout from '../components/layouts/DefaultLayout';
 import NProgress from 'nprogress';
+import {AuthProvider} from '../contexts/auth';
 
 Router.events.on('routeChangeStart', (url) => {
   NProgress.start();
@@ -25,10 +26,12 @@ const App = ({Component, pageProps}: AppProps) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <DefaultLayout>
-        <Component {...pageProps} />
-      </DefaultLayout>
+      <AuthProvider>
+        <CssBaseline />
+        <DefaultLayout>
+          <Component {...pageProps} />
+        </DefaultLayout>
+      </AuthProvider>
     </ThemeProvider>
   );
 };

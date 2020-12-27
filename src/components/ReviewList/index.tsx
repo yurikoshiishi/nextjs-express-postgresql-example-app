@@ -26,6 +26,7 @@ const ReviewList: React.FC<ReviewListProps> = ({
     } else {
       scroller.scrollTo('review-list', {
         duration: 500,
+        delay: 50,
         smooth: true,
         offset: -80,
       });

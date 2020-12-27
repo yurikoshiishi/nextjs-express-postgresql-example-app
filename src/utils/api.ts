@@ -34,3 +34,17 @@ export const fetchProductDetail = async (
   const productDetail = res.data;
   return productDetail;
 };
+
+export const incrementThumbsUp = async (review_id) => {
+  const res = await axios(
+    `${window.origin}/api/reviews/${review_id}/thumbsup/increment`
+  );
+  return res.data;
+};
+
+export const decrementThumbsUp = async (review_id) => {
+  const res = await axios(
+    `${window.origin}/api/reviews/${review_id}/thumbsup/decrement`
+  );
+  return res.data;
+};

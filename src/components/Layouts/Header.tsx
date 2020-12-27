@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Link from 'next/link';
 import {
   AppBar,
@@ -7,9 +7,13 @@ import {
   makeStyles,
   Button,
   Container,
+  Avatar,
+  Box,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Logo from '../elements/Logo';
+import LogoutButton from '../elements/FirebaseLogin/LogoutButton';
+import {useAuth} from '../../contexts/auth';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -24,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     height: theme.mixins.toolbar.minHeight,
   },
+  authContainer: {
+    marginLeft: 'auto',
+  },
 }));
 
 interface HeaderProps {
@@ -32,6 +39,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({handleDrawerOpen}) => {
   const classes = useStyles();
+  const {user, signIn} = useAuth();
 
   return (
     <AppBar position="fixed" className={classes.appBar}>
@@ -50,6 +58,17 @@ const Header: React.FC<HeaderProps> = ({handleDrawerOpen}) => {
                 <Logo />
               </Button>
             </Link>
+          </div>
+          <div className={classes.authContainer}>
+            {user ? (
+              <Box display="flex" alignItems="center">
+                <Avatar src={user.photoURL} alt={user.uid} />
+              </Box>
+            ) : (
+              <Button color="primary" variant="outlined" onClick={signIn}>
+                ログイン
+              </Button>
+            )}
           </div>
         </Toolbar>
       </Container>

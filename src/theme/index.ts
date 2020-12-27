@@ -92,9 +92,23 @@ let theme = createMuiTheme({
 } as CustomThemeOptions);
 
 theme.overrides = {
+  MuiButton: {
+    root: {
+      textTransform: 'none',
+    },
+  },
+  MuiDialog: {
+    paper: {
+      borderRadius: 12,
+      margin: 12,
+    },
+  },
   MuiPaper: {
     root: {
       borderColor: '#E7EDF3',
+    },
+    rounded: {
+      borderRadius: 12,
     },
     outlined: {
       border: '1px solid #E7EDF3',
@@ -120,6 +134,10 @@ theme.overrides = {
         '&:last-child': {
           paddingBottom: 8,
         },
+      },
+      '& .MuiDivider-root': {
+        marginLeft: '-16px',
+        marginRight: '-16px',
       },
     },
   },
