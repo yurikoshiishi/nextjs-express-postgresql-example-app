@@ -1,6 +1,6 @@
 import {Box, Card, CardContent, Divider} from '@material-ui/core';
 import React from 'react';
-import {ProductDetail} from '../../types';
+import {ProductDetail} from '../../../../types';
 import ReviewList from '../ReviewList';
 import ProductDetailHeader from './ProductDetailHeader';
 import ProductDetailReviewSummary from './ProductDetailReviewSummary';

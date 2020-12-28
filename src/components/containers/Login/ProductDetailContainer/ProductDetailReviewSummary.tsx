@@ -1,8 +1,8 @@
 import {Box, Button, Grid, Typography} from '@material-ui/core';
 import Link from 'next/link';
 import React from 'react';
-import {ReviewSummary as ReviewSummaryType} from '../../types';
-import ReviewSummary from '../elements/ReviewSummary';
+import {ReviewSummary as ReviewSummaryType} from '../../../../types';
+import ReviewSummary from '../../../elements/ReviewSummary';
 
 interface ProductDetailReviewSummaryProps {
   product_master_id: string;

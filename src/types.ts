@@ -1,4 +1,5 @@
 import {NextPageContext} from 'next';
+import firebaseClient from './utils/firebaseClient';
 
 export interface ProductMaster {
   product_master_id: string;
@@ -18,6 +19,7 @@ export interface ProductMaster {
 
 export interface ProductVariation {
   product_master_id: string;
+  product_variation_id: string;
   brand_id: string;
   flavor: string;
   url_amazon?: string;
@@ -30,6 +32,18 @@ export interface ProductDetail extends ProductMaster {
   reviews: Review[];
   review_page_count: number;
   review_summary: ReviewSummary;
+}
+
+export interface ProductVariations {
+  product_master_id: string;
+  brand_id: string;
+  name: string;
+  brand_name_ja: string;
+  brand_name_en: string;
+  url_amazon?: string;
+  url_myprotein?: string;
+  url_iherb?: string;
+  product_variations: ProductVariation[];
 }
 
 export interface Review {
@@ -56,8 +70,37 @@ export interface ReviewSummary {
   5: number;
 }
 
-export interface ProductDetailContext extends NextPageContext {
+export interface ReviewFormValues {
+  product_master_id: string;
+  product_variation_id: string;
+  user_id?: string;
+  taste_rating: number;
+  mix_rating: number;
+  total_rating: number;
+  description: string;
+}
+
+export interface ContextWithParams extends NextPageContext {
   params: {
-    id: string;
+    [key: string]: string;
   };
 }
+
+export type FirebaseUser = firebaseClient.User | null;
+
+export type MuiTypography =
+  | 'button'
+  | 'caption'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'inherit'
+  | 'subtitle1'
+  | 'subtitle2'
+  | 'body1'
+  | 'body2'
+  | 'overline'
+  | 'srOnly';

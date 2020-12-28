@@ -11,6 +11,7 @@ import {
 import FirebaseLogin from '.';
 import firebaseClient from '../../../utils/firebaseClient';
 import {PROVIDER_TO_NAME} from '../../../constants';
+import {FirebaseUser} from '../../../types';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 interface LoginDialogProps {
   open: boolean;
-  user: firebaseClient.User | null;
+  user: FirebaseUser;
   handleClose: () => void;
 }
 

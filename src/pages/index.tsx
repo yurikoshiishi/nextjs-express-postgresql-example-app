@@ -1,6 +1,6 @@
 import {NextPage} from 'next';
 import {ProductMaster} from '../types';
-import ProductList from '../components/ProductList';
+import ProductList from '../components/containers/Login/ProductList';
 import {fetchProductMasters} from '../utils/api';
 
 interface HomeProps {

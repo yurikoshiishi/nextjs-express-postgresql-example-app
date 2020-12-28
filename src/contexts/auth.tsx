@@ -2,9 +2,10 @@ import React, {useState, useEffect, useContext, createContext} from 'react';
 import nookies from 'nookies';
 import firebaseClient from '../utils/firebaseClient';
 import LoginDialog from '../components/elements/FirebaseLogin/LoginDialog';
+import {FirebaseUser} from '../types';
 
 const AuthContext = createContext<{
-  user: firebaseClient.User | null;
+  user: FirebaseUser;
   open: boolean;
   signIn?: () => void;
   handleClose?: () => void;
@@ -14,7 +15,7 @@ const AuthContext = createContext<{
 });
 
 export function AuthProvider({children}: any) {
-  const [user, setUser] = useState<firebaseClient.User | null>(null);
+  const [user, setUser] = useState<FirebaseUser>(null);
   const [open, setOpen] = useState<boolean>(false);
 
   const signIn = () => {

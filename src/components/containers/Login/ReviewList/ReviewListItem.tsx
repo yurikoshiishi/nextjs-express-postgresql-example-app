@@ -1,13 +1,16 @@
 import React from 'react';
-import {Review} from '../../types';
+import {Review} from '../../../../types';
 import {makeStyles, Typography} from '@material-ui/core';
 import {format, parseISO} from 'date-fns';
-import Rating from '../elements/RatingStars/Rating';
-import ThumbsUpButton from '../elements/ThumbsUpButton';
+import Rating from '../../../elements/RatingStars/Rating';
+import ThumbsUpButton from '../../../elements/ThumbsUpButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginBottom: theme.spacing(3),
+    marginBottom: theme.spacing(2),
+    backgroundColor: theme.palette.grey[50],
+    borderRadius: 8,
+    padding: theme.spacing(1),
   },
   header: {
     display: 'flex',
@@ -22,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {
     padding: theme.spacing(1, 0),
+    whiteSpace: 'pre-wrap',
   },
   actionContainer: {
     marginTop: theme.spacing(1),

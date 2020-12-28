@@ -9,6 +9,7 @@ import theme from '../theme';
 import DefaultLayout from '../components/layouts/DefaultLayout';
 import NProgress from 'nprogress';
 import {AuthProvider} from '../contexts/auth';
+import Error from './_error';
 
 Router.events.on('routeChangeStart', (url) => {
   NProgress.start();
@@ -29,7 +30,11 @@ const App = ({Component, pageProps}: AppProps) => {
       <AuthProvider>
         <CssBaseline />
         <DefaultLayout>
-          <Component {...pageProps} />
+          {pageProps.error ? (
+            <Error error={pageProps.error} />
+          ) : (
+            <Component {...pageProps} />
+          )}
         </DefaultLayout>
       </AuthProvider>
     </ThemeProvider>

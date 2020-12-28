@@ -25,6 +25,18 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 'auto',
     textAlign: 'center',
   },
+  authButton: {
+    position: 'relative',
+    height: theme.spacing(6),
+    '& .MuiButton-root': {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      width: '100%',
+    },
+  },
   closeContainer: {
     textAlign: 'right',
   },
@@ -50,12 +62,15 @@ const Drawer: React.FC<DrawerProps> = ({open, handleDrawerClose}) => {
       open={open}
       onClose={handleDrawerClose}
       classes={{paper: classes.paper}}
+      ModalProps={{
+        keepMounted: true,
+      }}
     >
       <UserInfo />
       <Divider />
       <div className={classes.bottomContainer}>
         <Divider />
-        <Box p={1}>
+        <div className={classes.authButton}>
           {user ? (
             <LogoutButton />
           ) : (
@@ -63,7 +78,7 @@ const Drawer: React.FC<DrawerProps> = ({open, handleDrawerClose}) => {
               ログインはこちら
             </Button>
           )}
-        </Box>
+        </div>
         <Divider />
         <div className={classes.closeContainer}>
           <IconButton onClick={handleDrawerClose}>

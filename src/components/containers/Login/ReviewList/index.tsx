@@ -1,7 +1,7 @@
 import {useRouter} from 'next/router';
 import React, {useEffect, useRef} from 'react';
-import {Review} from '../../types';
-import Pagination from '../elements/Pagination';
+import {Review} from '../../../../types';
+import Pagination from '../../../elements/Pagination';
 import ReviewListItem from './ReviewListItem';
 import {scroller, Element} from 'react-scroll';
 

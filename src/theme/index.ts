@@ -88,6 +88,9 @@ let theme = createMuiTheme({
     MuiCard: {
       variant: 'outlined',
     },
+    MuiAutoComplete: {
+      noOptionsText: '条件に一致するものがありません。',
+    },
   },
 } as CustomThemeOptions);
 
@@ -150,6 +153,16 @@ theme.overrides = {
       [theme.breakpoints.down('xs')]: {
         paddingLeft: 0,
         paddingRight: 0,
+      },
+    },
+    maxWidthXs: {
+      paddingLeft: 24,
+      paddingRight: 24,
+      paddingTop: 16,
+      paddingBottom: 16,
+      [theme.breakpoints.down('xs')]: {
+        paddingLeft: 16,
+        paddingRight: 16,
       },
     },
   },

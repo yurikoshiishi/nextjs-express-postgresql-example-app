@@ -15,7 +15,12 @@ const BrandLink: React.FC<BrandLinkProps> = ({
 }) => {
   return (
     <TextLink href={`/brands/${brand_id}`}>
-      <Typography variant="body2" component="span" color="primary">
+      <Typography
+        variant="body2"
+        component="span"
+        color="primary"
+        className="brandLink"
+      >
         {brand_name_ja}
         {brand_name_en && ` / ${brand_name_en}`}
       </Typography>

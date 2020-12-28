@@ -12,3 +12,11 @@ export const getAmazonUrl = (
 
   return `${AMAZON_SERCH_URL}?keywords=${brand} ${name}`;
 };
+
+export const hasFalsyValue = (obj: object): boolean => {
+  if (!obj || typeof obj !== 'object') {
+    return false;
+  }
+
+  return Object.values(obj).some((val) => !Boolean(val));
+};

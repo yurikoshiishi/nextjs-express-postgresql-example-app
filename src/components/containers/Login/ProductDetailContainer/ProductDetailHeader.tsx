@@ -1,12 +1,12 @@
-import {Button, Typography} from '@material-ui/core';
+import {Button} from '@material-ui/core';
 import React from 'react';
 import {makeStyles, Grid} from '@material-ui/core';
 import Image from 'next/image';
-import TextWithIcon from '../elements/TextWithIcon';
-import ProteinIcon from '../icons/ProteinIcon';
-import {CustomTheme} from '../../theme';
-import {getAmazonUrl} from '../../utils';
-import BrandLink from '../elements/BrandLink';
+import TextWithIcon from '../../../elements/TextWithIcon';
+import ProteinIcon from '../../../icons/ProteinIcon';
+import {CustomTheme} from '../../../../theme';
+import {getAmazonUrl} from '../../../../utils';
+import ProductTitle from '../../../elements/ProductTitle';
 
 const useStyles = makeStyles((theme: CustomTheme) => ({
   root: {
@@ -123,15 +123,13 @@ const ProductDetailHeader: React.FC<ProductDetailHeaderProps> = ({
       </div>
       <div className={classes.content}>
         <div className={classes.titleContainer}>
-          <Typography variant="h1">
-            <BrandLink
-              brand_id={brand_id}
-              brand_name_ja={brand_name_ja}
-              brand_name_en={brand_name_en}
-            />
-            <br />
-            {name}のレビュー
-          </Typography>
+          <ProductTitle
+            brand_id={brand_id}
+            brand_name_ja={brand_name_ja}
+            brand_name_en={brand_name_en}
+            name={name}
+            suffix="のレビュー"
+          />
           <TextWithIcon
             text={`${variation_count}フレーバー`}
             icon={<ProteinIcon />}

@@ -1,6 +1,6 @@
 import React from 'react';
-import ProductDetailContainer from '../../components/ProductDetailContainer';
-import {ProductDetail, ProductDetailContext} from '../../types';
+import ProductDetailContainer from '../../components/containers/Login/ProductDetailContainer';
+import {ProductDetail, ContextWithParams} from '../../types';
 import {fetchProductDetail} from '../../utils/api';
 
 interface ProductDetailPageProps {
@@ -17,7 +17,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   );
 };
 
-export const getServerSideProps = async (ctx: ProductDetailContext) => {
+export const getServerSideProps = async (ctx: ContextWithParams) => {
   const data = await fetchProductDetail(ctx);
 
   return {props: {productDetail: data}};
