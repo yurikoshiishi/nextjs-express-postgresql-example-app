@@ -32,7 +32,7 @@ export interface ApiError {
   error: {
     status?: string | number;
     statusText?: string;
-    data?: object | null;
+    data?: {[key: string]: any; message?: string} | null;
   };
 }
 

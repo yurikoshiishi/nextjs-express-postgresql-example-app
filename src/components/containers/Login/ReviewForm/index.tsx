@@ -1,5 +1,5 @@
 import {Box, Card, CardContent, Divider} from '@material-ui/core';
-import React, {useMemo} from 'react';
+import React from 'react';
 import {ProductVariations} from '../../../../types';
 import ReviewFormContent from './ReviewFormContent';
 import ReviewFormHeader from './ReviewFormHeader';

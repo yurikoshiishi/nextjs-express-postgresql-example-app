@@ -50,14 +50,21 @@ const ReviewFormContent: React.FC<ReviewFormContentProps> = ({
   product_variations,
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const handlePostReview = async (data) => {
-    setIsError(false);
+    setError(null);
     setIsLoading(true);
     try {
-      await createReview(data);
+      const res = await createReview(data);
+      if (res.error) {
+        setError(
+          res.error.data.message ||
+            'データ送信中にエラーが発生しました。再度お試しください。'
+        );
+        return;
+      }
       router.push({
         pathname: '/reviews/success',
         query: {
@@ -65,7 +72,9 @@ const ReviewFormContent: React.FC<ReviewFormContentProps> = ({
         },
       });
     } catch (err) {
-      setIsError(true);
+      setError('データ送信中にエラーが発生しました。再度お試しください。');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -127,11 +136,9 @@ const ReviewFormContent: React.FC<ReviewFormContentProps> = ({
             <Box my={3}>
               <UserIdField name="user_id" setFieldValue={setFieldValue} />
             </Box>
-            {isError && (
+            {error && (
               <Box my={2}>
-                <Alert severity="error">
-                  データ送信中にエラーが発生しました。再度お試しください。
-                </Alert>
+                <Alert severity="error">{error}</Alert>
               </Box>
             )}
             <Box>
