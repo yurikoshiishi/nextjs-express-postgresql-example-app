@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductDetailContainer from '../../components/containers/Login/ProductDetailContainer';
+import ProductDetailContainer from '../../components/containers/ProductDetailContainer';
 import {ProductDetail, ContextWithParams} from '../../types';
 import {fetchProductDetail} from '../../utils/api';
 

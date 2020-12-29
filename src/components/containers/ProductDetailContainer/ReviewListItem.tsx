@@ -1,9 +1,9 @@
 import React from 'react';
-import {Review} from '../../../../types';
+import {Review} from '../../../types';
 import {makeStyles, Typography} from '@material-ui/core';
 import {format, parseISO} from 'date-fns';
-import Rating from '../../../elements/RatingStars/Rating';
-import ThumbsUpButton from '../../../elements/ThumbsUpButton';
+import Rating from '../../elements/RatingStars/Rating';
+import ThumbsUpButton from '../../elements/ThumbsUpButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {

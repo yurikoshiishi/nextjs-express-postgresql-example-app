@@ -1,7 +1,7 @@
 import {Box, Card, CardContent, Divider} from '@material-ui/core';
 import React from 'react';
-import {ProductDetail} from '../../../../types';
-import ReviewList from '../ReviewList';
+import {ProductDetail} from '../../../types';
+import ReviewList from './ReviewList';
 import ProductDetailHeader from './ProductDetailHeader';
 import ProductDetailReviewSummary from './ProductDetailReviewSummary';
 
@@ -23,6 +23,7 @@ const ProductDetailContainer: React.FC<ProductDetailContainerProps> = ({
         <ProductDetailReviewSummary {...productDetail} />
         <Box my={3}>
           <Divider />
+          <p></p>
         </Box>
         <ReviewList reviews={reviews} review_page_count={review_page_count} />
       </CardContent>

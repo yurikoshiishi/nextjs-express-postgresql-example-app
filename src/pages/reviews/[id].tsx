@@ -2,7 +2,7 @@ import React from 'react';
 import {fetchProductVariations} from '../../utils/api';
 import {ContextWithParams, ProductVariations} from '../../types';
 import {ApiError} from 'next/dist/next-server/server/api-utils';
-import ReviewForm from '../../components/containers/Login/ReviewForm';
+import ReviewForm from '../../components/containers/ReviewForm';
 
 interface PostReviewPageProps {
   [key: string]: any;

@@ -23,7 +23,7 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({setError}) => {
 
   return (
     <Button
-      color="default"
+      color="primary"
       variant="outlined"
       fullWidth
       startIcon={<GoogleIcon />}

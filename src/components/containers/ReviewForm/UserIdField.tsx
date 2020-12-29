@@ -1,6 +1,6 @@
 import {Box, Button, Card, CardContent, Typography} from '@material-ui/core';
 import React, {useEffect} from 'react';
-import {useAuth} from '../../../../contexts/auth';
+import {useAuth} from '../../../contexts/auth';
 
 interface UserIdFieldProps {
   name: string;

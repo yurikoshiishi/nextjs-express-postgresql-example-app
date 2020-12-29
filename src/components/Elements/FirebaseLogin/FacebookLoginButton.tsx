@@ -24,7 +24,7 @@ const FacebookLoginButton: React.FC<FacebookLoginButtonProps> = ({
 
   return (
     <Button
-      color="default"
+      color="primary"
       variant="outlined"
       fullWidth
       startIcon={<FacebookIcon />}

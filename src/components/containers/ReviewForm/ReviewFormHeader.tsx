@@ -1,6 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core';
-import ProductTitle from '../../../elements/ProductTitle';
+import ProductTitle from '../../elements/ProductTitle';
 import Image from 'next/image';
 
 const useStyles = makeStyles((theme) => ({

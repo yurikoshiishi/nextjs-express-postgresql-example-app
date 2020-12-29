@@ -1,14 +1,14 @@
 import React from 'react';
-import {ProductMaster} from '../../../../types';
+import {ProductMaster} from '../../../types';
 import {makeStyles, Typography, Box} from '@material-ui/core';
 import Image from 'next/image';
-import CardLink from '../../../elements/CardLink';
+import CardLink from '../../elements/CardLink';
 import RateReviewOutlinedIcon from '@material-ui/icons/RateReviewOutlined';
-import ProteinIcon from '../../../icons/ProteinIcon';
-import TextLink from '../../../elements/TextLink';
-import RatingStars from '../../../elements/RatingStars';
-import TextWithIcon from '../../../elements/TextWithIcon';
-import BrandLink from '../../../elements/BrandLink';
+import ProteinIcon from '../../icons/ProteinIcon';
+import TextLink from '../../elements/TextLink';
+import RatingStars from '../../elements/RatingStars';
+import TextWithIcon from '../../elements/TextWithIcon';
+import BrandLink from '../../elements/BrandLink';
 
 const useStyles = makeStyles((theme) => ({
   root: {

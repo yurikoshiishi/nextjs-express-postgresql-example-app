@@ -1,5 +1,5 @@
 import {Box} from '@material-ui/core';
-import {ProductMaster} from '../../../../types';
+import {ProductMaster} from '../../../types';
 import ProductListItem from './ProductListItem';
 
 interface ProductListProps {

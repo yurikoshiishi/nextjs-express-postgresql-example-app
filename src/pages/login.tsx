@@ -2,7 +2,8 @@ import {NextPageContext} from 'next';
 import React from 'react';
 import nookies from 'nookies';
 import firebaseAdmin from '../utils/firebaseAdmin';
-import Login from '../components/containers/Login';
+import PageWithImage from '../components/containers/PageWithImage';
+import FirebaseLogin from '../components/elements/FirebaseLogin';
 
 interface LoginPageProps {
   [key: string]: any;
@@ -10,9 +11,11 @@ interface LoginPageProps {
 
 const LoginPage: React.FC<LoginPageProps> = (props) => {
   return (
-    <div>
-      <Login />
-    </div>
+    <PageWithImage
+      title="ログインはこちら"
+      imageUrl="/images/illustrations/authentication.svg"
+      action={<FirebaseLogin />}
+    />
   );
 };
 

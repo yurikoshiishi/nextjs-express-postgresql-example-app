@@ -3,14 +3,14 @@ import * as yup from 'yup';
 import {Formik, Form} from 'formik';
 import RatingField from './RatingField';
 import FlavorSelect from './FlavorSelect';
-import {ProductVariation, ReviewFormValues} from '../../../../types';
+import {ProductVariation, ReviewFormValues} from '../../../types';
 import DescriptionField from './DescriptionField';
 import {Box, Button, Container} from '@material-ui/core';
 import UserIdField from './UserIdField';
-import {createReview} from '../../../../utils/api';
+import {createReview} from '../../../utils/api';
 import {useRouter} from 'next/router';
 import {Alert} from '@material-ui/lab';
-import LoadingButton from '../../../elements/LoadingButton';
+import LoadingButton from '../../elements/LoadingButton';
 
 interface ReviewFormContentProps {
   product_master_id: string;
@@ -63,6 +63,8 @@ const ReviewFormContent: React.FC<ReviewFormContentProps> = ({
           res.error.data.message ||
             'データ送信中にエラーが発生しました。再度お試しください。'
         );
+        setIsLoading(false);
+
         return;
       }
       router.push({
@@ -73,7 +75,6 @@ const ReviewFormContent: React.FC<ReviewFormContentProps> = ({
       });
     } catch (err) {
       setError('データ送信中にエラーが発生しました。再度お試しください。');
-    } finally {
       setIsLoading(false);
     }
   };

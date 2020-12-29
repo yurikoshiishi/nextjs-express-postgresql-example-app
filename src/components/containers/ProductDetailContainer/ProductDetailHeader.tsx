@@ -2,11 +2,11 @@ import {Button} from '@material-ui/core';
 import React from 'react';
 import {makeStyles, Grid} from '@material-ui/core';
 import Image from 'next/image';
-import TextWithIcon from '../../../elements/TextWithIcon';
-import ProteinIcon from '../../../icons/ProteinIcon';
-import {CustomTheme} from '../../../../theme';
-import {getAmazonUrl} from '../../../../utils';
-import ProductTitle from '../../../elements/ProductTitle';
+import TextWithIcon from '../../elements/TextWithIcon';
+import ProteinIcon from '../../icons/ProteinIcon';
+import {CustomTheme} from '../../../theme';
+import {getAmazonUrl} from '../../../utils';
+import ProductTitle from '../../elements/ProductTitle';
 
 const useStyles = makeStyles((theme: CustomTheme) => ({
   root: {
