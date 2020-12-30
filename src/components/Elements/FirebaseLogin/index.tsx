@@ -4,6 +4,7 @@ import GoogleLoginButton from './GoogleLoginButton';
 import FacebookLoginButton from './FacebookLoginButton';
 import LinkAccount from './LinkAccount';
 import firebaseClient from '../../../utils/firebaseClient';
+import TwitterLoginButton from './TwitterLogin';
 
 const useStyles = makeStyles((theme) => ({
   buttonGroup: {
@@ -36,6 +37,7 @@ const FirebaseLogin: React.FC<FirebaseLoginProps> = ({}) => {
       )}
       <div className={classes.buttonGroup}>
         <GoogleLoginButton setError={setError} />
+        <TwitterLoginButton setError={setError} />
         <FacebookLoginButton setError={setError} />
       </div>
     </div>

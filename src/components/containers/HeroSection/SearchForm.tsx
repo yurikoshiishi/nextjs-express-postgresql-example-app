@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '0px 4px 6px rgba(60,64,67,0.3)',
   },
   input: {
+    flexGrow: 1,
     padding: theme.spacing(0.5, 0, 0.5, 1),
     '& input': {
       paddingLeft: theme.spacing(0.5),

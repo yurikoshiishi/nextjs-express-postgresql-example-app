@@ -1,5 +1,10 @@
+import {Box} from '@material-ui/core';
 import React from 'react';
 import {ProductMaster} from '../../../types';
+import GoBack from '../../elements/GoBack';
+import PaginatedList from '../PaginatedList';
+import ProductListItem from '../ProductList/ProductListItem';
+import SearchHeader from './SearchHeader';
 
 interface SearchResultProps {
   product_masters: ProductMaster[];
@@ -7,10 +12,30 @@ interface SearchResultProps {
   page_count: number;
 }
 
-const SearchResult: React.FC<SearchResultProps> = (props) => {
+const SearchResult: React.FC<SearchResultProps> = ({
+  product_masters,
+  product_count,
+  page_count,
+}) => {
+  const renderItem = (product_master) => (
+    <ProductListItem
+      key={product_master.product_master_id}
+      product={product_master}
+    />
+  );
+
   return (
     <div>
-      <pre>{JSON.stringify(props, null, 2)}</pre>
+      <SearchHeader product_count={product_count} />
+      <PaginatedList
+        name="search-result"
+        items={product_masters}
+        pageCount={page_count}
+        renderItem={renderItem}
+      />
+      <Box m={1}>
+        <GoBack href="/" text="トップに戻る" />
+      </Box>
     </div>
   );
 };

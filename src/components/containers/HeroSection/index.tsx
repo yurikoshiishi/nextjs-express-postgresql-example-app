@@ -6,11 +6,16 @@ import SearchForm from './SearchForm';
 const useStyles = makeStyles((theme) => ({
   root: {
     background: 'linear-gradient(to left, #8e2de2, #4a00e0)',
+    borderRadius: '0 0 120px 0',
+    [theme.breakpoints.down('xs')]: {
+      borderRadius: '0',
+    },
   },
   container: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-around',
+    padding: theme.spacing(5, 0),
     [theme.breakpoints.down('xs')]: {
       flexDirection: 'column',
       alignItems: 'stretch',
@@ -21,6 +26,13 @@ const useStyles = makeStyles((theme) => ({
     '& h1': {
       color: theme.palette.primary.contrastText,
       marginBottom: theme.spacing(4),
+      fontSize: '2.25rem',
+      [theme.breakpoints.down('md')]: {
+        fontSize: '2rem',
+      },
+      [theme.breakpoints.down('xs')]: {
+        fontSize: '1.5rem',
+      },
     },
     [theme.breakpoints.down('xs')]: {
       textAlign: 'center',

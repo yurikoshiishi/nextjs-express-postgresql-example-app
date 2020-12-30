@@ -15,7 +15,7 @@ const Home: NextPage<HomeProps> = ({products}) => {
     <DefaultLayout disableContainer>
       <HeroSection />
       <Container maxWidth="md">
-        <ProductList products={products} />
+        {/* TODO: add modules such as Highest Rating Products, Products with Most Reviews, Recently Viewed Products */}
       </Container>
     </DefaultLayout>
   );
