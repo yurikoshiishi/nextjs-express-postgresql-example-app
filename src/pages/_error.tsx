@@ -1,5 +1,6 @@
 import React from 'react';
 import PageWithImage from '../components/containers/PageWithImage';
+import DefaultLayout from '../components/layouts/DefaultLayout';
 import {ApiError} from '../utils/api';
 
 interface ErrorProps {
@@ -8,11 +9,13 @@ interface ErrorProps {
 
 const Error: React.FC<ErrorProps> = ({error = {}}) => {
   return (
-    <PageWithImage
-      title="エラーが発生しました"
-      description={`エラーコード: ${error.status || 404}`}
-      imageUrl="/images/illustrations/access_denied.svg"
-    />
+    <DefaultLayout>
+      <PageWithImage
+        title="エラーが発生しました"
+        description={`エラーコード: ${error.status || 404}`}
+        imageUrl="/images/illustrations/access_denied.svg"
+      />
+    </DefaultLayout>
   );
 };
 

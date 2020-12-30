@@ -13,6 +13,20 @@ export const getAmazonUrl = (
   return `${AMAZON_SERCH_URL}?keywords=${brand} ${name}`;
 };
 
+export const getProductNameWithBrand = (productData: {
+  brand_name_ja?: string;
+  brand_name_en?: string;
+  name?: string;
+}): string => {
+  const {brand_name_ja, brand_name_en, name} = productData;
+
+  const brand = `${
+    brand_name_ja ? brand_name_ja : brand_name_en ? brand_name_en : ''
+  }`;
+
+  return `${brand} ${name || ''}`;
+};
+
 export const hasFalsyValue = (obj: object): boolean => {
   if (!obj || typeof obj !== 'object') {
     return false;

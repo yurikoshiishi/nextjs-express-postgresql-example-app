@@ -6,11 +6,10 @@ const sql = (file) => {
   return new QueryFile(fullPath, {minify: true});
 };
 
-export const fetchProductMasters = sql('/src/sql/fetchProductMasters.sql');
-export const fetchProductDetail = sql('/src/sql/fetchProductDetail.sql');
-export const fetchProductVariations = sql(
-  '/src/sql/fetchProductVariations.sql'
-);
+export const getProductMasters = sql('/src/sql/getProductMasters.sql');
+export const getProductDetail = sql('/src/sql/getProductDetail.sql');
+export const getProductVariations = sql('/src/sql/getProductVariations.sql');
 export const incrementThumbsUp = sql('/src/sql/incrementThumbsUpCount.sql');
 export const decrementThumbsUp = sql('/src/sql/decrementThumbsUpCount.sql');
 export const createReview = sql('/src/sql/createReview.sql');
+export const getSearchResult = sql('/src/sql/getSearchResult.sql');

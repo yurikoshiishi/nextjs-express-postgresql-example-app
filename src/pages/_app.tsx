@@ -29,13 +29,11 @@ const App = ({Component, pageProps}: AppProps) => {
     <ThemeProvider theme={theme}>
       <AuthProvider>
         <CssBaseline />
-        <DefaultLayout>
-          {pageProps.error ? (
-            <Error error={pageProps.error} />
-          ) : (
-            <Component {...pageProps} />
-          )}
-        </DefaultLayout>
+        {pageProps.error ? (
+          <Error error={pageProps.error} />
+        ) : (
+          <Component {...pageProps} />
+        )}
       </AuthProvider>
     </ThemeProvider>
   );

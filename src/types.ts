@@ -11,6 +11,7 @@ export interface ProductMaster {
   url_myprotein?: string;
   url_iherb?: string;
   variation_count: number;
+  flavors: string;
   review_count: number;
   avg_taste_rating: number;
   avg_mix_rating: number;
@@ -44,6 +45,12 @@ export interface ProductVariations {
   url_myprotein?: string;
   url_iherb?: string;
   product_variations: ProductVariation[];
+}
+
+export interface SearchResult {
+  product_count: number;
+  page_count: number;
+  product_masters: ProductMaster[];
 }
 
 export interface Review {

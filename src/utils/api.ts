@@ -27,13 +27,15 @@ export interface ApiResponse {
   error: null;
 }
 
+export interface Error {
+  status?: string | number;
+  statusText?: string;
+  data?: {[key: string]: any; message?: string} | null;
+}
+
 export interface ApiError {
   data: null;
-  error: {
-    status?: string | number;
-    statusText?: string;
-    data?: {[key: string]: any; message?: string} | null;
-  };
+  error: Error;
 }
 
 const handleError = (error: AxiosError): ApiError => {
@@ -107,3 +109,16 @@ export const createReview = async (
 };
 
 // TODO: error handling refactor
+
+export const fetchSearchResult = async (
+  ctx: ContextWithParams
+): Promise<ApiResponse | ApiError> => {
+  return axios
+    .get(
+      `${getAbsoluteUrl(ctx.req).origin}/api/search?q=${ctx.query.q}&page=${
+        ctx.query.page || 1
+      }`
+    )
+    .then(handleResponse)
+    .catch(handleError);
+};

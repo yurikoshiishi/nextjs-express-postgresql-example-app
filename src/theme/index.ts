@@ -55,7 +55,7 @@ let theme = createMuiTheme({
       main: '#6356e5',
     },
     secondary: {
-      main: '#55b3f3',
+      main: '#e5a556',
     },
     text: {
       primary: 'rgba(0,0,0,0.75)',

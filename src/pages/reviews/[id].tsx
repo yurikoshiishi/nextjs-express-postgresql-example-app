@@ -1,13 +1,12 @@
 import React from 'react';
-import {fetchProductVariations} from '../../utils/api';
+import {Error, fetchProductVariations} from '../../utils/api';
 import {ContextWithParams, ProductVariations} from '../../types';
-import {ApiError} from 'next/dist/next-server/server/api-utils';
 import ReviewForm from '../../components/containers/ReviewForm';
 
 interface PostReviewPageProps {
   [key: string]: any;
-  error?: ApiError;
-  data: ProductVariations;
+  error: Error | null;
+  data: ProductVariations | null;
 }
 
 const PostReviewPage: React.FC<PostReviewPageProps> = ({data}) => {

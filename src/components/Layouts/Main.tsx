@@ -8,13 +8,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface MainProps {}
+interface MainProps {
+  disableContainer?: boolean;
+}
 
-const Main: React.FC<MainProps> = ({children}) => {
+const Main: React.FC<MainProps> = ({children, disableContainer}) => {
   const classes = useStyles();
   return (
     <main className={classes.root}>
-      <Container maxWidth="md">{children}</Container>
+      {!disableContainer ? (
+        <Container maxWidth="md">{children}</Container>
+      ) : (
+        children
+      )}
     </main>
   );
 };
