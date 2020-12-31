@@ -1,6 +1,15 @@
 import {NextPageContext} from 'next';
 import firebaseClient from './utils/firebaseClient';
 
+export interface HomePageData {
+  top_rated: ProductMasterWithReview[];
+  most_reviewed: ProductMasterWithReview[];
+}
+
+export interface ProductMasterWithReview extends ProductMaster {
+  review: Review;
+}
+
 export interface ProductMaster {
   product_master_id: string;
   brand_id: string;
@@ -16,6 +25,8 @@ export interface ProductMaster {
   avg_taste_rating: number;
   avg_mix_rating: number;
   avg_total_rating: number;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface ProductVariation {

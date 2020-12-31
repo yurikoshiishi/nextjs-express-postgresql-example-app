@@ -6,7 +6,7 @@ import React from 'react';
 const useStyles = makeStyles((theme) => ({
   root: {
     [theme.breakpoints.down('xs')]: {
-      padding: theme.spacing(1),
+      padding: theme.spacing(2),
     },
   },
   img: {

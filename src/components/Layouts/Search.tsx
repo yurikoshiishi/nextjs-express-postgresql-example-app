@@ -1,0 +1,123 @@
+import React, {useState} from 'react';
+import {
+  Backdrop,
+  Fade,
+  Hidden,
+  IconButton,
+  makeStyles,
+  Modal,
+  TextField,
+} from '@material-ui/core';
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import useSearch from '../../hooks/useSearch';
+
+const useStyles = makeStyles((theme) => ({
+  root: {},
+  textField: {
+    '& .MuiInputBase-root': {
+      width: 350,
+      height: 36,
+      [theme.breakpoints.down('sm')]: {
+        width: 250,
+      },
+    },
+    '& .MuiOutlinedInput-input': {
+      paddingTop: theme.spacing(1),
+      paddingBottom: theme.spacing(1),
+    },
+    '& .Mui-focused': {
+      '& .MuiSvgIcon-root': {
+        color: theme.palette.primary.main,
+      },
+    },
+    '& input::placeholder': {
+      fontSize: '14px',
+    },
+  },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    '& .MuiFormControl-root': {
+      width: '90%',
+    },
+    '& .MuiInputBase-root': {
+      width: '100%',
+      height: 50,
+    },
+    '& .MuiOutlinedInput-root': {
+      backgroundColor: theme.palette.background.paper,
+      boxShadow: theme.shadows[1],
+    },
+  },
+}));
+
+interface SearchProps {}
+
+const Search: React.FC<SearchProps> = ({}) => {
+  const classes = useStyles();
+  const [open, setOpen] = useState<boolean>(false);
+
+  const {value, handleChange, handleSubmit} = useSearch();
+
+  const handleOpenModal = () => {
+    setOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpen(false);
+  };
+
+  return (
+    <form className={classes.root} onSubmit={handleSubmit}>
+      <Hidden xsDown>
+        <TextField
+          size="small"
+          variant="outlined"
+          placeholder="商品名やフレーバーで検索"
+          InputProps={{
+            startAdornment: <SearchOutlinedIcon color="action" />,
+          }}
+          className={classes.textField}
+          value={value}
+          onChange={handleChange}
+        />
+      </Hidden>
+      <Hidden smUp>
+        <IconButton onClick={handleOpenModal} edge="end">
+          <SearchOutlinedIcon color="action" />
+        </IconButton>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          open={open}
+          onClose={handleCloseModal}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 200,
+          }}
+          className={classes.modal}
+        >
+          <Fade in={open}>
+            <TextField
+              size="medium"
+              variant="outlined"
+              placeholder="商品名やフレーバーで検索"
+              InputProps={{
+                startAdornment: <SearchOutlinedIcon color="action" />,
+              }}
+              autoFocus
+              fullWidth
+              className={classes.textField}
+              value={value}
+              onChange={handleChange}
+            />
+          </Fade>
+        </Modal>
+      </Hidden>
+    </form>
+  );
+};
+
+export default Search;

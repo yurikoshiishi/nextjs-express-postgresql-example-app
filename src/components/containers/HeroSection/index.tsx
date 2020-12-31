@@ -25,12 +25,13 @@ const useStyles = makeStyles((theme) => ({
   textContainer: {
     '& h1': {
       color: theme.palette.primary.contrastText,
-      marginBottom: theme.spacing(4),
+      marginBottom: theme.spacing(7),
       fontSize: '2.25rem',
       [theme.breakpoints.down('md')]: {
         fontSize: '2rem',
       },
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
+        marginBottom: theme.spacing(5),
         fontSize: '1.5rem',
       },
     },
@@ -50,6 +51,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 8,
     overflow: 'hidden',
     marginRight: theme.spacing(2),
+    [theme.breakpoints.down('sm')]: {
+      width: 250,
+      height: 250,
+    },
     [theme.breakpoints.down('xs')]: {
       display: 'none',
     },

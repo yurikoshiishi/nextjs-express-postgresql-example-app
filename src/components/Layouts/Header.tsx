@@ -14,6 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Logo from '../elements/Logo';
 import LogoutButton from '../elements/FirebaseLogin/LogoutButton';
 import {useAuth} from '../../contexts/auth';
+import Search from './Search';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -28,8 +29,17 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     height: theme.mixins.toolbar.minHeight,
   },
-  authContainer: {
+  right: {
     marginLeft: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  searchContainer: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.down('xs')]: {
+      marginRight: theme.spacing(1),
+    },
   },
 }));
 
@@ -59,13 +69,16 @@ const Header: React.FC<HeaderProps> = ({handleDrawerOpen}) => {
               </Button>
             </Link>
           </div>
-          <div className={classes.authContainer}>
+          <div className={classes.right}>
+            <div className={classes.searchContainer}>
+              <Search />
+            </div>
             {user ? (
               <Box display="flex" alignItems="center">
                 <Avatar src={user.photoURL} alt={user.uid} />
               </Box>
             ) : (
-              <Button color="primary" variant="outlined" onClick={signIn}>
+              <Button color="primary" variant="text" onClick={signIn}>
                 ログイン
               </Button>
             )}

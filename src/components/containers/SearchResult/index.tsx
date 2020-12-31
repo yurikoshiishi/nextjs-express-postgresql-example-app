@@ -1,9 +1,9 @@
 import {Box} from '@material-ui/core';
 import React from 'react';
 import {ProductMaster} from '../../../types';
-import GoBack from '../../elements/GoBack';
 import PaginatedList from '../PaginatedList';
 import ProductListItem from '../ProductList/ProductListItem';
+import NoResult from './NoResult';
 import SearchHeader from './SearchHeader';
 
 interface SearchResultProps {
@@ -14,7 +14,7 @@ interface SearchResultProps {
 
 const SearchResult: React.FC<SearchResultProps> = ({
   product_masters,
-  product_count,
+  product_count = 0,
   page_count,
 }) => {
   const renderItem = (product_master) => (
@@ -27,15 +27,18 @@ const SearchResult: React.FC<SearchResultProps> = ({
   return (
     <div>
       <SearchHeader product_count={product_count} />
-      <PaginatedList
-        name="search-result"
-        items={product_masters}
-        pageCount={page_count}
-        renderItem={renderItem}
-      />
-      <Box m={1}>
-        <GoBack href="/" text="トップに戻る" />
-      </Box>
+      {product_masters ? (
+        <Box mb={1}>
+          <PaginatedList
+            name="search-result"
+            items={product_masters}
+            pageCount={page_count}
+            renderItem={renderItem}
+          />
+        </Box>
+      ) : (
+        <NoResult />
+      )}
     </div>
   );
 };

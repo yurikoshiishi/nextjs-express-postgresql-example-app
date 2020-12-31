@@ -34,7 +34,7 @@ const SearchHeader: React.FC<SearchHeaderProps> = ({product_count}) => {
   const queryString = decodeURIComponent(q.toString());
 
   return (
-    <Box pt={1} px={1} mb={2}>
+    <Box p={1}>
       <div className={classes.textContainer}>
         <Typography variant="h1">"{queryString}"の検索結果</Typography>
         <Typography variant="body2" color="textSecondary">

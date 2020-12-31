@@ -8,6 +8,7 @@ interface PaginatedListProps {
   items: any[];
   pageCount: number;
   renderItem: (any) => React.ReactElement;
+  listParentComponent?: 'div' | 'ul';
 }
 
 const PaginatedList: React.FC<PaginatedListProps> = ({
@@ -15,6 +16,7 @@ const PaginatedList: React.FC<PaginatedListProps> = ({
   items,
   pageCount,
   renderItem,
+  listParentComponent = 'ul',
 }) => {
   const router = useRouter();
   const currentPage = Number(router.query.page) || 1;
@@ -30,13 +32,15 @@ const PaginatedList: React.FC<PaginatedListProps> = ({
       duration: 500,
       delay: 50,
       smooth: true,
-      offset: -80,
+      offset: -100,
     });
   };
 
   return (
     <Element name={name}>
-      {items.map((item) => renderItem(item))}
+      {React.createElement(listParentComponent, {
+        children: items.map((item) => renderItem(item)),
+      })}
       <Pagination
         currentPage={currentPage}
         pageCount={pageCount}

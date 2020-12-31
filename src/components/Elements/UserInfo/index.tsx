@@ -29,7 +29,7 @@ const UserInfo: React.FC<UserInfoProps> = ({}) => {
   return (
     <div className={classes.root}>
       <Avatar src={user ? user.photoURL : ''} className={classes.avatar} />
-      <Typography variant="h6" className={classes.name}>
+      <Typography variant="body1" className={classes.name}>
         {user ? user.displayName : '匿名のユーザー'}
       </Typography>
       {user && (

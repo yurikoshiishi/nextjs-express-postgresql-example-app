@@ -17,7 +17,9 @@ const Main: React.FC<MainProps> = ({children, disableContainer}) => {
   return (
     <main className={classes.root}>
       {!disableContainer ? (
-        <Container maxWidth="md">{children}</Container>
+        <Container maxWidth="md" disableGutters>
+          {children}
+        </Container>
       ) : (
         children
       )}

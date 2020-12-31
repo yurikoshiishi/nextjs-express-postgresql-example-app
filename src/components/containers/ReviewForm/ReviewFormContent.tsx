@@ -5,7 +5,7 @@ import RatingField from './RatingField';
 import FlavorSelect from './FlavorSelect';
 import {ProductVariation, ReviewFormValues} from '../../../types';
 import DescriptionField from './DescriptionField';
-import {Box, Button, Container} from '@material-ui/core';
+import {Box, Container} from '@material-ui/core';
 import UserIdField from './UserIdField';
 import {createReview} from '../../../utils/api';
 import {useRouter} from 'next/router';

@@ -40,6 +40,8 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({
   };
 
   const titleWithSuffix = title + TITLE_SUFFIX;
+  const descriptionWithSuffix =
+    description.length <= 50 ? description + DEFAULT_DESCRIPTION : description;
 
   return (
     <>
@@ -48,15 +50,15 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
         <title>{titleWithSuffix}</title>
-        <meta name="description" content={description} />
+        <meta name="description" content={descriptionWithSuffix} />
 
         <meta property="og:title" content={titleWithSuffix} />
-        <meta property="og:description" content={description} />
+        <meta property="og:description" content={descriptionWithSuffix} />
         <meta property="og:url" content={url} />
         <meta property="og:image" content={imageUrl} />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={titleWithSuffix} />
-        <meta name="twitter:description" content={description} />
+        <meta name="twitter:description" content={descriptionWithSuffix} />
         <meta name="twitter:image" content={imageUrl} />
         <link rel="canonical" href={url} />
 

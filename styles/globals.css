@@ -44,3 +44,7 @@ a {
   font-family: Arial, 'Hiragino Kaku Gothic Pro', Meiryo, メイリオ, 'MS PGothic',
     sans-serif;
 }
+
+li {
+  list-style: none;
+}

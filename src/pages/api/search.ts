@@ -5,7 +5,7 @@ const PER_PAGE = 20;
 
 export default async (req, res) => {
   try {
-    const result = await db.instance.one(getSearchResult, {
+    const result = await db.instance.oneOrNone(getSearchResult, {
       query: decodeURIComponent(req.query.q).toLowerCase(),
       perPage: PER_PAGE,
       currentPage: req.query.page || 1,

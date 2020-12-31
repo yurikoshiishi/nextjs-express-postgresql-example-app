@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface CardLinkProps {
-  className: object | string;
+  className?: object | string;
   href: string;
 }
 

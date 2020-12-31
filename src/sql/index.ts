@@ -13,3 +13,4 @@ export const incrementThumbsUp = sql('/src/sql/incrementThumbsUpCount.sql');
 export const decrementThumbsUp = sql('/src/sql/decrementThumbsUpCount.sql');
 export const createReview = sql('/src/sql/createReview.sql');
 export const getSearchResult = sql('/src/sql/getSearchResult.sql');
+export const getHomePage = sql('/src/sql/getHomePage.sql');

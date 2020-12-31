@@ -1,4 +1,4 @@
-import {Button, Card, InputBase, makeStyles} from '@material-ui/core';
+import {Button, InputBase, makeStyles} from '@material-ui/core';
 import React, {useState} from 'react';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import {useRouter} from 'next/router';
@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
     boxShadow: '0px 4px 6px rgba(60,64,67,0.3)',
+    border: '2px solid #fff',
   },
   input: {
     flexGrow: 1,

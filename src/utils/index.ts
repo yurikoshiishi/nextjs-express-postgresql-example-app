@@ -18,6 +18,10 @@ export const getProductNameWithBrand = (productData: {
   brand_name_en?: string;
   name?: string;
 }): string => {
+  if (!productData || Object.keys(productData).length === 0) {
+    return '';
+  }
+
   const {brand_name_ja, brand_name_en, name} = productData;
 
   const brand = `${

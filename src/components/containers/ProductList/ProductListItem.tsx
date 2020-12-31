@@ -74,43 +74,45 @@ const ProductListItem: React.FC<ProductListItemProps> = ({
 }) => {
   const classes = useStyles();
   return (
-    <CardLink className={classes.root} href={`/products/${product_master_id}`}>
-      <div className={classes.content}>
-        <div className={classes.imageContainer}>
-          <Image
-            src={`/images/products/${product_master_id}.jpg`}
-            alt={`${brand_name_ja}-${name}`}
-            layout="fill"
-            objectFit="contain"
-          />
-        </div>
-        <div className={classes.textContainer}>
-          <div>
-            <BrandLink
-              brand_id={brand_id}
-              brand_name_en={brand_name_en}
-              brand_name_ja={brand_name_ja}
+    <li className={classes.root}>
+      <CardLink href={`/products/${product_master_id}`}>
+        <div className={classes.content}>
+          <div className={classes.imageContainer}>
+            <Image
+              src={`/images/products/${product_master_id}.jpg`}
+              alt={`${brand_name_ja}-${name}`}
+              layout="fill"
+              objectFit="contain"
             />
-            <Typography variant="h3" className={classes.productName}>
-              {name}
-            </Typography>
           </div>
-          <Box mb={1}>
-            <TextWithIcon
-              icon={<ProteinIcon />}
-              text={`${variation_count}フレーバー`}
-            />
-          </Box>
-          <Box mb={1}>
-            <TextWithIcon
-              icon={<RateReviewOutlinedIcon />}
-              text={`${review_count}件のレビュー`}
-            />
-          </Box>
-          <RatingStars rating={avg_total_rating} />
+          <div className={classes.textContainer}>
+            <div>
+              <BrandLink
+                brand_id={brand_id}
+                brand_name_en={brand_name_en}
+                brand_name_ja={brand_name_ja}
+              />
+              <Typography variant="h3" className={classes.productName}>
+                {name}
+              </Typography>
+            </div>
+            <Box mb={1}>
+              <TextWithIcon
+                icon={<ProteinIcon />}
+                text={`${variation_count}フレーバー`}
+              />
+            </Box>
+            <Box mb={1}>
+              <TextWithIcon
+                icon={<RateReviewOutlinedIcon />}
+                text={`${review_count}件のレビュー`}
+              />
+            </Box>
+            <RatingStars rating={avg_total_rating} />
+          </div>
         </div>
-      </div>
-    </CardLink>
+      </CardLink>
+    </li>
   );
 };
 

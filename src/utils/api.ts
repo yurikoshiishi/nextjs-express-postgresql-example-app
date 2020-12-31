@@ -1,10 +1,12 @@
 import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from 'axios';
+import {getHomePage} from '../sql';
 import {
   ContextWithParams,
   ProductDetail,
   ProductMaster,
   ReviewFormValues,
 } from '../types';
+import db from './db';
 
 const getAbsoluteUrl = (req, setLocalhost?: string) => {
   var protocol = 'https:';
@@ -24,7 +26,7 @@ const getAbsoluteUrl = (req, setLocalhost?: string) => {
 
 export interface ApiResponse {
   data: any;
-  error: null;
+  error: Error | null;
 }
 
 export interface Error {
@@ -33,12 +35,7 @@ export interface Error {
   data?: {[key: string]: any; message?: string} | null;
 }
 
-export interface ApiError {
-  data: null;
-  error: Error;
-}
-
-const handleError = (error: AxiosError): ApiError => {
+const handleError = (error: AxiosError) => {
   const {response} = error;
   return {
     data: null,
@@ -62,19 +59,19 @@ export const fetchProductMasters = async (req): Promise<ProductMaster[]> => {
 
 export const fetchProductDetail = async (
   ctx: ContextWithParams
-): Promise<ProductDetail> => {
-  const res = await axios(
+): Promise<ApiResponse> => {
+  return axios(
     `${getAbsoluteUrl(ctx.req).origin}/api/products/${ctx.params.id}?page=${
       ctx.query.page || 1
     }`
-  );
-  const productDetail = res.data;
-  return productDetail;
+  )
+    .then(handleResponse)
+    .catch(handleError);
 };
 
 export const fetchProductVariations = async (
   ctx: ContextWithParams
-): Promise<ApiResponse | ApiError> => {
+): Promise<ApiResponse> => {
   return axios
     .get(`${getAbsoluteUrl(ctx.req).origin}/api/reviews/${ctx.params.id}`)
     .then(handleResponse)
@@ -97,7 +94,7 @@ export const decrementThumbsUp = async (review_id) => {
 
 export const createReview = async (
   formValues: ReviewFormValues
-): Promise<ApiResponse | ApiError> => {
+): Promise<ApiResponse> => {
   const {product_master_id} = formValues;
   return axios
     .post(
@@ -108,17 +105,24 @@ export const createReview = async (
     .catch(handleError);
 };
 
-// TODO: error handling refactor
-
 export const fetchSearchResult = async (
   ctx: ContextWithParams
-): Promise<ApiResponse | ApiError> => {
+): Promise<ApiResponse> => {
   return axios
     .get(
       `${getAbsoluteUrl(ctx.req).origin}/api/search?q=${ctx.query.q}&page=${
         ctx.query.page || 1
       }`
     )
+    .then(handleResponse)
+    .catch(handleError);
+};
+
+export const fetchHomePage = async (
+  ctx: ContextWithParams
+): Promise<ApiResponse> => {
+  return axios
+    .get(`${getAbsoluteUrl(ctx.req).origin}/api/pages/`)
     .then(handleResponse)
     .catch(handleError);
 };

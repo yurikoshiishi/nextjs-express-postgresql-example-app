@@ -145,26 +145,14 @@ theme.overrides = {
     },
   },
   MuiContainer: {
-    root: {
-      paddingLeft: 8,
-      paddingRight: 8,
-      paddingTop: 8,
-      paddingBottom: 8,
+    disableGutters: {
+      paddingLeft: 16,
+      paddingRight: 16,
+      paddingTop: 16,
+      paddingBottom: 16,
       [theme.breakpoints.down('xs')]: {
         paddingLeft: 0,
         paddingRight: 0,
-        paddingTop: 0,
-        paddingBottom: 0,
-      },
-    },
-    maxWidthXs: {
-      paddingLeft: 24,
-      paddingRight: 24,
-      paddingTop: 8,
-      paddingBottom: 8,
-      [theme.breakpoints.down('xs')]: {
-        paddingLeft: 16,
-        paddingRight: 16,
         paddingTop: 0,
         paddingBottom: 0,
       },
