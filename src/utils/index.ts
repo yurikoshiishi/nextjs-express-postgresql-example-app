@@ -38,3 +38,14 @@ export const hasFalsyValue = (obj: object): boolean => {
 
   return Object.values(obj).some((val) => !Boolean(val));
 };
+
+export const getSlicedString = (text: string, limit: number): string => {
+  if (!text || !limit) {
+    return '';
+  }
+  if (text.length > limit) {
+    return text.substring(0, limit - 1) + '...';
+  }
+
+  return text;
+};

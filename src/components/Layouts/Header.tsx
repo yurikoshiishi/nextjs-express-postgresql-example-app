@@ -53,7 +53,7 @@ const Header: React.FC<HeaderProps> = ({handleDrawerOpen}) => {
 
   return (
     <AppBar position="fixed" className={classes.appBar}>
-      <Container maxWidth="md" disableGutters className={classes.container}>
+      <Container maxWidth="lg" disableGutters className={classes.container}>
         <Toolbar className={classes.toolbar} variant="dense">
           <IconButton
             aria-label="open drawer"

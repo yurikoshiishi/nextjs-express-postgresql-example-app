@@ -4,6 +4,7 @@ import {Link as MuiLink} from '@material-ui/core';
 
 interface TextLinkProps {
   href: string;
+  className?: string | object;
 }
 
 const TextLink: React.FC<TextLinkProps> = ({href, children}) => {

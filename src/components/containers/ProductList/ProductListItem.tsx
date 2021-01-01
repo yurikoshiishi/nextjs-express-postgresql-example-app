@@ -5,7 +5,6 @@ import Image from 'next/image';
 import CardLink from '../../elements/CardLink';
 import RateReviewOutlinedIcon from '@material-ui/icons/RateReviewOutlined';
 import ProteinIcon from '../../icons/ProteinIcon';
-import TextLink from '../../elements/TextLink';
 import RatingStars from '../../elements/RatingStars';
 import TextWithIcon from '../../elements/TextWithIcon';
 import BrandLink from '../../elements/BrandLink';

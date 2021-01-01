@@ -7,7 +7,7 @@ export interface HomePageData {
 }
 
 export interface ProductMasterWithReview extends ProductMaster {
-  review: Review;
+  reviews: Review[];
 }
 
 export interface ProductMaster {

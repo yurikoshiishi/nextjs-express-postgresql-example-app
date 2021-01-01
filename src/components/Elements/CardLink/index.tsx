@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     transition: '0.4s',
     '&:hover': {
-      borderColor: theme.palette.primary.main,
+      borderColor: theme.palette.primary.main + '!important',
     },
     [theme.breakpoints.down('xs')]: {
       padding: theme.spacing(1),

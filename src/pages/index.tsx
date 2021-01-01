@@ -15,17 +15,19 @@ const Home: NextPage<HomeProps> = ({data}) => {
   return (
     <DefaultLayout disableContainer>
       <HeroSection />
-      <Container maxWidth="md">
-        <Box py={5} px={2}>
+      <Container maxWidth="lg">
+        <Box py={5}>
           <HomePageProductSection
             title="最も高評価のプロテイン"
             products={data.top_rated}
             href="/categories/top-rated"
+            buttonText="高評価順で見る"
           />
           <HomePageProductSection
             title="最もレビューの多いプロテイン"
             products={data.most_reviewed}
             href="/categories/most-reviewed"
+            buttonText="投稿数順で見る"
           />
         </Box>
       </Container>
