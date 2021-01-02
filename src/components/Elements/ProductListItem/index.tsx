@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 8,
     padding: theme.spacing(1),
     height: desktopImageSize,
-    minWidth: 400,
+    minWidth: 300,
     [theme.breakpoints.down('xs')]: {
       height: 'auto',
       minWidth: 'auto',

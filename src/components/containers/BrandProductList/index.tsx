@@ -1,4 +1,11 @@
-import {Box, Grid, Hidden, Typography} from '@material-ui/core';
+import {
+  Box,
+  Card,
+  CardContent,
+  Grid,
+  Hidden,
+  Typography,
+} from '@material-ui/core';
 import React from 'react';
 import {ProductMaster} from '../../../types';
 import ProductListItem from '../../elements/ProductListItem';
@@ -22,7 +29,11 @@ const BrandProductList: React.FC<BrandProductListProps> = ({
         <Grid container spacing={1}>
           {products.map((p) => (
             <Grid item xs={4} key={p.product_master_id}>
-              <ProductGridItem product={p} />
+              <Card>
+                <CardContent>
+                  <ProductGridItem product={p} />
+                </CardContent>
+              </Card>
             </Grid>
           ))}
         </Grid>

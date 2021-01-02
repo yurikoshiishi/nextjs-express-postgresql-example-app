@@ -1,41 +1,31 @@
 import React from 'react';
-import {Container, makeStyles} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core';
 
-const useStyles = ({centerContent}) =>
+const useStyles = ({centerContent, disableContainer}) =>
   makeStyles((theme) => ({
     root: {
-      flexGrow: 1,
-      paddingTop: theme.mixins.toolbar.minHeight,
+      padding: theme.spacing(disableContainer ? 0 : 2, 0),
       ...(centerContent && {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        height: '100%',
       }),
     },
   }));
 
 interface MainProps {
-  disableContainer?: boolean;
   centerContent?: boolean;
+  disableContainer?: boolean;
 }
 
 const Main: React.FC<MainProps> = ({
   children,
-  disableContainer,
   centerContent,
+  disableContainer,
 }) => {
-  const classes = useStyles({centerContent})();
-  return (
-    <main className={classes.root}>
-      {!disableContainer ? (
-        <Container maxWidth="lg" disableGutters>
-          {children}
-        </Container>
-      ) : (
-        children
-      )}
-    </main>
-  );
+  const classes = useStyles({centerContent, disableContainer})();
+  return <main className={classes.root}>{children}</main>;
 };
 
 export default Main;

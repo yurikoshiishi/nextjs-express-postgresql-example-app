@@ -78,7 +78,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({}) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Container maxWidth="md" className={classes.container}>
+      <Container maxWidth="lg" className={classes.container}>
         <div className={classes.textContainer}>
           <div className={classes.copyContainer}>
             <Typography variant="h1">

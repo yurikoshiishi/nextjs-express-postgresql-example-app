@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductDetailContainer from '../../components/containers/ProductDetailContainer';
-import DefaultLayout from '../../components/layouts/DefaultLayout';
+import SidebarLayout from '../../components/layouts/SiderbarLayout';
 import {ProductDetail, ContextWithParams} from '../../types';
 import {getProductNameWithBrand} from '../../utils';
 import {fetchProductDetail} from '../../utils/api';
@@ -21,9 +21,9 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({data}) => {
   } その他にも様々なプロテインメーカー・味のレビューあり。`;
 
   return (
-    <DefaultLayout title={title} description={description}>
+    <SidebarLayout title={title} description={description}>
       <ProductDetailContainer productDetail={data} />
-    </DefaultLayout>
+    </SidebarLayout>
   );
 };
 

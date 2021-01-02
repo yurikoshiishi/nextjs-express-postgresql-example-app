@@ -10,6 +10,9 @@ if (typeof window !== 'undefined' && !firebaseClient.apps.length) {
     messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   });
+  firebaseClient
+    .auth()
+    .setPersistence(firebaseClient.auth.Auth.Persistence.SESSION);
 }
 
 export default firebaseClient;

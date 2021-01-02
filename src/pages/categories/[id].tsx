@@ -2,6 +2,7 @@ import {useRouter} from 'next/router';
 import React from 'react';
 import CategoryProductList from '../../components/containers/CategoryProductList';
 import DefaultLayout from '../../components/layouts/DefaultLayout';
+import SidebarLayout from '../../components/layouts/SiderbarLayout';
 import {CATEGORIES} from '../../constants';
 import {ContextWithParams, ProductMasterWithReview} from '../../types';
 import {fetchCategoryProducts} from '../../utils/api';
@@ -19,9 +20,9 @@ const CategoryProductsPage: React.FC<CategoryProductsPageProps> = ({data}) => {
   const description = `${title}はこちら。`;
 
   return (
-    <DefaultLayout title={title} description={description}>
+    <SidebarLayout title={title} description={description}>
       <CategoryProductList products={data} />
-    </DefaultLayout>
+    </SidebarLayout>
   );
 };
 

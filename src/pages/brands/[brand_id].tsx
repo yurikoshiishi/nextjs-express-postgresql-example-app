@@ -1,6 +1,6 @@
 import React from 'react';
 import BrandProductList from '../../components/containers/BrandProductList';
-import DefaultLayout from '../../components/layouts/DefaultLayout';
+import SidebarLayout from '../../components/layouts/SiderbarLayout';
 import {ContextWithParams, ProductMaster} from '../../types';
 import {fetchBrandProducts} from '../../utils/api';
 
@@ -18,9 +18,9 @@ const BrandProductsPage: React.FC<BrandProductsPageProps> = ({data}) => {
   const description = `${title}(${data.length}件)はこちら。`;
 
   return (
-    <DefaultLayout title={title} description={description}>
+    <SidebarLayout title={title} description={description}>
       <BrandProductList products={data} brand={brand_name_ja} />
-    </DefaultLayout>
+    </SidebarLayout>
   );
 };
 

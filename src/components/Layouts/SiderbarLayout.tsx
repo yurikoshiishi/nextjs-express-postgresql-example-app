@@ -3,10 +3,12 @@ import Header from './Header';
 import Drawer from './Drawer';
 import Main from './Main';
 import Footer from './Footer';
+import {Grid} from '@material-ui/core';
+import Sidebar from './SideBar';
 import Head from './Head';
 import Content from './Content';
 
-interface DefaultLayoutProps {
+interface SidebarLayoutProps {
   children: React.ReactNode;
   title?: string;
   description?: string;
@@ -17,7 +19,7 @@ interface DefaultLayoutProps {
   centerContent?: boolean;
 }
 
-const DefaultLayout: React.FC<DefaultLayoutProps> = ({
+const SidebarLayout: React.FC<SidebarLayoutProps> = ({
   children,
   title,
   description,
@@ -49,13 +51,23 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({
       <Header handleDrawerOpen={handleDrawerOpen} />
       <Drawer open={open} handleDrawerClose={handleDrawerClose} />
       <Content disableContainer={disableContainer}>
-        <Main centerContent={centerContent} disableContainer={disableContainer}>
-          {children}
-        </Main>
+        <Grid container>
+          <Grid xs={12} md={9}>
+            <Main
+              centerContent={centerContent}
+              disableContainer={disableContainer}
+            >
+              {children}
+            </Main>
+          </Grid>
+          <Grid xs={12} md={3}>
+            <Sidebar />
+          </Grid>
+        </Grid>
       </Content>
       <Footer />
     </>
   );
 };
 
-export default DefaultLayout;
+export default SidebarLayout;

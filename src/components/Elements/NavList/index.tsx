@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
         },
         '& *': {
           color: theme.palette.primary.main,
+          fontWeight: theme.typography.fontWeightBold,
         },
       },
     },
@@ -29,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 interface NavListProps {
   component?: 'nav' | 'ul' | 'div';
   subheader?: string;
-  name: string;
   items: NavListItemProps[];
   onItemClick?: () => void;
 }
@@ -37,7 +37,6 @@ interface NavListProps {
 const NavList: React.FC<NavListProps> = ({
   component = 'ul',
   subheader,
-  name,
   items,
   onItemClick,
 }) => {
@@ -45,12 +44,10 @@ const NavList: React.FC<NavListProps> = ({
   return (
     <List
       component={component}
-      aria-labelledby={`${name}-subheader`}
       subheader={
         subheader ? (
           <ListSubheader
             component="div"
-            id={`${name}-subheader`}
             className={classes.subheader}
             disableSticky
           >

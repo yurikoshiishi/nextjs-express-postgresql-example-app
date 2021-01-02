@@ -9,8 +9,8 @@ import NavLink from '../NavLink';
 
 export interface NavListItemProps {
   text: string;
-  icon?: React.ReactElement;
   href: string;
+  icon?: React.ReactElement;
   onClick?: () => void;
 }
 

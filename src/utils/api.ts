@@ -1,12 +1,8 @@
-import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from 'axios';
-import {getHomePage} from '../sql';
-import {
-  ContextWithParams,
-  ProductDetail,
-  ProductMaster,
-  ReviewFormValues,
-} from '../types';
-import db from './db';
+import axios, {AxiosError, AxiosResponse} from 'axios';
+import {ContextWithParams, ProductMaster, ReviewFormValues} from '../types';
+import firebaseClient from './firebaseClient';
+
+axios.defaults.withCredentials = true;
 
 const getAbsoluteUrl = (req, setLocalhost?: string) => {
   var protocol = 'https:';
@@ -96,11 +92,19 @@ export const createReview = async (
   formValues: ReviewFormValues
 ): Promise<ApiResponse> => {
   const {product_master_id} = formValues;
+
+  let token;
+  try {
+    token = await firebaseClient.auth().currentUser.getIdToken();
+  } catch (err) {
+    throw new Error('not authorized');
+  }
+
   return axios
-    .post(
-      `${window.origin}/api/reviews/${product_master_id}/create`,
-      formValues
-    )
+    .post(`${window.origin}/api/reviews/${product_master_id}/create`, {
+      ...formValues,
+      token,
+    })
     .then(handleResponse)
     .catch(handleError);
 };

@@ -3,6 +3,7 @@ import {Error, fetchSearchResult} from '../utils/api';
 import DefaultLayout from '../components/layouts/DefaultLayout';
 import SearchResult from '../components/containers/SearchResult';
 import {SearchResult as SearchResultType} from '../types';
+import SidebarLayout from '../components/layouts/SiderbarLayout';
 
 interface SearchProps {
   error: Error | null;
@@ -11,9 +12,9 @@ interface SearchProps {
 
 const Search: NextPage<SearchProps> = ({data}) => {
   return (
-    <DefaultLayout noIndex>
+    <SidebarLayout noIndex>
       <SearchResult {...data} />
-    </DefaultLayout>
+    </SidebarLayout>
   );
 };
 

@@ -34,15 +34,27 @@ export function AuthProvider({children}: any) {
       if (!user) {
         setUser(null);
         nookies.destroy(null, 'token');
-        nookies.set(null, 'token', '', {});
+        nookies.set(null, 'token', '', {
+          path: '/',
+        });
         return;
       }
 
       const token = await user.getIdToken();
       setUser(user);
       nookies.destroy(null, 'token');
-      nookies.set(null, 'token', token, {});
+      nookies.set(null, 'token', token, {
+        path: '/',
+      });
     });
+  }, []);
+
+  useEffect(() => {
+    const handle = setInterval(async () => {
+      const user = firebaseClient.auth().currentUser;
+      if (user) await user.getIdToken(true);
+    }, 10 * 60 * 1000);
+    return () => clearInterval(handle);
   }, []);
 
   return (
