@@ -3,10 +3,11 @@ import Link from 'next/link';
 import React from 'react';
 import {ProductMasterWithReview} from '../../../types';
 import CardLink from '../../elements/CardLink';
-import ProductItem from '../../elements/ProductItem';
+import ProductItem from '../../elements/ProductGridItem';
 
 const useStyles = makeStyles((theme) => ({
   desktop: {
+    backgroundColor: theme.palette.background.paper,
     '& .brandLink': {
       fontSize: '12px',
     },
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     border: `1px solid ${theme.palette.divider}`,
     transition: 'border .4s ease',
     '&:hover': {
-      borderColor: theme.palette.primary.main + '!important',
+      borderColor: theme.palette.primary.main,
     },
   },
   nestedGrid: {
@@ -36,8 +37,11 @@ const useStyles = makeStyles((theme) => ({
     '&:nth-child(4)': {
       borderRadius: '0 0 12px 0',
     },
-    '&:nth-child(n+2)': {
+    '&:nth-child(n+3)': {
       borderTopColor: 'transparent',
+      '&:hover': {
+        borderColor: theme.palette.primary.main,
+      },
     },
   },
   mobile: {
@@ -72,7 +76,7 @@ const ProductListCard: React.FC<ProductListCardProps> = ({products}) => {
   const otherProducts = products.slice(1, products.length);
 
   return (
-    <div>
+    <>
       <Hidden smDown>
         <Grid container className={classes.desktop} component="ul">
           <Link href={`/products/${firstProduct.product_master_id}`} passHref>
@@ -86,7 +90,7 @@ const ProductListCard: React.FC<ProductListCardProps> = ({products}) => {
             >
               <ProductItem
                 product={firstProduct}
-                imageSize={{desktop: 350, mobile: 150}}
+                imageSize={{desktop: 325, mobile: 150}}
                 reviewSize="medium"
               />
             </Grid>
@@ -133,7 +137,7 @@ const ProductListCard: React.FC<ProductListCardProps> = ({products}) => {
           ))}
         </ul>
       </Hidden>
-    </div>
+    </>
   );
 };
 

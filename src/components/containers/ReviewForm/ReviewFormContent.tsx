@@ -17,6 +17,9 @@ interface ReviewFormContentProps {
   product_variations: ProductVariation[];
 }
 
+const REVIEW_MIN = 30;
+const REVIEW_MAX = 500;
+
 const getInitialValues = (product_master_id: string): ReviewFormValues => {
   const initialValues: ReviewFormValues = {
     product_master_id: product_master_id,
@@ -41,8 +44,8 @@ const validationSchema = yup.object().shape({
     .string()
     .required('レビューを入力してください。')
     .trim()
-    .min(20, 'レビューは最低20文字必要です。')
-    .max(1000, 'レビューは最大1,000文字までです。'),
+    .min(REVIEW_MIN, `レビューは最低${REVIEW_MIN}文字必要です。`)
+    .max(REVIEW_MAX, `レビューは最大${REVIEW_MAX}文字までです。`),
 });
 
 const ReviewFormContent: React.FC<ReviewFormContentProps> = ({
@@ -133,6 +136,8 @@ const ReviewFormContent: React.FC<ReviewFormContentProps> = ({
                   ? errors.description
                   : ''
               }
+              value={values.description}
+              max={REVIEW_MAX}
             />
             <Box my={3}>
               <UserIdField name="user_id" setFieldValue={setFieldValue} />

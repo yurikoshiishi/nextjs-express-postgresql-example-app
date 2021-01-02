@@ -3,8 +3,9 @@ import {Error, fetchHomePage} from '../utils/api';
 import HeroSection from '../components/containers/HeroSection';
 import DefaultLayout from '../components/layouts/DefaultLayout';
 import {Box, Container} from '@material-ui/core';
-import HomePageProductSection from '../components/containers/HomePageProductSection';
+import HomePageSection from '../components/containers/HomePageSection';
 import {HomePageData} from '../types';
+import ProductListCard from '../components/containers/HomePageSection/ProductListCard';
 
 interface HomeProps {
   error: Error | null;
@@ -17,17 +18,17 @@ const Home: NextPage<HomeProps> = ({data}) => {
       <HeroSection />
       <Container maxWidth="lg">
         <Box py={5}>
-          <HomePageProductSection
+          <HomePageSection
             title="最も高評価のプロテイン"
-            products={data.top_rated}
+            content={<ProductListCard products={data.top_rated} />}
             href="/categories/top-rated"
-            buttonText="高評価順で見る"
+            buttonText="高評価プロテインを見る"
           />
-          <HomePageProductSection
+          <HomePageSection
             title="最もレビューの多いプロテイン"
-            products={data.most_reviewed}
+            content={<ProductListCard products={data.most_reviewed} />}
             href="/categories/most-reviewed"
-            buttonText="投稿数順で見る"
+            buttonText="レビューの多いプロテインを見る"
           />
         </Box>
       </Container>

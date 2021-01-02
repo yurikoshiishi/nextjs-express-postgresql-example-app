@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 interface ReviewListItemProps {
   review: Review;
+  disableThumbsUp?: boolean;
 }
 
 const ReviewListItem: React.FC<ReviewListItemProps> = ({
@@ -45,6 +46,7 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({
     flavor,
     thumbsup_count,
   },
+  disableThumbsUp,
 }) => {
   const classes = useStyles();
 
@@ -69,9 +71,11 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({
           <Typography variant="body2">{description}</Typography>
         </div>
       </div>
-      <div className={classes.actionContainer}>
-        <ThumbsUpButton count={thumbsup_count} review_id={review_id} />
-      </div>
+      {!disableThumbsUp && (
+        <div className={classes.actionContainer}>
+          <ThumbsUpButton count={thumbsup_count} review_id={review_id} />
+        </div>
+      )}
     </div>
   );
 };

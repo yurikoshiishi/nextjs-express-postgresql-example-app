@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   Box,
   Button,
@@ -11,6 +11,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import UserInfo from '../elements/UserInfo';
 import LogoutButton from '../elements/FirebaseLogin/LogoutButton';
 import {useAuth} from '../../contexts/auth';
+import Navigation from './Navigation';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -21,8 +22,11 @@ const useStyles = makeStyles((theme) => ({
       width: '80vw',
     },
   },
+  nav: {
+    flexGrow: 1,
+    overflowY: 'scroll',
+  },
   bottomContainer: {
-    marginTop: 'auto',
     textAlign: 'center',
   },
   authButton: {
@@ -68,6 +72,7 @@ const Drawer: React.FC<DrawerProps> = ({open, handleDrawerClose}) => {
     >
       <UserInfo />
       <Divider />
+      <Navigation className={classes.nav} onItemClick={handleDrawerClose} />
       <div className={classes.bottomContainer}>
         <Divider />
         <div className={classes.authButton}>

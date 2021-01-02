@@ -60,14 +60,14 @@ const useStyles = ({imageSize}) =>
     };
   });
 
-interface ProductItemProps {
+interface ProductGridItemProps {
   product: ProductMaster;
   reviewSize?: 'small' | 'medium' | 'large';
   imageSize?: number | {desktop: number; mobile: number};
   titleVariant?: MuiTypography;
 }
 
-const ProductItem: React.FC<ProductItemProps> = ({
+const ProductGridItem: React.FC<ProductGridItemProps> = ({
   product: {
     product_master_id,
     brand_name_ja,
@@ -132,4 +132,4 @@ const ProductItem: React.FC<ProductItemProps> = ({
   );
 };
 
-export default ProductItem;
+export default ProductGridItem;

@@ -13,6 +13,9 @@ const ProductDetailContainer: React.FC<ProductDetailContainerProps> = ({
   productDetail,
 }) => {
   const {reviews, review_page_count} = productDetail;
+
+  //TODO: add filter to review list. two column in desktop, one in mobile.
+
   return (
     <Card>
       <CardContent>

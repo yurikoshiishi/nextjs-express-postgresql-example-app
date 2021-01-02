@@ -13,6 +13,7 @@ interface DefaultLayoutProps {
   url?: string;
   noIndex?: boolean;
   disableContainer?: boolean;
+  centerContent?: boolean;
 }
 
 const DEFAULT_TITLE = 'PReview';
@@ -28,6 +29,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({
   url = '',
   noIndex,
   disableContainer,
+  centerContent,
 }) => {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -67,7 +69,9 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({
 
       <Header handleDrawerOpen={handleDrawerOpen} />
       <Drawer open={open} handleDrawerClose={handleDrawerClose} />
-      <Main disableContainer={disableContainer}>{children}</Main>
+      <Main disableContainer={disableContainer} centerContent={centerContent}>
+        {children}
+      </Main>
       <Footer />
     </>
   );

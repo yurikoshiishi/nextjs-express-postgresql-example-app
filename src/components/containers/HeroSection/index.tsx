@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import {Container, makeStyles, Typography} from '@material-ui/core';
+import {Container, fade, makeStyles, Typography} from '@material-ui/core';
 import SearchForm from './SearchForm';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,24 +23,35 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   textContainer: {
+    [theme.breakpoints.down('xs')]: {
+      '& form': {
+        maxWidth: 300,
+        margin: '0 auto',
+      },
+    },
+  },
+  copyContainer: {
+    marginBottom: theme.spacing(7),
     '& h1': {
+      marginBottom: theme.spacing(1),
       color: theme.palette.primary.contrastText,
-      marginBottom: theme.spacing(7),
       fontSize: '2.25rem',
       [theme.breakpoints.down('md')]: {
         fontSize: '2rem',
       },
       [theme.breakpoints.down('sm')]: {
-        marginBottom: theme.spacing(5),
         fontSize: '1.5rem',
+      },
+    },
+    '& p': {
+      color: fade(theme.palette.primary.contrastText, 0.85),
+      [theme.breakpoints.down('xs')]: {
+        fontSize: theme.typography.body2.fontSize,
       },
     },
     [theme.breakpoints.down('xs')]: {
       textAlign: 'center',
-      '& form': {
-        maxWidth: 300,
-        margin: '0 auto',
-      },
+      marginBottom: theme.spacing(5),
     },
   },
   imageContainer: {
@@ -69,11 +80,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({}) => {
     <div className={classes.root}>
       <Container maxWidth="md" className={classes.container}>
         <div className={classes.textContainer}>
-          <Typography variant="h1">
-            プロテインのレビューなら
-            <br />
-            PReview
-          </Typography>
+          <div className={classes.copyContainer}>
+            <Typography variant="h1">
+              プロテインのレビューなら
+              <br />
+              PReview
+            </Typography>
+            <Typography variant="body1">
+              筋肉の、筋肉による、筋肉のためのウェブサイト
+            </Typography>
+          </div>
           <SearchForm />
         </div>
         <div className={classes.imageContainer}>

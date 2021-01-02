@@ -16,7 +16,7 @@ export default function useSearch() {
     router.push({
       pathname: '/search',
       query: {
-        q: encodeURIComponent(value),
+        q: encodeURIComponent(value.trim()),
       },
     });
   };

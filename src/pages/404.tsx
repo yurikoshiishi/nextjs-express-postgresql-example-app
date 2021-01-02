@@ -6,7 +6,7 @@ interface Custom404Props {}
 
 const Custom404: React.FC<Custom404Props> = ({}) => {
   return (
-    <DefaultLayout>
+    <DefaultLayout noIndex title="ページが見つかりませんでした" centerContent>
       <PageWithImage
         title="ページが見つかりませんでした"
         imageUrl="/images/illustrations/page_not_found.svg"

@@ -17,6 +17,7 @@ const PaginatedList: React.FC<PaginatedListProps> = ({
   pageCount,
   renderItem,
   listParentComponent = 'ul',
+  children,
 }) => {
   const router = useRouter();
   const currentPage = Number(router.query.page) || 1;
@@ -38,9 +39,11 @@ const PaginatedList: React.FC<PaginatedListProps> = ({
 
   return (
     <Element name={name}>
-      {React.createElement(listParentComponent, {
-        children: items.map((item) => renderItem(item)),
-      })}
+      {items && renderItem
+        ? React.createElement(listParentComponent, {
+            children: items.map((item) => renderItem(item)),
+          })
+        : children}
       <Pagination
         currentPage={currentPage}
         pageCount={pageCount}

@@ -2,7 +2,7 @@ import {Box} from '@material-ui/core';
 import React from 'react';
 import {ProductMaster} from '../../../types';
 import PaginatedList from '../PaginatedList';
-import ProductListItem from '../ProductList/ProductListItem';
+import ProductListItem from '../../elements/ProductListItem';
 import NoResult from './NoResult';
 import SearchHeader from './SearchHeader';
 

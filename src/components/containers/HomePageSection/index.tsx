@@ -24,16 +24,16 @@ const useStyles = makeStyles((theme) => ({
 
 interface HomePageProductSectionProps {
   title: string;
-  products: ProductMasterWithReview[];
   href?: string;
+  content: React.ReactElement;
   buttonText?: string;
 }
 
 const HomePageProductSection: React.FC<HomePageProductSectionProps> = ({
   title,
-  products,
   href,
   buttonText = 'もっと見る',
+  content,
 }) => {
   const classes = useStyles();
 
@@ -42,14 +42,16 @@ const HomePageProductSection: React.FC<HomePageProductSectionProps> = ({
       <Typography variant="h2" className={classes.title}>
         {title}
       </Typography>
-      <ProductListCard products={products} />
-      <div className={classes.buttonContainer}>
-        <Link href={href} passHref>
-          <Button variant="outlined" color="primary" fullWidth>
-            {buttonText}
-          </Button>
-        </Link>
-      </div>
+      {content}
+      {href && (
+        <div className={classes.buttonContainer}>
+          <Link href={href} passHref>
+            <Button variant="outlined" color="primary" fullWidth>
+              {buttonText}
+            </Button>
+          </Link>
+        </div>
+      )}
     </section>
   );
 };

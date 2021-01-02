@@ -6,18 +6,27 @@ interface DescriptionFieldProps {
   label: string;
   name: string;
   error: string;
+  value: string;
+  max: number;
 }
 
 const DescriptionField: React.FC<DescriptionFieldProps> = ({
   name,
   label,
   error,
+  value,
+  max,
 }) => {
   return (
     <div>
-      <Typography component="label" variant="body2" color="textSecondary">
-        {label}
-      </Typography>
+      <Box display="flex" justifyContent="space-between">
+        <Typography component="label" variant="body2" color="textSecondary">
+          {label}
+        </Typography>
+        <Typography variant="body2" color="textSecondary">
+          {value.length} / {max}
+        </Typography>
+      </Box>
       <Box mt={1}>
         <Field
           name={name}

@@ -126,3 +126,25 @@ export const fetchHomePage = async (
     .then(handleResponse)
     .catch(handleError);
 };
+
+export const fetchCategoryProducts = async (
+  ctx: ContextWithParams
+): Promise<ApiResponse> => {
+  return axios
+    .get(`${getAbsoluteUrl(ctx.req).origin}/api/categories/${ctx.query.id}`)
+    .then(handleResponse)
+    .catch(handleError);
+};
+
+export const fetchBrandProducts = async (
+  ctx: ContextWithParams
+): Promise<ApiResponse> => {
+  return axios
+    .get(
+      `${getAbsoluteUrl(ctx.req).origin}/api/products?brand_id=${
+        ctx.query.brand_id
+      }`
+    )
+    .then(handleResponse)
+    .catch(handleError);
+};
