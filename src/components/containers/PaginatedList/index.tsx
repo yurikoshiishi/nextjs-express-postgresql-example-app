@@ -9,6 +9,7 @@ interface PaginatedListProps {
   pageCount: number;
   renderItem: (any) => React.ReactElement;
   listParentComponent?: 'div' | 'ul';
+  scrollOffset?: number;
 }
 
 const PaginatedList: React.FC<PaginatedListProps> = ({
@@ -18,6 +19,7 @@ const PaginatedList: React.FC<PaginatedListProps> = ({
   renderItem,
   listParentComponent = 'ul',
   children,
+  scrollOffset,
 }) => {
   const router = useRouter();
   const currentPage = Number(router.query.page) || 1;
@@ -33,7 +35,7 @@ const PaginatedList: React.FC<PaginatedListProps> = ({
       duration: 500,
       delay: 50,
       smooth: true,
-      offset: -100,
+      offset: scrollOffset || -150,
     });
   };
 

@@ -1,4 +1,5 @@
 import axios, {AxiosError, AxiosResponse} from 'axios';
+import {NextApiRequestQuery} from 'next/dist/next-server/server/api-utils';
 import {ContextWithParams, ProductMaster, ReviewFormValues} from '../types';
 import firebaseClient from './firebaseClient';
 
@@ -18,6 +19,21 @@ const getAbsoluteUrl = (req, setLocalhost?: string) => {
     host: host,
     origin: protocol + '//' + host,
   };
+};
+
+const getParamFromQuery = (query: NextApiRequestQuery, prefix?: '?' | '&') => {
+  if (Object.keys(query).length === 0) {
+    return '';
+  }
+
+  let start = prefix ? prefix : '?';
+
+  return (
+    start +
+    Object.entries(query)
+      .map((query) => `${query[0]}=${query[1]}`)
+      .join('&')
+  );
 };
 
 export interface ApiResponse {
@@ -59,7 +75,7 @@ export const fetchProductDetail = async (
   return axios(
     `${getAbsoluteUrl(ctx.req).origin}/api/products/${ctx.params.id}?page=${
       ctx.query.page || 1
-    }`
+    }${getParamFromQuery(ctx.query, '&')}`
   )
     .then(handleResponse)
     .catch(handleError);

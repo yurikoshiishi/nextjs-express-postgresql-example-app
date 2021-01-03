@@ -1,10 +1,11 @@
-import {Box, Card, CardContent, Divider} from '@material-ui/core';
-import React from 'react';
+import {Box, Card, CardContent, Divider, Grid} from '@material-ui/core';
+import React, {useMemo, useState} from 'react';
 import {ProductDetail} from '../../../types';
 import ReviewList from './ReviewList';
 import ProductDetailHeader from './ProductDetailHeader';
 import ProductDetailReviewSummary from './ProductDetailReviewSummary';
 import ReviewFilter from './ReviewFilter';
+import ReviewSortSelect from './ReviewSortSelect';
 
 interface ProductDetailContainerProps {
   productDetail: ProductDetail;
@@ -13,7 +14,14 @@ interface ProductDetailContainerProps {
 const ProductDetailContainer: React.FC<ProductDetailContainerProps> = ({
   productDetail,
 }) => {
-  const {reviews, review_page_count} = productDetail;
+  const {product_variations, reviews, review_page_count} = productDetail;
+
+  const flavors = useMemo(() => {
+    return productDetail.product_variations.map((v) => ({
+      flavor: v.flavor,
+      id: v.product_variation_id,
+    }));
+  }, [product_variations]);
 
   return (
     <Card>
@@ -25,9 +33,20 @@ const ProductDetailContainer: React.FC<ProductDetailContainerProps> = ({
         <ProductDetailReviewSummary {...productDetail} />
         <Box my={3}>
           <Divider />
-          <p></p>
         </Box>
-        <ReviewFilter />
+        <Box
+          mb={2}
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Box mr={2} flexGrow={1}>
+            <ReviewFilter flavors={flavors} />
+          </Box>
+          <Box flexShrink={0}>
+            <ReviewSortSelect />
+          </Box>
+        </Box>
         <ReviewList reviews={reviews} review_page_count={review_page_count} />
       </CardContent>
     </Card>

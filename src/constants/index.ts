@@ -18,3 +18,9 @@ export const CATEGORIES = {
     orderBy: 'review_count',
   },
 };
+
+export const DB_COLUMNS = {
+  thumbsup_count: 'thumbsup_count',
+  created_at: 'created_at',
+  total_rating: 'total_rating',
+};

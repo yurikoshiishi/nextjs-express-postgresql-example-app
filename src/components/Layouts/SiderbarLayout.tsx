@@ -52,7 +52,7 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
       <Drawer open={open} handleDrawerClose={handleDrawerClose} />
       <Content disableContainer={disableContainer}>
         <Grid container>
-          <Grid xs={12} md={9}>
+          <Grid item xs={12} md={9}>
             <Main
               centerContent={centerContent}
               disableContainer={disableContainer}
@@ -60,7 +60,7 @@ const SidebarLayout: React.FC<SidebarLayoutProps> = ({
               {children}
             </Main>
           </Grid>
-          <Grid xs={12} md={3}>
+          <Grid item xs={12} md={3}>
             <Sidebar />
           </Grid>
         </Grid>

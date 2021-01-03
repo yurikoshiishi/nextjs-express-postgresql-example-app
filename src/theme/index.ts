@@ -106,6 +106,13 @@ theme.overrides = {
       margin: 12,
     },
   },
+  MuiSelect: {
+    select: {
+      '&:focus': {
+        backgroundColor: '#fff',
+      },
+    },
+  },
   MuiPaper: {
     root: {
       borderColor: '#E7EDF3',
