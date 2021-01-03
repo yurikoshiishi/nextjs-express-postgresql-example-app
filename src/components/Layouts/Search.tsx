@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   Backdrop,
   Fade,
@@ -57,8 +57,7 @@ interface SearchProps {}
 const Search: React.FC<SearchProps> = ({}) => {
   const classes = useStyles();
   const [open, setOpen] = useState<boolean>(false);
-
-  const {value, handleChange, handleSubmit} = useSearch();
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleOpenModal = () => {
     setOpen(true);
@@ -68,8 +67,15 @@ const Search: React.FC<SearchProps> = ({}) => {
     setOpen(false);
   };
 
+  const {value, handleChange, handleSubmit} = useSearch(handleCloseModal);
+
   return (
-    <form className={classes.root} onSubmit={handleSubmit}>
+    <form
+      action="."
+      className={classes.root}
+      onSubmit={handleSubmit}
+      ref={formRef}
+    >
       <Hidden xsDown>
         <TextField
           size="small"
@@ -98,6 +104,7 @@ const Search: React.FC<SearchProps> = ({}) => {
             timeout: 200,
           }}
           className={classes.modal}
+          container={formRef.current}
         >
           <Fade in={open}>
             <TextField
@@ -112,6 +119,13 @@ const Search: React.FC<SearchProps> = ({}) => {
               className={classes.textField}
               value={value}
               onChange={handleChange}
+              inputProps={{
+                type: 'search',
+                name: 'search',
+                autoCapitalize: 'off',
+                autoCorrect: 'off',
+                autoComplete: 'off',
+              }}
             />
           </Fade>
         </Modal>

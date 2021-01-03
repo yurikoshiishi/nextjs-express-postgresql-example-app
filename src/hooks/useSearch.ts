@@ -1,7 +1,7 @@
 import {useRouter} from 'next/router';
 import {useState} from 'react';
 
-export default function useSearch() {
+export default function useSearch(cb?: () => void) {
   const [value, setValue] = useState<string>('');
   const router = useRouter();
 
@@ -19,6 +19,9 @@ export default function useSearch() {
         q: encodeURIComponent(value.trim()),
       },
     });
+    if (cb) {
+      cb();
+    }
   };
 
   return {value, handleChange, handleSubmit};

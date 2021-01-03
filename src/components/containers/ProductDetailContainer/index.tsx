@@ -1,5 +1,5 @@
-import {Box, Card, CardContent, Divider, Grid} from '@material-ui/core';
-import React, {useMemo, useState} from 'react';
+import {Box, Card, CardContent, Divider} from '@material-ui/core';
+import React, {useMemo} from 'react';
 import {ProductDetail} from '../../../types';
 import ReviewList from './ReviewList';
 import ProductDetailHeader from './ProductDetailHeader';
