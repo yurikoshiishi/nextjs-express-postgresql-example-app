@@ -4,6 +4,7 @@ import {ProductDetail} from '../../../types';
 import ReviewList from './ReviewList';
 import ProductDetailHeader from './ProductDetailHeader';
 import ProductDetailReviewSummary from './ProductDetailReviewSummary';
+import ReviewFilter from './ReviewFilter';
 
 interface ProductDetailContainerProps {
   productDetail: ProductDetail;
@@ -13,8 +14,6 @@ const ProductDetailContainer: React.FC<ProductDetailContainerProps> = ({
   productDetail,
 }) => {
   const {reviews, review_page_count} = productDetail;
-
-  //TODO: add filter to review list. two column in desktop, one in mobile.
 
   return (
     <Card>
@@ -28,6 +27,7 @@ const ProductDetailContainer: React.FC<ProductDetailContainerProps> = ({
           <Divider />
           <p></p>
         </Box>
+        <ReviewFilter />
         <ReviewList reviews={reviews} review_page_count={review_page_count} />
       </CardContent>
     </Card>
