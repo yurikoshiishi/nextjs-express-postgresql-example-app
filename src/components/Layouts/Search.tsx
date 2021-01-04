@@ -12,7 +12,6 @@ import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import useSearch from '../../hooks/useSearch';
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
   textField: {
     '& .MuiInputBase-root': {
       width: 350,
@@ -70,12 +69,7 @@ const Search: React.FC<SearchProps> = ({}) => {
   const {value, handleChange, handleSubmit} = useSearch(handleCloseModal);
 
   return (
-    <form
-      action="."
-      className={classes.root}
-      onSubmit={handleSubmit}
-      ref={formRef}
-    >
+    <form action="." onSubmit={handleSubmit} ref={formRef}>
       <Hidden xsDown>
         <TextField
           size="small"
@@ -94,8 +88,6 @@ const Search: React.FC<SearchProps> = ({}) => {
           <SearchOutlinedIcon color="action" />
         </IconButton>
         <Modal
-          aria-labelledby="transition-modal-title"
-          aria-describedby="transition-modal-description"
           open={open}
           onClose={handleCloseModal}
           closeAfterTransition
@@ -121,7 +113,6 @@ const Search: React.FC<SearchProps> = ({}) => {
               onChange={handleChange}
               inputProps={{
                 type: 'search',
-                name: 'search',
                 autoCapitalize: 'off',
                 autoCorrect: 'off',
                 autoComplete: 'off',

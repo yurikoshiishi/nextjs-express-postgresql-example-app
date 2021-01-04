@@ -24,11 +24,12 @@ const CategoryProductList: React.FC<CategoryProductListProps> = ({
         </Typography>
       </Box>
       <ul>
-        {products.map((p) => (
+        {products.map((p, i) => (
           <ProductListItem
             key={p.product_master_id}
             product={p}
             reviews={p.reviews}
+            badgeText={`${i + 1}位`}
           />
         ))}
       </ul>

@@ -53,7 +53,7 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({
   //TODO: add onclick to flavor to filter reviews to that flavor.
 
   return (
-    <div className={classes.root} id={review_id}>
+    <div className={`${classes.root} ReviewListItem`} id={review_id}>
       <div className={classes.header}>
         <div className={classes.totalRating}>
           <Rating rating={total_rating} size="small" />
