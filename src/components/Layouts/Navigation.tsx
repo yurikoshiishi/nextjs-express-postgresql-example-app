@@ -3,6 +3,7 @@ import NavList from '../elements/NavList';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 import RateReviewOutlinedIcon from '@material-ui/icons/RateReviewOutlined';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 
 interface NavigationProps {
   className?: string;
@@ -14,6 +15,11 @@ const NAVIGATIONS = [
     href: '/',
     text: 'ホーム',
     icon: <HomeOutlinedIcon />,
+  },
+  {
+    href: '/brands',
+    text: 'ブランド一覧',
+    icon: <LabelOutlinedIcon />,
   },
   {
     href: '/categories/top-rated',

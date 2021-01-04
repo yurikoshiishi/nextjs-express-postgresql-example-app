@@ -2,12 +2,13 @@ import {useRouter} from 'next/router';
 import React from 'react';
 import Pagination from '../../elements/Pagination';
 import {scroller, Element} from 'react-scroll';
+import {Box} from '@material-ui/core';
 
 interface PaginatedListProps {
   name?: string;
-  items: any[];
+  items?: any[];
+  renderItem?: (any) => React.ReactElement;
   pageCount: number;
-  renderItem: (any) => React.ReactElement;
   listParentComponent?: 'div' | 'ul';
   scrollOffset?: number;
 }
@@ -46,11 +47,13 @@ const PaginatedList: React.FC<PaginatedListProps> = ({
             children: items.map((item) => renderItem(item)),
           })
         : children}
-      <Pagination
-        currentPage={currentPage}
-        pageCount={pageCount}
-        onChange={handlePageChange}
-      />
+      <Box mt={2}>
+        <Pagination
+          currentPage={currentPage}
+          pageCount={pageCount}
+          onChange={handlePageChange}
+        />
+      </Box>
     </Element>
   );
 };

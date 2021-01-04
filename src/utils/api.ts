@@ -168,3 +168,12 @@ export const fetchBrandProducts = async (
     .then(handleResponse)
     .catch(handleError);
 };
+
+export const fetchBrands = async (
+  ctx: ContextWithParams
+): Promise<ApiResponse> => {
+  return axios
+    .get(`${getAbsoluteUrl(ctx.req).origin}/api/brands`)
+    .then(handleResponse)
+    .catch(handleError);
+};

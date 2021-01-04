@@ -10,6 +10,12 @@ export interface ProductMasterWithReview extends ProductMaster {
   reviews: Review[];
 }
 
+export interface Brand {
+  brand_id: string;
+  brand_name_ja: string;
+  brand_name_en: string;
+}
+
 export interface ProductMaster {
   product_master_id: string;
   brand_id: string;

@@ -1,4 +1,3 @@
-import classes from '*.module.css';
 import React from 'react';
 import {makeStyles} from '@material-ui/core';
 
@@ -15,12 +14,12 @@ interface indexProps {
   variant?: 'primary' | 'white';
 }
 
-const index: React.FC<indexProps> = ({variant}) => {
+const index: React.FC<indexProps> = ({variant = 'primary'}) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <img
-        src={`/images/brand/logo_${variant || 'primary'}.png`}
+        src={`/images/logos/logo_${variant}.png`}
         alt="PReview プロテインのレビューサイト"
         height="20px"
       />

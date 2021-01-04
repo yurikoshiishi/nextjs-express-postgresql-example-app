@@ -5,6 +5,7 @@ import PaginatedList from '../PaginatedList';
 import ProductListItem from '../../elements/ProductListItem';
 import NoResult from './NoResult';
 import SearchHeader from './SearchHeader';
+import ProductList from '../ProductList';
 
 interface SearchResultProps {
   product_masters: ProductMaster[];
@@ -29,12 +30,9 @@ const SearchResult: React.FC<SearchResultProps> = ({
       <SearchHeader product_count={product_count} />
       {product_masters ? (
         <Box mb={1}>
-          <PaginatedList
-            name="search-result"
-            items={product_masters}
-            pageCount={page_count}
-            renderItem={renderItem}
-          />
+          <PaginatedList name="search-result" pageCount={page_count}>
+            <ProductList products={product_masters} />
+          </PaginatedList>
         </Box>
       ) : (
         <NoResult />

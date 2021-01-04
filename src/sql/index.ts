@@ -16,3 +16,4 @@ export const getSearchResult = sql('/src/sql/getSearchResult.sql');
 export const getHomePage = sql('/src/sql/getHomePage.sql');
 export const getCategoryProducts = sql('/src/sql/getCategoryProducts.sql');
 export const getReviews = sql('/src/sql/getReviews.sql');
+export const getBrands = sql('/src/sql/getBrands.sql');

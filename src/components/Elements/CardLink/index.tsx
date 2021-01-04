@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    cursor: 'pointer',
     padding: theme.spacing(2),
     transition: '0.4s',
     '&:hover': {
