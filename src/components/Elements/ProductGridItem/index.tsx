@@ -2,7 +2,6 @@ import {Box, Typography, makeStyles} from '@material-ui/core';
 import {RateReviewOutlined} from '@material-ui/icons';
 import Image from 'next/image';
 import React from 'react';
-import useIsMobile from '../../../hooks/useIsMobile';
 import {MuiTypography, ProductMaster} from '../../../types';
 import ProteinIcon from '../../icons/ProteinIcon';
 import BrandLink from '../BrandLink';
@@ -37,6 +36,10 @@ const useStyles = ({imageSize}) =>
         borderRadius: 8,
         overflow: 'hidden',
         margin: theme.spacing(0, 'auto', 2),
+        [theme.breakpoints.down('md')]: {
+          width: desktopImageSize * 0.85,
+          height: desktopImageSize * 0.85,
+        },
         [theme.breakpoints.down('xs')]: {
           width: mobileImageSize,
           height: mobileImageSize,
@@ -83,7 +86,6 @@ const ProductGridItem: React.FC<ProductGridItemProps> = ({
   titleVariant = 'body1',
 }) => {
   const classes = useStyles({imageSize})();
-  const isMobile = useIsMobile();
 
   return (
     <div className={classes.root}>
@@ -122,7 +124,7 @@ const ProductGridItem: React.FC<ProductGridItemProps> = ({
           <Box>
             <TextWithIcon
               icon={<RateReviewOutlined />}
-              text={`${review_count}件${!isMobile ? 'のレビュー' : ''}`}
+              text={`${review_count}件`}
             />
           </Box>
         </Box>

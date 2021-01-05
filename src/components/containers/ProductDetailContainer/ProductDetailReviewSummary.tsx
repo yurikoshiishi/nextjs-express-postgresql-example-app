@@ -14,7 +14,6 @@ interface ProductDetailReviewSummaryProps {
 }
 
 const ProductDetailReviewSummary: React.FC<ProductDetailReviewSummaryProps> = ({
-  product_master_id,
   review_count,
   review_summary,
   avg_total_rating,

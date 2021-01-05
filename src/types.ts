@@ -50,6 +50,7 @@ export interface ProductDetail extends ProductMaster {
   reviews: Review[];
   review_page_count: number;
   review_summary: ReviewSummary;
+  related_product_masters: ProductMaster[];
 }
 
 export interface ProductVariations {

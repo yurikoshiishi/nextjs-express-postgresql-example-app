@@ -3,6 +3,8 @@ import {AppProps} from 'next/app';
 import Router from 'next/router';
 import '../../styles/globals.css';
 import '../../styles/nprogress.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import {ThemeProvider} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../theme';

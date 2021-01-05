@@ -48,3 +48,11 @@ a {
 li {
   list-style: none;
 }
+
+/* overwrite slick-theme.css */
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+  color: inherit;
+}

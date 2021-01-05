@@ -12,9 +12,10 @@ interface CategoryProductListProps {
 const CategoryProductList: React.FC<CategoryProductListProps> = ({
   products,
 }) => {
-  //TODO: product item with review
   const {query} = useRouter();
   const categoryId = query.id.toString();
+
+  //TODO: reusable component for page title
 
   return (
     <div>

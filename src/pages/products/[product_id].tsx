@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductDetailContainer from '../../components/containers/ProductDetailContainer';
+import ProductSlider from '../../components/elements/ProductSlider';
 import SidebarLayout from '../../components/layouts/SiderbarLayout';
 import {ProductDetail, ContextWithParams} from '../../types';
 import {getProductNameWithBrand} from '../../utils';
@@ -23,6 +24,10 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({data}) => {
   return (
     <SidebarLayout title={title} description={description}>
       <ProductDetailContainer productDetail={data} />
+      <ProductSlider
+        products={data.related_product_masters}
+        title="関連するプロテイン"
+      />
     </SidebarLayout>
   );
 };
