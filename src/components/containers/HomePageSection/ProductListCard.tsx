@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   firstProduct: {
     padding: theme.spacing(2),
     borderRight: `1px solid ${theme.palette.divider}`,
+    borderRadius: '8px 0 0 8px',
   },
   shadow: {
     cursor: 'pointer',
@@ -32,10 +33,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     borderLeftColor: 'transparent',
     '&:nth-child(2)': {
-      borderRadius: '0 12px 0 0',
+      borderRadius: '0 8px 0 0',
     },
     '&:nth-child(4)': {
-      borderRadius: '0 0 12px 0',
+      borderRadius: '0 0 8px 0',
     },
     '&:nth-child(n+3)': {
       borderTopColor: 'transparent',
@@ -57,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
       width: '60%',
       flexShrink: 0,
       marginLeft: theme.spacing(1),
-      borderRadius: '12px',
+      borderRadius: '8px',
       border: `1px solid ${theme.palette.divider}`,
       '&:first-child': {
         marginLeft: 16,
@@ -85,7 +86,6 @@ const ProductListCard: React.FC<ProductListCardProps> = ({products}) => {
               xs={12}
               md={5}
               className={`${classes.firstProduct} ${classes.shadow}`}
-              style={{borderRadius: '12px 0 0 12px'}}
               component="li"
             >
               <ProductItem

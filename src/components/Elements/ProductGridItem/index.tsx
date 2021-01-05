@@ -80,7 +80,7 @@ const ProductGridItem: React.FC<ProductGridItemProps> = ({
   },
   reviewSize = 'small',
   imageSize = 200,
-  titleVariant = 'h6',
+  titleVariant = 'body1',
 }) => {
   const classes = useStyles({imageSize})();
   const isMobile = useIsMobile();

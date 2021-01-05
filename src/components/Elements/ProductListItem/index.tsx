@@ -151,7 +151,9 @@ const ProductListItem: React.FC<ProductListItemProps> = ({
                     brand_name_en={brand_name_en}
                     brand_name_ja={brand_name_ja}
                   />
-                  <Typography variant="h3">{name}</Typography>
+                  <Typography variant="body1" component="h3">
+                    {name}
+                  </Typography>
                 </Box>
                 <div>
                   <Box mb={1}>

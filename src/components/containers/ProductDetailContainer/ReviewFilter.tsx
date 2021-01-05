@@ -34,13 +34,13 @@ const ReviewFilter: React.FC<ReviewFilterProps> = ({flavors}) => {
 
     if (variation_id === 'null' || !variation_id) {
       return router.push({
-        pathname: `/products/${router.query.id}`,
+        pathname: `/products/${router.query.product_id}`,
         query: _.omit(router.query, 'variation_id'),
       });
     }
 
     router.push({
-      pathname: `/products/${router.query.id}`,
+      pathname: `/products/${router.query.product_id}`,
       query: {...router.query, variation_id},
     });
   };

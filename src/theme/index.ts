@@ -118,11 +118,11 @@ theme.overrides = {
       borderColor: '#E7EDF3',
     },
     rounded: {
-      borderRadius: 12,
+      borderRadius: 8,
     },
     outlined: {
       border: '1px solid #E7EDF3',
-      borderRadius: 12,
+      borderRadius: 8,
       [theme.breakpoints.down('xs')]: {
         borderRadius: 0,
         borderLeft: 'none',

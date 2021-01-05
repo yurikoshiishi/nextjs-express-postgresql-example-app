@@ -1,14 +1,16 @@
-import {Box, Button, Grid, Typography} from '@material-ui/core';
-import Link from 'next/link';
+import {Box, Grid} from '@material-ui/core';
 import React from 'react';
 import {ReviewSummary as ReviewSummaryType} from '../../../types';
 import ReviewSummary from '../../elements/ReviewSummary';
+import ReviewSummaryDetail from './ReviewSummaryDetail';
 
 interface ProductDetailReviewSummaryProps {
   product_master_id: string;
   review_count: number;
   review_summary: ReviewSummaryType;
   avg_total_rating: number;
+  avg_taste_rating: number;
+  avg_mix_rating: number;
 }
 
 const ProductDetailReviewSummary: React.FC<ProductDetailReviewSummaryProps> = ({
@@ -16,6 +18,8 @@ const ProductDetailReviewSummary: React.FC<ProductDetailReviewSummaryProps> = ({
   review_count,
   review_summary,
   avg_total_rating,
+  avg_mix_rating,
+  avg_taste_rating,
 }) => {
   return (
     <Grid container justify="space-around">
@@ -34,18 +38,16 @@ const ProductDetailReviewSummary: React.FC<ProductDetailReviewSummaryProps> = ({
           display="flex"
           flexDirection="column"
           justifyContent="center"
+          mb={{xs: 4, sm: 0}}
         >
-          <Box mb={2} textAlign="center">
-            <Typography variant="body2" color="textPrimary">
-              あなたのレビューが世界の筋肉を救います！
-            </Typography>
+          <Box mb={4}>
+            <ReviewSummaryDetail rating={avg_taste_rating} text="味の評価" />
           </Box>
-          <Box textAlign="center">
-            <Link href={`/reviews/${product_master_id}`} passHref>
-              <Button variant="outlined" color="primary">
-                レビューを投稿する
-              </Button>
-            </Link>
+          <Box>
+            <ReviewSummaryDetail
+              rating={avg_mix_rating}
+              text="溶けやすさの評価"
+            />
           </Box>
         </Box>
       </Grid>

@@ -1,7 +1,7 @@
 import {getSearchResult} from '../../sql';
 import db from '../../utils/db';
 
-const PER_PAGE = 20;
+const PER_PAGE = 21; //3 column grid
 
 export default async (req, res) => {
   try {

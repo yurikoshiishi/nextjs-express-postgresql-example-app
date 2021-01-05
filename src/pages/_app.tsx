@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {AppProps} from 'next/app';
 import Router from 'next/router';
 import '../../styles/globals.css';
@@ -17,7 +17,7 @@ Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 const App = ({Component, pageProps}: AppProps) => {
-  React.useEffect(() => {
+  useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);

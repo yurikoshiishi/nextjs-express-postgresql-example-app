@@ -20,7 +20,7 @@ const ReviewSortSelect: React.FC<ReviewSortSelectProps> = ({}) => {
   ) => {
     const sort = e.target.value;
     router.push({
-      pathname: `/products/${router.query.id}`,
+      pathname: `/products/${router.query.product_id}`,
       query: {
         ...router.query,
         sort,

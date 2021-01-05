@@ -1,7 +1,8 @@
-import {Card, CardContent, Container} from '@material-ui/core';
+import {Box, Card, CardContent, Container, Divider} from '@material-ui/core';
 import React from 'react';
 import Navigation from './Navigation';
 import {makeStyles} from '@material-ui/core';
+import PostReviewCTA from '../elements/PostReviewCTA';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +28,10 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
       <Container disableGutters className={classes.container}>
         <Card>
           <Navigation />
+          <Box my={1}>
+            <Divider />
+          </Box>
+          <PostReviewCTA />
         </Card>
       </Container>
     </aside>

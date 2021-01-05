@@ -73,9 +73,9 @@ export const fetchProductDetail = async (
   ctx: ContextWithParams
 ): Promise<ApiResponse> => {
   return axios(
-    `${getAbsoluteUrl(ctx.req).origin}/api/products/${ctx.params.id}?page=${
-      ctx.query.page || 1
-    }${getParamFromQuery(ctx.query, '&')}`
+    `${getAbsoluteUrl(ctx.req).origin}/api/products/${
+      ctx.params.product_id
+    }?page=${ctx.query.page || 1}${getParamFromQuery(ctx.query, '&')}`
   )
     .then(handleResponse)
     .catch(handleError);
