@@ -99,12 +99,6 @@ theme.overrides = {
     root: {
       textTransform: 'none',
     },
-    fullWidth: {
-      maxWidth: 300,
-      margin: '0 auto',
-      display: 'block',
-      textAlign: 'center',
-    },
   },
   MuiDialog: {
     paper: {

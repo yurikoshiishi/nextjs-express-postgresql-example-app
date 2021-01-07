@@ -124,7 +124,7 @@ const ProductGridItem: React.FC<ProductGridItemProps> = ({
           <Box>
             <TextWithIcon
               icon={<RateReviewOutlined />}
-              text={`${review_count}件`}
+              text={`${review_count || 0}件`}
             />
           </Box>
         </Box>

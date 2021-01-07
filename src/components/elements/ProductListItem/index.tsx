@@ -184,7 +184,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({
                   <Box mb={1}>
                     <TextWithIcon
                       icon={<RateReviewOutlinedIcon />}
-                      text={`${review_count}件のレビュー`}
+                      text={`${review_count || 0}件のレビュー`}
                     />
                   </Box>
                 </div>
@@ -193,7 +193,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({
               <RatingStars rating={avg_total_rating} />
             </div>
           </div>
-          {reviews && (
+          {reviews && Array.isArray(reviews) && (
             <div className={classes.review}>
               <ReviewListItem review={reviews[0]} disableThumbsUp />
               <div className={classes.buttonContainer}>

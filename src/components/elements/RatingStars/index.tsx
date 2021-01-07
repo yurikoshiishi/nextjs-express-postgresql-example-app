@@ -35,7 +35,7 @@ const TYPOGRAPHY_MAP = {
 } as React.CSSProperties;
 
 const RatingStars: React.FC<RatingStarsProps> = ({
-  rating,
+  rating = 0,
   size,
   backgroundColor,
 }) => {

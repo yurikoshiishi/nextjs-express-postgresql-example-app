@@ -12,7 +12,7 @@ JOIN
 	GROUP BY  product_master_id
 ) AS variations
 USING (product_master_id)
-JOIN 
+LEFT JOIN 
 (
 	SELECT  product_master_id
 	       ,COUNT(*)                            AS review_count

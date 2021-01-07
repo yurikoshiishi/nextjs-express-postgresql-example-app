@@ -30,7 +30,7 @@ WITH product_master_data AS
 requested_product_master AS (SELECT brand_id FROM product_masters WHERE product_master_id = ${product_master_id})
 
 SELECT  *
-	   ,CEIL(review_count::decimal / 20) AS review_page_count
+	   ,CEIL(review_count::decimal / ${perPage}) AS review_page_count
 FROM product_masters
 -- get brand
 JOIN 
@@ -51,7 +51,7 @@ JOIN
 USING (product_master_id)
 
 -- get review summary as well as total count
-JOIN 
+LEFT JOIN 
 (
 	SELECT  product_master_id 
 	       ,COUNT(*)                            AS review_count 
@@ -66,7 +66,7 @@ JOIN
 USING (product_master_id)
 
 -- get reviews for current page
-JOIN 
+LEFT JOIN 
 (
 	SELECT  product_master_id
 	       ,json_agg(t) AS reviews

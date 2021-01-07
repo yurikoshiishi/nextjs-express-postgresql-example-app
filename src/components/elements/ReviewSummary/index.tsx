@@ -29,6 +29,9 @@ const ReviewSummary: React.FC<ReviewSummaryProps> = ({
 
   const reviewPercents = useMemo(() => {
     const output = {};
+    if (!review_summary || Object.keys(review_summary).length === 0) {
+      return output;
+    }
 
     RATING_ORDER.forEach((rating) => {
       const numberOfReviewsForRating = review_summary[rating];
@@ -43,7 +46,7 @@ const ReviewSummary: React.FC<ReviewSummaryProps> = ({
       <Box mb={1}>
         <RatingStars rating={avg_total_rating} size="medium" />
         <Typography variant="caption" color="textSecondary">
-          {review_count}件のレビュー
+          {review_count || 0}件のレビュー
         </Typography>
       </Box>
       <Box px={1}>
