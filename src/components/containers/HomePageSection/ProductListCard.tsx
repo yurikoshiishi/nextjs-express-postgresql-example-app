@@ -73,6 +73,11 @@ interface ProductListCardProps {
 
 const ProductListCard: React.FC<ProductListCardProps> = ({products}) => {
   const classes = useStyles();
+
+  if (!products) {
+    return null;
+  }
+
   const firstProduct = products[0];
   const otherProducts = products.slice(1, products.length);
 

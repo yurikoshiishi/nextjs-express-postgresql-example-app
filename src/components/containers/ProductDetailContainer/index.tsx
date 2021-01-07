@@ -54,7 +54,11 @@ const ProductDetailContainer: React.FC<ProductDetailContainerProps> = ({
               <ReviewSortSelect />
             </Box>
           </Box>
-          <ReviewList reviews={reviews} review_page_count={review_page_count} />
+          <ReviewList
+            reviews={reviews}
+            review_page_count={review_page_count}
+            product_master_id={product_master_id}
+          />
         </CardContent>
       </Card>
       <PostReviewButton product_master_id={product_master_id} />

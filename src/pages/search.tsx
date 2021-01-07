@@ -12,7 +12,7 @@ interface SearchProps {
 
 const Search: NextPage<SearchProps> = ({data}) => {
   return (
-    <SidebarLayout noIndex>
+    <SidebarLayout noIndex title="検索">
       <SearchResult {...data} />
     </SidebarLayout>
   );

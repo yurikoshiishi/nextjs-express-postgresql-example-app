@@ -13,7 +13,12 @@ const ReviewCreateSuccess: React.FC<ReviewCreateSuccessProps> = (props) => {
   const {product_master_id} = router.query;
 
   return (
-    <DefaultLayout noIndex centerContent>
+    <DefaultLayout
+      noIndex
+      centerContent
+      title="レビューが投稿されました"
+      description="ご協力ありがとうございます！レビューの投稿が完了しました。"
+    >
       <PageWithImage
         title="レビューが投稿されました"
         imageUrl="/images/illustrations/done.svg"

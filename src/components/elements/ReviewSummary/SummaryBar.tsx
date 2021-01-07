@@ -36,7 +36,7 @@ interface SummaryBarProps {
   percent: number;
 }
 
-const SummaryBar: React.FC<SummaryBarProps> = ({rating, percent}) => {
+const SummaryBar: React.FC<SummaryBarProps> = ({rating, percent = 0}) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>

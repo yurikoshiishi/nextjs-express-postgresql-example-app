@@ -29,7 +29,7 @@ export default async (req, res) => {
     });
 
     if (!data) {
-      res.status(404).end();
+      return res.status(404).end();
     }
 
     res.status(200).json(data);

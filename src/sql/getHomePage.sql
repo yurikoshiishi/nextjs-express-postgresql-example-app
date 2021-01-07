@@ -15,7 +15,7 @@ JOIN
 	GROUP BY  product_master_id 
 ) AS variations USING (product_master_id)
 -- get number of reviews and average ratings
-JOIN 
+LEFT JOIN 
 (
 	SELECT  product_master_id 
 	       ,COUNT(*)                            AS review_count 
@@ -26,7 +26,7 @@ JOIN
 	GROUP BY  product_master_id 
 ) AS reviews USING (product_master_id)
 -- get reviews
-JOIN 
+LEFT JOIN 
 (
 	SELECT  product_master_id, json_agg(t) AS reviews
 	FROM 
