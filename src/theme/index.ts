@@ -123,7 +123,6 @@ theme.overrides = {
     root: {
       borderColor: '#E7EDF3',
       border: '1px solid #E7EDF3',
-      borderRadius: 8,
       [theme.breakpoints.down('xs')]: {
         borderRadius: 0,
         borderLeft: 'none',
