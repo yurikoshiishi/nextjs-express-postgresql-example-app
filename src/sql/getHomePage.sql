@@ -25,18 +25,6 @@ LEFT JOIN
 	FROM reviews
 	GROUP BY  product_master_id 
 ) AS reviews USING (product_master_id)
--- get reviews
-LEFT JOIN 
-(
-	SELECT  product_master_id, json_agg(t) AS reviews
-	FROM 
-	(
-		SELECT *, row_number() over (partition by product_master_id) as rn FROM reviews
-		ORDER BY total_rating DESC, thumbsup_count DESC, created_at DESC 
-	) t
-	WHERE rn < ${numberOfReviews} or rn = ${numberOfReviews}
-	GROUP BY product_master_id
-) AS review USING (product_master_id) 
 )
 
 SELECT most_reviewed, top_rated FROM
@@ -46,7 +34,7 @@ SELECT most_reviewed, top_rated FROM
 	(
 		SELECT  *
 		FROM products
-		ORDER BY review_count DESC
+		ORDER BY review_count DESC NULLS LAST
 		LIMIT ${numberOfItems}
 	) mr
 ) AS mr,
@@ -56,7 +44,7 @@ SELECT most_reviewed, top_rated FROM
 	(
 		SELECT  *
 		FROM products
-		ORDER BY avg_total_rating DESC
+		ORDER BY avg_total_rating DESC NULLS LAST
 		LIMIT ${numberOfItems}
 	) tr
 ) AS tr

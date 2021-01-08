@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface ProductListCardProps {
-  products: ProductMasterWithReview[];
+  products: ProductMaster[];
 }
 
 const ProductListCard: React.FC<ProductListCardProps> = ({products}) => {

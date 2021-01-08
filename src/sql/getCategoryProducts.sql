@@ -11,7 +11,7 @@ JOIN
 	FROM product_variations
 	GROUP BY  product_master_id 
 ) AS variations USING (product_master_id)
-JOIN 
+LEFT JOIN 
 (
 	SELECT  product_master_id 
 	       ,COUNT(*)                            AS review_count 
@@ -21,7 +21,7 @@ JOIN
 	FROM reviews
 	GROUP BY  product_master_id 
 ) AS reviews USING (product_master_id)
-JOIN 
+LEFT JOIN 
 (
 	SELECT  product_master_id
 	       ,json_agg(t) AS reviews
@@ -37,5 +37,5 @@ JOIN
 	WHERE rn < ${numberOfReviews} or rn = ${numberOfReviews} 
 	GROUP BY  product_master_id 
 ) AS review USING (product_master_id)
-ORDER BY ${orderBy:name} DESC
+ORDER BY ${orderBy:name} DESC NULLS LAST
 LIMIT ${perPage}

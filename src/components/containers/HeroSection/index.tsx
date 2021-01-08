@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     background: 'linear-gradient(to left, #8e2de2, #4a00e0)',
     borderRadius: '0 0 120px 0',
-    [theme.breakpoints.down('xs')]: {
+    '@media (max-width: 767px)': {
       borderRadius: '0',
     },
   },
@@ -16,7 +16,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'space-around',
     padding: theme.spacing(5, 0),
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('md')]: {
+      padding: theme.spacing(5, 2),
+    },
+    '@media (max-width: 767px)': {
       flexDirection: 'column',
       alignItems: 'stretch',
       padding: theme.spacing(7, 2),
@@ -49,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: theme.typography.body2.fontSize,
       },
     },
-    [theme.breakpoints.down('xs')]: {
+    '@media (max-width: 767px)': {
       textAlign: 'center',
       marginBottom: theme.spacing(5),
     },
@@ -57,16 +60,20 @@ const useStyles = makeStyles((theme) => ({
   imageContainer: {
     flexShrink: 0,
     position: 'relative',
-    width: 350,
-    height: 350,
+    width: 400 * 1.45,
+    height: 400,
     borderRadius: 8,
     overflow: 'hidden',
     marginRight: theme.spacing(2),
+    [theme.breakpoints.down('md')]: {
+      width: 350 * 1.45,
+      height: 350,
+    },
     [theme.breakpoints.down('sm')]: {
-      width: 250,
+      width: 250 * 1.45,
       height: 250,
     },
-    [theme.breakpoints.down('xs')]: {
+    '@media (max-width: 767px)': {
       display: 'none',
     },
   },
@@ -94,7 +101,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({}) => {
         </div>
         <div className={classes.imageContainer}>
           <Image
-            src={`/images/illustrations/reviews.svg`}
+            src={`/images/illustrations/protein_bodybuilder.svg`}
             alt="PReview-トップ画像"
             layout="fill"
             objectFit="contain"
