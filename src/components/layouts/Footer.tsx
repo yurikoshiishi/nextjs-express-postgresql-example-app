@@ -41,6 +41,7 @@ const LINKS = [
   {href: '/', text: 'ホーム'},
   {href: '/legal/end-user-agreement', text: '利用規約'},
   {href: '/legal/privacy-policy', text: 'プライバシーポリシー'},
+  {href: '/attributions', text: 'クレジット'},
 ];
 
 const Footer: React.FC<FooterProps> = ({}) => {

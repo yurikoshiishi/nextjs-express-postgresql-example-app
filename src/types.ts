@@ -2,8 +2,8 @@ import {NextPageContext} from 'next';
 import firebaseClient from './utils/firebaseClient';
 
 export interface HomePageData {
-  top_rated: ProductMasterWithReview[];
-  most_reviewed: ProductMasterWithReview[];
+  top_rated: ProductMaster[];
+  most_reviewed: ProductMaster[];
 }
 
 export interface ProductMasterWithReview extends ProductMaster {
