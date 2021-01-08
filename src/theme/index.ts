@@ -148,9 +148,9 @@ theme.overrides = {
         paddingBottom: 16,
       },
       [theme.breakpoints.down('xs')]: {
-        padding: 8,
+        padding: 16,
         '&:last-child': {
-          paddingBottom: 8,
+          paddingBottom: 16,
         },
       },
       '& .MuiDivider-root': {

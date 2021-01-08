@@ -54,11 +54,17 @@ const SearchForm: React.FC<SearchFormProps> = ({}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={classes.root}>
+    <form action="." onSubmit={handleSubmit} className={classes.root}>
       <InputBase
         value={value}
         placeholder="商品名やフレーバーで検索"
         startAdornment={<SearchOutlinedIcon color="action" />}
+        inputProps={{
+          type: 'search',
+          autoCapitalize: 'off',
+          autoCorrect: 'off',
+          autoComplete: 'off',
+        }}
         onChange={handleChange}
         className={classes.input}
       />

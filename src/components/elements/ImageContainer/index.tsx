@@ -11,8 +11,8 @@ const useStyles = ({desktopSize = 200, mobileSize = 100}) =>
       borderRadius: 8,
       overflow: 'hidden',
       [theme.breakpoints.down('md')]: {
-        width: desktopSize * 0.85,
-        height: desktopSize * 0.85,
+        width: desktopSize * 0.9,
+        height: desktopSize * 0.9,
       },
       [theme.breakpoints.down('xs')]: {
         width: mobileSize,

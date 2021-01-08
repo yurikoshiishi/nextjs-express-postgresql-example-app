@@ -95,7 +95,7 @@ const ProductListCard: React.FC<ProductListCardProps> = ({products}) => {
             >
               <ProductItem
                 product={firstProduct}
-                imageSize={{desktop: 325, mobile: 150}}
+                imageSize={{desktop: 350, mobile: 150}}
                 reviewSize="medium"
               />
             </Grid>
@@ -117,7 +117,7 @@ const ProductListCard: React.FC<ProductListCardProps> = ({products}) => {
                   >
                     <ProductItem
                       product={p}
-                      imageSize={{desktop: 100, mobile: 150}}
+                      imageSize={{desktop: 125, mobile: 150}}
                       titleVariant="body1"
                     />
                   </Grid>

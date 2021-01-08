@@ -72,7 +72,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({products, title}) => {
       </Hidden>
       <Hidden mdUp>
         <Box>
-          <ProductHorizontalScroller products={products} />
+          <ProductHorizontalScroller products={products} negativeMargin={1} />
         </Box>
       </Hidden>
     </Box>
