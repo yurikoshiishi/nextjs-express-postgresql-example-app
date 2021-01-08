@@ -14,6 +14,12 @@ const attributions: React.FC<attributionsProps> = ({}) => {
         {' '}
         www.flaticon.com
       </a>
+      <a href="https://www.freepik.com/vectors/people">
+        People vector created by vectorjuice - www.freepik.com
+      </a>
+      <a href="https://www.freepik.com/vectors/food">
+        Food vector created by vectorjuice - www.freepik.com
+      </a>
     </div>
   );
 };

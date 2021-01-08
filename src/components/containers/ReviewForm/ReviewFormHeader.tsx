@@ -1,7 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core';
 import ProductTitle from '../../elements/ProductTitle';
-import Image from 'next/image';
+import ImageContainer from '../../elements/ImageContainer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,16 +12,9 @@ const useStyles = makeStyles((theme) => ({
   },
   imageContainer: {
     flexShrink: 0,
-    position: 'relative',
-    width: 200,
-    height: 200,
-    borderRadius: 8,
-    overflow: 'hidden',
-    margin: theme.spacing(0, 'auto'),
-    [theme.breakpoints.down('xs')]: {
-      width: 150,
-      height: 150,
-    },
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 }));
 
@@ -50,11 +43,11 @@ const ReviewFormHeader: React.FC<ReviewFormHeaderProps> = ({
         brand_name_en={brand_name_en}
       />
       <div className={classes.imageContainer}>
-        <Image
+        <ImageContainer
           src={`/images/products/${product_master_id}.jpg`}
           alt={`${brand_name_ja}-${name}`}
-          layout="fill"
-          objectFit="contain"
+          desktopSize={250}
+          mobileSize={150}
         />
       </div>
     </div>

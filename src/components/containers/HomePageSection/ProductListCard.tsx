@@ -1,4 +1,4 @@
-import {Card, Grid, Hidden, makeStyles} from '@material-ui/core';
+import {Grid, Hidden, makeStyles} from '@material-ui/core';
 import Link from 'next/link';
 import React from 'react';
 import {ProductMasterWithReview} from '../../../types';

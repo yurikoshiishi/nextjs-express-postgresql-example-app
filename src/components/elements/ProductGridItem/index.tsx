@@ -1,72 +1,51 @@
 import {Box, Typography, makeStyles} from '@material-ui/core';
 import {RateReviewOutlined} from '@material-ui/icons';
-import Image from 'next/image';
 import React from 'react';
 import {MuiTypography, ProductMaster} from '../../../types';
 import ProteinIcon from '../../icons/ProteinIcon';
 import BrandLink from '../BrandLink';
+import ImageContainer from '../ImageContainer';
 import RatingStars from '../RatingStars';
 import TextLink from '../TextLink';
 import TextWithIcon from '../TextWithIcon';
 
-const useStyles = ({imageSize}) =>
-  makeStyles((theme) => {
-    const desktopImageSize = imageSize.desktop ? imageSize.desktop : imageSize;
-    const mobileImageSize = imageSize.mobile
-      ? imageSize.mobile
-      : imageSize - 100 > 50
-      ? imageSize - 100
-      : 50;
-
-    return {
-      root: {
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
+const useStyles = makeStyles((theme) => {
+  return {
+    root: {
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-around',
+    },
+    firstProduct: {
+      padding: theme.spacing(2),
+      borderRight: `1px solid ${theme.palette.divider}`,
+    },
+    imageContainer: {
+      margin: theme.spacing(0, 'auto', 2),
+    },
+    productName: {
+      fontWeight: theme.typography.fontWeightBold,
+      color: theme.palette.text.primary,
+      '&:hover': {
+        color: theme.palette.primary.main,
+        textDecoration: 'underline',
       },
-      firstProduct: {
-        padding: theme.spacing(2),
-        borderRight: `1px solid ${theme.palette.divider}`,
-      },
-      imageContainer: {
-        position: 'relative',
-        width: desktopImageSize,
-        height: desktopImageSize,
-        borderRadius: 8,
+    },
+    textContainer: {
+      '& *': {
         overflow: 'hidden',
-        margin: theme.spacing(0, 'auto', 2),
-        [theme.breakpoints.down('md')]: {
-          width: desktopImageSize * 0.85,
-          height: desktopImageSize * 0.85,
-        },
-        [theme.breakpoints.down('xs')]: {
-          width: mobileImageSize,
-          height: mobileImageSize,
-        },
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
       },
-      productName: {
-        fontWeight: theme.typography.fontWeightBold,
-        color: theme.palette.text.primary,
-        '&:hover': {
-          color: theme.palette.primary.main,
-          textDecoration: 'underline',
-        },
-      },
-      textContainer: {
-        '& *': {
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
-        },
-      },
-    };
-  });
+    },
+  };
+});
 
 interface ProductGridItemProps {
   product: ProductMaster;
   reviewSize?: 'small' | 'medium' | 'large';
-  imageSize?: number | {desktop: number; mobile: number};
+  imageSize?: {desktop: number; mobile: number};
   titleVariant?: MuiTypography;
 }
 
@@ -82,19 +61,19 @@ const ProductGridItem: React.FC<ProductGridItemProps> = ({
     avg_total_rating,
   },
   reviewSize = 'small',
-  imageSize = 200,
+  imageSize = {desktop: 200, mobile: 100},
   titleVariant = 'body1',
 }) => {
-  const classes = useStyles({imageSize})();
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <div className={classes.imageContainer}>
-        <Image
+        <ImageContainer
           src={`/images/products/${product_master_id}.jpg`}
           alt={`${brand_name_ja}-${name}`}
-          layout="fill"
-          objectFit="contain"
+          desktopSize={imageSize.desktop}
+          mobileSize={imageSize.mobile}
         />
       </div>
       <div className={classes.textContainer}>

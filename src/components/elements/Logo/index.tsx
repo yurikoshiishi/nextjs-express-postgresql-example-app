@@ -10,11 +10,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface indexProps {
+interface LogoProps {
   variant?: 'primary' | 'white';
 }
 
-const index: React.FC<indexProps> = ({variant = 'primary'}) => {
+const Logo: React.FC<LogoProps> = ({variant = 'primary'}) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -27,4 +27,4 @@ const index: React.FC<indexProps> = ({variant = 'primary'}) => {
   );
 };
 
-export default index;
+export default Logo;
