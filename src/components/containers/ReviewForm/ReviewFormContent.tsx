@@ -109,6 +109,7 @@ const ReviewFormContent: React.FC<ReviewFormContentProps> = ({
                   ? errors.product_variation_id
                   : ''
               }
+              value={values.product_variation_id}
             />
             <RatingField
               name="total_rating"
