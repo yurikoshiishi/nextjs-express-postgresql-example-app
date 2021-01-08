@@ -1,7 +1,7 @@
 import {Grid, Hidden, makeStyles} from '@material-ui/core';
 import Link from 'next/link';
 import React from 'react';
-import {ProductMasterWithReview} from '../../../types';
+import {ProductMaster} from '../../../types';
 import CardLink from '../../elements/CardLink';
 import ProductItem from '../../elements/ProductGridItem';
 
