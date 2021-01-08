@@ -7,6 +7,7 @@ import ProteinIcon from '../../icons/ProteinIcon';
 import {CustomTheme} from '../../../theme';
 import {getAmazonUrl} from '../../../utils';
 import ProductTitle from '../../elements/ProductTitle';
+import ImageContainer from '../../elements/ImageContainer';
 
 const useStyles = makeStyles((theme: CustomTheme) => ({
   root: {
@@ -17,15 +18,8 @@ const useStyles = makeStyles((theme: CustomTheme) => ({
   },
   imageContainer: {
     flexShrink: 0,
-    position: 'relative',
-    width: 200,
-    height: 200,
-    borderRadius: 8,
-    overflow: 'hidden',
     marginRight: theme.spacing(2),
     [theme.breakpoints.down('xs')]: {
-      width: 150,
-      height: 150,
       margin: theme.spacing(1, 'auto', 1),
     },
   },
@@ -114,11 +108,11 @@ const ProductDetailHeader: React.FC<ProductDetailHeaderProps> = ({
   return (
     <div className={classes.root}>
       <div className={classes.imageContainer}>
-        <Image
+        <ImageContainer
           src={`/images/products/${product_master_id}.jpg`}
           alt={`${brand_name_ja}-${name}`}
-          layout="fill"
-          objectFit="contain"
+          desktopSize={250}
+          mobileSize={150}
         />
       </div>
       <div className={classes.content}>

@@ -1,17 +1,18 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete, {
-  AutocompleteChangeDetails,
-  AutocompleteChangeReason,
-} from '@material-ui/lab/Autocomplete';
-import {Box, Typography} from '@material-ui/core';
-import {Field} from 'formik';
+import {
+  Box,
+  Typography,
+  FormControl,
+  Select,
+  FormHelperText,
+} from '@material-ui/core';
 
 interface FlavorSelectProps {
   flavors: {flavor: string; id: string}[];
   setFieldValue: (string, any) => void;
   name: string;
   error: string;
+  value: string;
 }
 
 const FlavorSelect: React.FC<FlavorSelectProps> = ({
@@ -19,49 +20,35 @@ const FlavorSelect: React.FC<FlavorSelectProps> = ({
   setFieldValue,
   name,
   error,
+  value,
 }) => {
-  const handleSelect = (
-    event: React.ChangeEvent<{}>,
-    value: {
-      flavor: string;
-      id: string;
-    },
-    reason: AutocompleteChangeReason,
-    details?: AutocompleteChangeDetails<{
-      flavor: string;
-      id: string;
-    }>
-  ): void => {
-    if (value) {
-      setFieldValue(name, value.id);
-    } else {
-      setFieldValue(name, '');
-    }
+  const handleChange = (e) => {
+    const variation_id = e.target.value;
+
+    setFieldValue(name, variation_id || '');
   };
 
   return (
     <Box mb={2}>
       <Typography component="label" variant="body2" color="textSecondary">
-        風味
+        フレーバー
       </Typography>
       <Box mt={1}>
-        <Autocomplete
-          id="flavor-select"
-          options={flavors}
-          getOptionLabel={(option) => option.flavor}
-          renderInput={(params) => (
-            <Field
-              {...params}
-              name={name}
-              as={TextField}
-              variant="outlined"
-              error={Boolean(error)}
-              helperText={error}
-            />
-          )}
-          onChange={handleSelect}
-          noOptionsText="条件に一致するものがありません。"
-        />
+        <FormControl variant="outlined" fullWidth>
+          <Select
+            native
+            value={value}
+            onChange={handleChange}
+            error={Boolean(error)}
+          >
+            {flavors.map((flavor) => (
+              <option key={flavor.id} value={flavor.id}>
+                {flavor.flavor}
+              </option>
+            ))}
+          </Select>
+          {error && <FormHelperText>{error}</FormHelperText>}
+        </FormControl>
       </Box>
     </Box>
   );

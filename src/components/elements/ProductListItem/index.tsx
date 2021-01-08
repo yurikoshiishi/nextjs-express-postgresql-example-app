@@ -1,7 +1,6 @@
 import React from 'react';
 import {ProductMaster, Review} from '../../../types';
 import {makeStyles, Typography, Box, Button} from '@material-ui/core';
-import Image from 'next/image';
 import CardLink from '../CardLink';
 import RateReviewOutlinedIcon from '@material-ui/icons/RateReviewOutlined';
 import ProteinIcon from '../../icons/ProteinIcon';
@@ -10,6 +9,7 @@ import TextWithIcon from '../TextWithIcon';
 import BrandLink from '../BrandLink';
 import ReviewListItem from '../../containers/ProductDetailContainer/ReviewListItem';
 import Link from 'next/link';
+import ImageContainer from '../ImageContainer';
 
 const desktopImageSize = 200;
 const mobileImageSize = 125;
@@ -50,15 +50,8 @@ const useStyles = ({index}) =>
     },
     imageContainer: {
       flexShrink: 0,
-      position: 'relative',
-      width: desktopImageSize,
-      height: desktopImageSize,
-      borderRadius: 8,
-      overflow: 'hidden',
       marginRight: theme.spacing(2),
       [theme.breakpoints.down('xs')]: {
-        width: mobileImageSize,
-        height: mobileImageSize,
         marginRight: theme.spacing(1),
       },
     },
@@ -90,20 +83,22 @@ const useStyles = ({index}) =>
         [theme.breakpoints.down('md')]: {
           width: 250,
         },
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('sm')]: {
           height: 'auto',
-          maxHeight: desktopImageSize,
           width: '100%',
         },
+        [theme.breakpoints.down('xs')]: {
+          maxHeight: desktopImageSize,
+        },
       },
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         width: '100%',
       },
     },
     buttonContainer: {
       textAlign: 'right',
       paddingTop: theme.spacing(1),
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         textAlign: 'left',
         paddingTop: theme.spacing(0.5),
       },
@@ -151,11 +146,11 @@ const ProductListItem: React.FC<ProductListItemProps> = ({
         <div className={classes.container}>
           <div className={classes.content}>
             <div className={classes.imageContainer}>
-              <Image
+              <ImageContainer
                 src={`/images/products/${product_master_id}.jpg`}
                 alt={`${brand_name_ja}-${name}`}
-                layout="fill"
-                objectFit="contain"
+                desktopSize={desktopImageSize}
+                mobileSize={mobileImageSize}
               />
             </div>
             <div className={classes.textContainer}>
