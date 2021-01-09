@@ -1,14 +1,15 @@
 import {CATEGORIES} from '../../../constants';
 import {getCategoryProducts} from '../../../sql';
 import db from '../../../utils/db';
-import {cors} from '../../../utils/middlewares';
 
 const PER_PAGE = 20;
 const NUMBER_OF_REVIEWS = 4;
 
 export default async (req, res) => {
-  await cors(req, res);
   try {
+    if (!req.headers.host.includes(process.env.HOST)) {
+      return res.status(401).end();
+    }
     const {id} = req.query;
 
     const orderBy = CATEGORIES[id].orderBy;
