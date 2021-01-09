@@ -10,23 +10,22 @@ interface HeadProps {
   noIndex?: boolean;
 }
 
-const BASE_URL = process.env.BASE_URL;
-
 const DEFAULT_TITLE = 'PReview';
 const TITLE_SUFFIX = ' | プロテインのレビューが集まるサイト';
 const DEFAULT_DESCRIPTION =
   '世の中のマッチョからプロテインのレビューが集まるサイトPReview。あなたに最適なプロテインが必ず見つかります。';
-const DEFAULT_IMAGE = `${BASE_URL}/ogp.png`;
 
 const Head: React.FC<HeadProps> = ({
   title = DEFAULT_TITLE,
   description = DEFAULT_DESCRIPTION,
-  imageUrl = DEFAULT_IMAGE,
+  imageUrl,
   url,
   noIndex,
 }) => {
   const {asPath} = useRouter();
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
   const metaUrl = url ? url : `${BASE_URL}${asPath || ''}`;
+  const metaImage = imageUrl ? imageUrl : `${BASE_URL}/ogp.png`;
 
   const titleWithSuffix = title + TITLE_SUFFIX;
   const descriptionWithSuffix =
@@ -55,7 +54,7 @@ const Head: React.FC<HeadProps> = ({
         key="og:description"
       />
       <meta property="og:url" content={metaUrl} key="og:url" />
-      <meta property="og:image" content={imageUrl} key="og:image" />
+      <meta property="og:image" content={metaImage} key="og:image" />
       <meta name="twitter:card" content="summary" key="twitter:card" />
       <meta
         name="twitter:title"
@@ -67,7 +66,7 @@ const Head: React.FC<HeadProps> = ({
         content={descriptionWithSuffix}
         key="twitter:description"
       />
-      <meta name="twitter:image" content={imageUrl} key="twitter:image" />
+      <meta name="twitter:image" content={metaImage} key="twitter:image" />
       <link rel="canonical" href={metaUrl} key="canonical" />
 
       {/* favicon */}
