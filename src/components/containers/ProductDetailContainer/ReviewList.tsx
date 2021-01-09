@@ -8,15 +8,24 @@ interface ReviewListProps {
   reviews: Review[];
   review_page_count: number;
   product_master_id: string;
+  brand_name_ja: string;
+  name: string;
 }
 
 const ReviewList: React.FC<ReviewListProps> = ({
   reviews,
   review_page_count,
   product_master_id,
+  brand_name_ja,
+  name,
 }) => {
   const renderItem = (review) => (
-    <ReviewListItem key={review.review_id} review={review} />
+    <ReviewListItem
+      key={review.review_id}
+      review={review}
+      brand_name_ja={brand_name_ja}
+      name={name}
+    />
   );
 
   if (!reviews) {

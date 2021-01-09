@@ -10,7 +10,7 @@ export const getAmazonUrl = (
     return url;
   }
 
-  return `${AMAZON_SERCH_URL}?keywords=${brand} ${name}`;
+  return `${AMAZON_SERCH_URL}&keywords=${brand} ${name}`;
 };
 
 export const getProductNameWithBrand = (productData: {

@@ -5,8 +5,9 @@ import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    padding: theme.spacing(4, 0),
     [theme.breakpoints.down('xs')]: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(6, 2, 4),
     },
   },
   img: {
