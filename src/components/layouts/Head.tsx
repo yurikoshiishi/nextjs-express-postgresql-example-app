@@ -18,7 +18,7 @@ const BASE_URL =
 const DEFAULT_TITLE = 'PReview';
 const TITLE_SUFFIX = ' | プロテインのレビューが集まるサイト';
 const DEFAULT_DESCRIPTION =
-  '世の中のマッチョからプロテインのレビューが集まるサイト、PReview。あなたに最適なプロテインが必ず見つかります。';
+  '世の中のマッチョからプロテインのレビューが集まるサイトPReview。あなたに最適なプロテインが必ず見つかります。';
 const DEFAULT_IMAGE = `${BASE_URL}/ogp.png`;
 
 const Head: React.FC<HeadProps> = ({

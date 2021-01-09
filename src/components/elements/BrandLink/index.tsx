@@ -19,7 +19,7 @@ const BrandLink: React.FC<BrandLinkProps> = ({
         variant="body2"
         component="span"
         color="primary"
-        className="brandLink"
+        className="BrandLink"
       >
         {brand_name_ja}
         {brand_name_en && ` / ${brand_name_en}`}
