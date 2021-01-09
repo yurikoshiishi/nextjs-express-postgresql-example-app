@@ -7,8 +7,8 @@ const PER_PAGE = 20;
 const NUMBER_OF_REVIEWS = 4;
 
 export default async (req, res) => {
+  await cors(req, res);
   try {
-    await cors(req, res);
     const {id} = req.query;
 
     const orderBy = CATEGORIES[id].orderBy;

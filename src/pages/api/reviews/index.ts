@@ -5,8 +5,8 @@ import {cors} from '../../../utils/middlewares';
 const PER_PAGE = 10;
 
 export default async (req, res) => {
+  await cors(req, res);
   try {
-    await cors(req, res);
     const reviews = await db.instance.any(getReviews, {
       perPage: PER_PAGE,
       currentPage: req.query.page || 1,
