@@ -8,7 +8,7 @@ import ProductItem from '../../elements/ProductGridItem';
 const useStyles = makeStyles((theme) => ({
   desktop: {
     backgroundColor: theme.palette.background.paper,
-    '& .brandLink': {
+    '& .BrandLink': {
       fontSize: '12px',
     },
   },

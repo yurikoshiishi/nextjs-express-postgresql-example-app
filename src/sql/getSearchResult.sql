@@ -27,7 +27,7 @@ FROM
 		GROUP BY  product_master_id 
 	) AS reviews USING (product_master_id)
 	WHERE lower(name) like '%${query#}%' or lower(flavors) like '%${query#}%' or lower(brand_name_ja) like '%${query#}%' or lower(brand_name_en) like '%${query#}%'  
-	ORDER BY avg_total_rating DESC, review_count DESC
+	ORDER BY avg_total_rating DESC NULLS LAST, review_count DESC NULLS LAST
 	LIMIT ${perPage} OFFSET (${currentPage} - 1) * ${perPage}
 ) t
 CROSS JOIN (
