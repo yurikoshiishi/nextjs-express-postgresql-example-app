@@ -1,9 +1,11 @@
 import {NextApiRequest} from 'next';
 import {incrementThumbsUp} from '../../../../../sql';
 import db from '../../../../../utils/db';
+import {cors} from '../../../../../utils/middlewares';
 
 export default async (req: NextApiRequest, res) => {
   try {
+    await cors(req, res);
     if (req.method !== 'POST') {
       res.status(405).end();
     }

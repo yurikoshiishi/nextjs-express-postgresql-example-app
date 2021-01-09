@@ -4,9 +4,11 @@ import {hasFalsyValue} from '../../../../utils';
 import db from '../../../../utils/db';
 import {DUPLICATE_KEY} from '../../../../utils/errors';
 import firebaseAdmin from '../../../../utils/firebaseAdmin';
+import {cors} from '../../../../utils/middlewares';
 
 export default async (req: NextApiRequest, res) => {
   try {
+    await cors(req, res);
     if (req.method !== 'POST') {
       return res.status(405).end();
     }

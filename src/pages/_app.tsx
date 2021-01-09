@@ -11,7 +11,7 @@ import theme from '../theme';
 import NProgress from 'nprogress';
 import {AuthProvider} from '../contexts/auth';
 import Error from './_error';
-import * as gtag from '../utils/gtag';
+import useGtag from '../hooks/useGtag';
 
 Router.events.on('routeChangeStart', (url) => {
   NProgress.start();
@@ -20,17 +20,7 @@ Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 const App = ({Component, pageProps}: AppProps) => {
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleRouteChange = (url: URL) => {
-      gtag.pageview(url);
-    };
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
+  useGtag();
 
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side');

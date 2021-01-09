@@ -2,11 +2,14 @@ import pgPromise from 'pg-promise';
 import {DB_COLUMNS} from '../../../constants';
 import {getProductDetail} from '../../../sql';
 import db from '../../../utils/db';
+import {cors} from '../../../utils/middlewares';
 
 const PER_PAGE = 20;
 
 export default async (req, res) => {
   try {
+    await cors(req, res);
+
     const variationCondition = req.query.variation_id
       ? pgPromise.as.format('WHERE product_variation_id = ${variation_id}', {
           variation_id: req.query.variation_id,

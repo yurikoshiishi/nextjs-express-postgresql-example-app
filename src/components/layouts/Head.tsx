@@ -10,10 +10,7 @@ interface HeadProps {
   noIndex?: boolean;
 }
 
-const BASE_URL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://review-protein.com'
-    : 'http://localhost';
+const BASE_URL = process.env.BASE_URL;
 
 const DEFAULT_TITLE = 'PReview';
 const TITLE_SUFFIX = ' | プロテインのレビューが集まるサイト';

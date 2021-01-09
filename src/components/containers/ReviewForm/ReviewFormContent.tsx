@@ -90,7 +90,7 @@ const ReviewFormContent: React.FC<ReviewFormContentProps> = ({
   }, [product_variations]);
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" disableGutters>
       <Formik
         validationSchema={validationSchema}
         initialValues={getInitialValues(product_master_id)}
