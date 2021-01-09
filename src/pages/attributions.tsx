@@ -32,6 +32,9 @@ const attributions: React.FC<attributionsProps> = ({}) => {
               Food vector created by vectorjuice - www.freepik.com
             </a>
           </li>
+          <li>
+            <a href="https://undraw.co/">Illustrations - undraw.co</a>
+          </li>
         </ul>
       </Article>
     </SidebarLayout>

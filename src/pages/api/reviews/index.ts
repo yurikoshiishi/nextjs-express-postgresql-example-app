@@ -1,10 +1,12 @@
 import db from '../../../utils/db';
 import {getReviews} from '../../../sql';
+import {cors} from '../../../utils/middlewares';
 
 const PER_PAGE = 10;
 
 export default async (req, res) => {
   try {
+    await cors(req, res);
     const reviews = await db.instance.any(getReviews, {
       perPage: PER_PAGE,
       currentPage: req.query.page || 1,
