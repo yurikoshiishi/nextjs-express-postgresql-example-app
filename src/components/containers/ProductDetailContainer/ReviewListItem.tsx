@@ -4,6 +4,7 @@ import {Button, makeStyles, Typography} from '@material-ui/core';
 import {format, parseISO} from 'date-fns';
 import Rating from '../../elements/RatingStars/Rating';
 import ThumbsUpButton from '../../elements/ThumbsUpButton';
+import {getAmazonUrl} from '../../../utils';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +44,8 @@ const useStyles = makeStyles((theme) => ({
 interface ReviewListItemProps {
   review: Review;
   disableThumbsUp?: boolean;
+  brand_name_ja: string;
+  name: string;
 }
 
 const ReviewListItem: React.FC<ReviewListItemProps> = ({
@@ -58,10 +61,16 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({
     url_myprotein,
   },
   disableThumbsUp,
+  brand_name_ja,
+  name,
 }) => {
   const classes = useStyles();
 
-  const url = url_myprotein || url_iherb || url_amazon;
+  const url =
+    url_myprotein ||
+    url_iherb ||
+    url_amazon ||
+    getAmazonUrl(brand_name_ja, name);
 
   return (
     <div className={`${classes.root} ReviewListItem`} id={review_id}>

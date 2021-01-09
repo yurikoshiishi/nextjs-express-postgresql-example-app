@@ -18,6 +18,8 @@ const ProductDetailContainer: React.FC<ProductDetailContainerProps> = ({
   const {
     product_master_id,
     product_variations,
+    brand_name_ja,
+    name,
     reviews,
     review_page_count,
   } = productDetail;
@@ -58,6 +60,8 @@ const ProductDetailContainer: React.FC<ProductDetailContainerProps> = ({
             reviews={reviews}
             review_page_count={review_page_count}
             product_master_id={product_master_id}
+            brand_name_ja={brand_name_ja}
+            name={name}
           />
         </CardContent>
       </Card>
