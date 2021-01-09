@@ -1,11 +1,12 @@
 import {NextApiRequest} from 'next';
 import {decrementThumbsUp} from '../../../../../sql';
 import db from '../../../../../utils/db';
-import {cors} from '../../../../../utils/middlewares';
 
 export default async (req: NextApiRequest, res) => {
-  await cors(req, res);
   try {
+    if (!req.headers.host.includes(process.env.HOST)) {
+      return res.status(401).end();
+    }
     if (req.method !== 'POST') {
       res.status(405).end();
     }

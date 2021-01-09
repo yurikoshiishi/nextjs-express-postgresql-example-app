@@ -4,11 +4,12 @@ import {hasFalsyValue} from '../../../../utils';
 import db from '../../../../utils/db';
 import {DUPLICATE_KEY} from '../../../../utils/errors';
 import firebaseAdmin from '../../../../utils/firebaseAdmin';
-import {cors} from '../../../../utils/middlewares';
 
 export default async (req: NextApiRequest, res) => {
-  await cors(req, res);
   try {
+    if (!req.headers.host.includes(process.env.HOST)) {
+      return res.status(401).end();
+    }
     if (req.method !== 'POST') {
       return res.status(405).end();
     }
