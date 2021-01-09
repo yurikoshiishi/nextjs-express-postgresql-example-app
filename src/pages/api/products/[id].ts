@@ -7,9 +7,8 @@ import {cors} from '../../../utils/middlewares';
 const PER_PAGE = 20;
 
 export default async (req, res) => {
+  await cors(req, res);
   try {
-    await cors(req, res);
-
     const variationCondition = req.query.variation_id
       ? pgPromise.as.format('WHERE product_variation_id = ${variation_id}', {
           variation_id: req.query.variation_id,

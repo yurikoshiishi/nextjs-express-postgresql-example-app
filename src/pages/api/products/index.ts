@@ -6,8 +6,8 @@ import {cors} from '../../../utils/middlewares';
 const pgp = pgPromise();
 
 export default async (req, res) => {
+  await cors(req, res);
   try {
-    await cors(req, res);
     const condition = getFormattedCondition(pgp, req.query);
 
     const products = await db.instance.any(getProductMasters, {
