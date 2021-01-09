@@ -55,8 +55,6 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({
 }) => {
   const classes = useStyles();
 
-  //TODO: add onclick to flavor to filter reviews to that flavor.
-
   return (
     <div className={`${classes.root} ReviewListItem`} id={review_id}>
       <div className={classes.header}>

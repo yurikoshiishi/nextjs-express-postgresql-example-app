@@ -1,11 +1,13 @@
 import {getProductMasters} from '../../../sql/';
 import db from '../../../utils/db';
 import pgPromise from 'pg-promise';
+import {cors} from '../../../utils/middlewares';
 
 const pgp = pgPromise();
 
 export default async (req, res) => {
   try {
+    await cors(req, res);
     const condition = getFormattedCondition(pgp, req.query);
 
     const products = await db.instance.any(getProductMasters, {
