@@ -1,6 +1,6 @@
 import React from 'react';
 import {Review} from '../../../types';
-import {makeStyles, Typography} from '@material-ui/core';
+import {Button, makeStyles, Typography} from '@material-ui/core';
 import {format, parseISO} from 'date-fns';
 import Rating from '../../elements/RatingStars/Rating';
 import ThumbsUpButton from '../../elements/ThumbsUpButton';
@@ -34,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
   },
   actionContainer: {
     marginTop: theme.spacing(1),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 }));
 
@@ -50,10 +53,15 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({
     created_at,
     flavor,
     thumbsup_count,
+    url_amazon,
+    url_iherb,
+    url_myprotein,
   },
   disableThumbsUp,
 }) => {
   const classes = useStyles();
+
+  const url = url_myprotein || url_iherb || url_amazon;
 
   return (
     <div className={`${classes.root} ReviewListItem`} id={review_id}>
@@ -82,6 +90,18 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({
       {!disableThumbsUp && (
         <div className={classes.actionContainer}>
           <ThumbsUpButton count={thumbsup_count} review_id={review_id} />
+          {url && (
+            <Button
+              component="a"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="text"
+              color="primary"
+              href={url}
+            >
+              ショップを見る
+            </Button>
+          )}
         </div>
       )}
     </div>

@@ -7,8 +7,8 @@ import firebaseAdmin from '../../../../utils/firebaseAdmin';
 import {cors} from '../../../../utils/middlewares';
 
 export default async (req: NextApiRequest, res) => {
+  await cors(req, res);
   try {
-    await cors(req, res);
     if (req.method !== 'POST') {
       return res.status(405).end();
     }

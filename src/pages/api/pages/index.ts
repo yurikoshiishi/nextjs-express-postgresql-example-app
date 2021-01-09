@@ -6,8 +6,8 @@ const NUMBER_OF_ITEMS = 5;
 const NUMBER_OF_REVIEWS = 3;
 
 export default async (req, res) => {
+  await cors(req, res);
   try {
-    await cors(req, res);
     const data = await db.instance.one(getHomePage, {
       numberOfItems: NUMBER_OF_ITEMS,
       numberOfReviews: NUMBER_OF_REVIEWS,
