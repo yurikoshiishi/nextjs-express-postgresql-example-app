@@ -8,7 +8,7 @@ import ThumbsUpButton from '../../elements/ThumbsUpButton';
 const useStyles = makeStyles((theme) => ({
   root: {
     marginBottom: theme.spacing(2),
-    backgroundColor: theme.palette.grey[50],
+    backgroundColor: theme.palette.grey[100],
     borderRadius: 8,
     padding: theme.spacing(1),
   },
@@ -23,9 +23,14 @@ const useStyles = makeStyles((theme) => ({
   content: {
     padding: theme.spacing(0, 0.25),
   },
+  flavor: {
+    color: 'rgba(0,0,0,0.8)',
+    fontWeight: theme.typography.fontWeightBold,
+  },
   description: {
     padding: theme.spacing(1, 0),
     whiteSpace: 'pre-wrap',
+    color: 'rgba(0,0,0,0.8)',
   },
   actionContainer: {
     marginTop: theme.spacing(1),
@@ -64,7 +69,12 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({
       </div>
 
       <div className={classes.content}>
-        <Typography variant="body2" color="textSecondary" component="h2">
+        <Typography
+          variant="body2"
+          color="textSecondary"
+          component="h2"
+          className={classes.flavor}
+        >
           {flavor}
         </Typography>
         <div className={classes.description}>
