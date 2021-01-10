@@ -108,7 +108,7 @@ CROSS JOIN
 			) 
 		) related_products
 		WHERE product_master_id != ${product_master_id}
-		ORDER BY brand_id = (SELECT brand_id FROM requested_product_master) DESC, avg_total_rating DESC, review_count DESC
+		ORDER BY brand_id = (SELECT brand_id FROM requested_product_master) DESC, avg_total_rating DESC NULLS LAST, review_count DESC
 		LIMIT 20 
 	) t 
 ) related_products
