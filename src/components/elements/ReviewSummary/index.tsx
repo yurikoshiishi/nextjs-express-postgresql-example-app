@@ -1,14 +1,22 @@
 import React, {useMemo} from 'react';
 import {Box, makeStyles, Typography} from '@material-ui/core';
 import {ReviewSummary as ReviewSummaryType} from '../../../types';
-import RatingStars from '../RatingStars';
 import SummaryBar from './SummaryBar';
+import Rating from '../RatingStars/Rating';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 350,
     textAlign: 'center',
     margin: '0 auto',
+  },
+  ratingText: {
+    fontSize: '3rem',
+    fontWeight: theme.typography.fontWeightBold,
+    marginRight: theme.spacing(2),
+  },
+  reviewCount: {
+    padding: theme.spacing(0.5, 0.5, 0),
   },
 }));
 
@@ -43,11 +51,20 @@ const ReviewSummary: React.FC<ReviewSummaryProps> = ({
 
   return (
     <div className={classes.root}>
-      <Box mb={1}>
-        <RatingStars rating={avg_total_rating} size="medium" />
-        <Typography variant="caption" color="textSecondary">
-          {review_count || 0}件のレビュー
+      <Box mb={1} display="flex" alignItems="center" justifyContent="center">
+        <Typography className={classes.ratingText}>
+          {Number(avg_total_rating).toFixed(1)}
         </Typography>
+        <Box display="flex" flexDirection="column" alignItems="flex-start">
+          <Rating rating={avg_total_rating} size="medium" />
+          <Typography
+            variant="caption"
+            color="textSecondary"
+            className={classes.reviewCount}
+          >
+            {review_count || 0}件のレビュー
+          </Typography>
+        </Box>
       </Box>
       <Box px={1}>
         {RATING_ORDER.map((rating) => (
