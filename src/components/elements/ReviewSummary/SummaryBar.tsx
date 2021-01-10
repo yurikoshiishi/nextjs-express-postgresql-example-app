@@ -11,10 +11,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   barContainer: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(1),
     flexGrow: 1,
     position: 'relative',
-    height: 10,
+    height: 8,
     backgroundColor: theme.palette.grey[100],
     borderRadius: 16,
     overflow: 'hidden',
@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   percent: {
-    minWidth: 30,
+    width: '2rem',
+    textAlign: 'right',
   },
 }));
 
@@ -41,7 +42,7 @@ const SummaryBar: React.FC<SummaryBarProps> = ({rating, percent = 0}) => {
   return (
     <div className={classes.root}>
       <div className={classes.rating}>
-        <Typography variant="body2" color="primary">
+        <Typography variant="body2" color="textSecondary">
           {rating}
         </Typography>
       </div>
@@ -49,7 +50,7 @@ const SummaryBar: React.FC<SummaryBarProps> = ({rating, percent = 0}) => {
         <Box width={`${percent}%`} className="bar" />
       </div>
       <div className={classes.percent}>
-        <Typography variant="body2" color="textPrimary">
+        <Typography variant="body2" color="textSecondary">
           {Math.round(percent)}%
         </Typography>
       </div>

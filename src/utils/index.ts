@@ -49,3 +49,7 @@ export const getSlicedString = (text: string, limit: number): string => {
 
   return text;
 };
+
+export const getNumberWithCommas = (x: number | string): string => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
