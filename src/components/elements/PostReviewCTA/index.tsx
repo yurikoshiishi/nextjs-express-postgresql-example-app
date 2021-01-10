@@ -2,6 +2,7 @@ import {Box, Typography, Button, makeStyles} from '@material-ui/core';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import ModalSearch from '../ModalSearch';
+import {getNumberWithCommas} from '../../../utils';
 
 const useStyles = makeStyles((theme) => ({
   copy: {
@@ -67,7 +68,7 @@ const PostReviewCTA: React.FC<PostReviewCTAProps> = ({}) => {
             {!isLoading && reviewCount ? (
               <>
                 PReviewには
-                <span>{reviewCount}件</span>
+                <span>{getNumberWithCommas(reviewCount)}件</span>
                 のレビューが集まっています
               </>
             ) : (
