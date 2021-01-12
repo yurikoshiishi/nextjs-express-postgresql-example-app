@@ -12,7 +12,7 @@ const NavLink: React.FC<NavLinkProps> = ({href, children, ...rest}) => {
   const child = React.Children.only(children);
   const childClassName = child.props.className || '';
 
-  const isActive = asPath === href;
+  const isActive = asPath.split('?')[0] === href;
   const className = isActive ? `${childClassName} active` : childClassName;
 
   return (
