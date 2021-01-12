@@ -1,15 +1,17 @@
 import {Box, Card, CardContent, Typography} from '@material-ui/core';
 import React from 'react';
 
-interface NoResultProps {}
+interface NoResultProps {
+  name: string;
+}
 
-const NoResult: React.FC<NoResultProps> = ({}) => {
+const NoResult: React.FC<NoResultProps> = ({name = 'アイテム'}) => {
   return (
     <Card>
       <CardContent>
         <Box py={4}>
           <Typography variant="body2" color="textSecondary" align="center">
-            商品が見つかりませんでした。
+            {name}が見つかりませんでした。
           </Typography>
         </Box>
       </CardContent>

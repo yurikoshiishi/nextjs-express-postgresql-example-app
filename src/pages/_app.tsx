@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {AppProps} from 'next/app';
-import Router, {useRouter} from 'next/router';
+import Router from 'next/router';
 import '../../styles/globals.css';
 import '../../styles/nprogress.css';
 import 'slick-carousel/slick/slick.css';
