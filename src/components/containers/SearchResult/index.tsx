@@ -3,7 +3,7 @@ import React from 'react';
 import {ProductMaster} from '../../../types';
 import PaginatedList from '../PaginatedList';
 import ProductListItem from '../../elements/ProductListItem';
-import NoResult from './NoResult';
+import NoResult from '../../elements/NoResult';
 import SearchHeader from './SearchHeader';
 import ProductList from '../ProductList';
 
@@ -32,7 +32,7 @@ const SearchResult: React.FC<SearchResultProps> = ({
           </PaginatedList>
         </Box>
       ) : (
-        <NoResult />
+        <NoResult name="商品" />
       )}
     </div>
   );

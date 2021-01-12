@@ -11,6 +11,7 @@ interface PaginatedListProps {
   pageCount: number;
   listParentComponent?: 'div' | 'ul';
   scrollOffset?: number;
+  shallow?: boolean;
 }
 
 const PaginatedList: React.FC<PaginatedListProps> = ({
@@ -21,6 +22,7 @@ const PaginatedList: React.FC<PaginatedListProps> = ({
   listParentComponent = 'ul',
   children,
   scrollOffset,
+  shallow = false,
 }) => {
   const router = useRouter();
   const currentPage = Number(router.query.page) || 1;
@@ -28,10 +30,14 @@ const PaginatedList: React.FC<PaginatedListProps> = ({
   const handlePageChange = (e: React.ChangeEvent, page: number) => {
     const {pathname, query} = router;
     query.page = `${page}`;
-    router.push({
-      pathname,
-      query,
-    });
+    router.push(
+      {
+        pathname,
+        query,
+      },
+      undefined,
+      {shallow}
+    );
     scroller.scrollTo(name, {
       duration: 500,
       delay: 50,

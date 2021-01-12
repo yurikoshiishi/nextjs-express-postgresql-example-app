@@ -130,6 +130,25 @@ export const createReview = async (
     .catch(handleError);
 };
 
+export const fetchMyReviews = async (page: number): Promise<ApiResponse> => {
+  let token;
+  try {
+    token = await firebaseClient.auth().currentUser.getIdToken();
+  } catch (err) {
+    throw new Error('not authorized');
+  }
+
+  return axios
+    .get(`${window.origin}/api/reviews/my-reviews`, {
+      params: {
+        token,
+        page: page || 1,
+      },
+    })
+    .then(handleResponse)
+    .catch(handleError);
+};
+
 export const fetchSearchResult = async (
   ctx: ContextWithParams
 ): Promise<ApiResponse> => {

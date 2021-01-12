@@ -5,6 +5,7 @@ import {format, parseISO} from 'date-fns';
 import Rating from '../../elements/RatingStars/Rating';
 import ThumbsUpButton from '../../elements/ThumbsUpButton';
 import {getAmazonUrl} from '../../../utils';
+import TextLink from '../../elements/TextLink';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,6 +47,7 @@ interface ReviewListItemProps {
   disableThumbsUp?: boolean;
   brand_name_ja?: string;
   name?: string;
+  showName?: boolean;
 }
 
 const ReviewListItem: React.FC<ReviewListItemProps> = ({
@@ -59,10 +61,12 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({
     url_amazon,
     url_iherb,
     url_myprotein,
+    product_master_id,
   },
   disableThumbsUp,
   brand_name_ja,
   name,
+  showName = false,
 }) => {
   const classes = useStyles();
 
@@ -87,8 +91,16 @@ const ReviewListItem: React.FC<ReviewListItemProps> = ({
           component="h2"
           className={classes.flavor}
         >
-          {flavor}
+          {showName ? (
+            <TextLink href={`/products/${product_master_id}`}>
+              {name} {brand_name_ja && `/ ${brand_name_ja}`}{' '}
+              {flavor && `- ${flavor}`}
+            </TextLink>
+          ) : (
+            flavor
+          )}
         </Typography>
+
         <div className={classes.description}>
           <Typography variant="body2">{description}</Typography>
         </div>

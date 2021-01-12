@@ -8,6 +8,7 @@ export default async (req, res) => {
     if (!req.headers.host.includes(process.env.HOST)) {
       return res.status(401).end();
     }
+
     const reviews = await db.instance.any(getReviews, {
       perPage: PER_PAGE,
       currentPage: req.query.page || 1,
