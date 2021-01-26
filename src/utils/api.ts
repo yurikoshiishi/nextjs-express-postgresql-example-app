@@ -201,3 +201,12 @@ export const fetchBrands = async (
     .then(handleResponse)
     .catch(handleError);
 };
+
+export const fetchSitemapData = async (
+  ctx: ContextWithParams
+): Promise<ApiResponse> => {
+  return axios
+    .get(`${getAbsoluteUrl(ctx.req).origin}/api/sitemap`)
+    .then(handleResponse)
+    .catch(handleError);
+};

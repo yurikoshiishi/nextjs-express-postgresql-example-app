@@ -17,13 +17,21 @@ interface ReviewFormContentProps {
   product_variations: ProductVariation[];
 }
 
+interface Flavor {
+  flavor: string;
+  id: string;
+}
+
 const REVIEW_MIN = 30;
 const REVIEW_MAX = 500;
 
-const getInitialValues = (product_master_id: string): ReviewFormValues => {
+const getInitialValues = (
+  product_master_id: string,
+  flavor: Flavor
+): ReviewFormValues => {
   const initialValues: ReviewFormValues = {
     product_master_id: product_master_id,
-    product_variation_id: '',
+    product_variation_id: flavor.id,
     user_id: '',
     taste_rating: 3,
     mix_rating: 3,
@@ -82,7 +90,7 @@ const ReviewFormContent: React.FC<ReviewFormContentProps> = ({
     }
   };
 
-  const flavors = useMemo(() => {
+  const flavors = useMemo((): Flavor[] => {
     return product_variations.map((v) => ({
       flavor: v.flavor,
       id: v.product_variation_id,
@@ -93,7 +101,7 @@ const ReviewFormContent: React.FC<ReviewFormContentProps> = ({
     <Container maxWidth="sm" disableGutters>
       <Formik
         validationSchema={validationSchema}
-        initialValues={getInitialValues(product_master_id)}
+        initialValues={getInitialValues(product_master_id, flavors[0])}
         onSubmit={(data) => {
           handlePostReview(data);
         }}
