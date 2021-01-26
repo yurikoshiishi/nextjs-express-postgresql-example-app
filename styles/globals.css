@@ -50,9 +50,13 @@ li {
 }
 
 /* overwrite slick-theme.css */
+.slick-prev,
+.slick-next {
+  transition: color 0.4s ease;
+}
 .slick-prev:hover,
 .slick-prev:focus,
 .slick-next:hover,
 .slick-next:focus {
-  color: inherit;
+  color: rgba() 0, 0, 0, 0.54;
 }
