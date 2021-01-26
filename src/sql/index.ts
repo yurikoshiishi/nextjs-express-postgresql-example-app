@@ -18,3 +18,4 @@ export const getCategoryProducts = sql('/src/sql/getCategoryProducts.sql');
 export const getReviews = sql('/src/sql/getReviews.sql');
 export const getMyReviews = sql('/src/sql/getMyReviews.sql');
 export const getBrands = sql('/src/sql/getBrands.sql');
+export const getSitemapData = sql('/src/sql/getSitemapData.sql');
