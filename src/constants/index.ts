@@ -24,3 +24,5 @@ export const DB_COLUMNS = {
   created_at: 'created_at',
   total_rating: 'total_rating',
 };
+
+export const PROTEIN_REQUEST_FORM = 'https://forms.gle/DoZAvTsWorByjTSJ9';
