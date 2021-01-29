@@ -1,4 +1,4 @@
-import {Box} from '@material-ui/core';
+import {Box, Button} from '@material-ui/core';
 import React from 'react';
 import {ProductMaster} from '../../../types';
 import PaginatedList from '../PaginatedList';
@@ -6,6 +6,7 @@ import ProductListItem from '../../elements/ProductListItem';
 import NoResult from '../../elements/NoResult';
 import SearchHeader from './SearchHeader';
 import ProductList from '../ProductList';
+import {PROTEIN_REQUEST_FORM} from '../../../constants';
 
 interface SearchResultProps {
   product_masters: ProductMaster[];
@@ -18,10 +19,6 @@ const SearchResult: React.FC<SearchResultProps> = ({
   product_count = 0,
   page_count,
 }) => {
-  const renderItem = (p, i) => (
-    <ProductListItem key={p.product_master_id} product={p} index={i} />
-  );
-
   return (
     <div>
       <SearchHeader product_count={product_count} />
@@ -32,7 +29,21 @@ const SearchResult: React.FC<SearchResultProps> = ({
           </PaginatedList>
         </Box>
       ) : (
-        <NoResult name="商品" />
+        <NoResult
+          name="商品"
+          action={
+            <Button
+              variant="outlined"
+              color="primary"
+              component="a"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={PROTEIN_REQUEST_FORM}
+            >
+              お探しのプロテインが見つからない方へ
+            </Button>
+          }
+        />
       )}
     </div>
   );

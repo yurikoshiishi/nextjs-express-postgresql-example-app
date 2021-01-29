@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import ModalSearch from '../ModalSearch';
 import {getNumberWithCommas} from '../../../utils';
+import {PROTEIN_REQUEST_FORM} from '../../../constants';
 
 const useStyles = makeStyles((theme) => ({
   copy: {
@@ -10,6 +11,13 @@ const useStyles = makeStyles((theme) => ({
     '& > span': {
       color: theme.palette.primary.main,
       fontWeight: theme.typography.fontWeightBold,
+    },
+  },
+  buttonGroup: {
+    '& .MuiButton-root': {
+      '&:not(:first-child)': {
+        marginTop: theme.spacing(1),
+      },
     },
   },
 }));
@@ -80,7 +88,7 @@ const PostReviewCTA: React.FC<PostReviewCTAProps> = ({}) => {
           あなたも最近飲んだプロテインのレビューを共有してみませんか？
         </Typography>
       </Box>
-      <Box textAlign="center">
+      <Box textAlign="center" className={classes.buttonGroup}>
         <Button
           variant="contained"
           color="primary"
@@ -88,6 +96,17 @@ const PostReviewCTA: React.FC<PostReviewCTAProps> = ({}) => {
           onClick={handleOpen}
         >
           商品を探す
+        </Button>
+        <Button
+          variant="outlined"
+          color="primary"
+          fullWidth
+          component="a"
+          target="_blank"
+          rel="noopener noreferrer"
+          href={PROTEIN_REQUEST_FORM}
+        >
+          見つからない方へ
         </Button>
       </Box>
       <ModalSearch open={isModalOpen} handleClose={handleClose} />
