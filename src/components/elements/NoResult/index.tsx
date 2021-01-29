@@ -3,9 +3,10 @@ import React from 'react';
 
 interface NoResultProps {
   name: string;
+  action?: React.ReactElement;
 }
 
-const NoResult: React.FC<NoResultProps> = ({name = 'アイテム'}) => {
+const NoResult: React.FC<NoResultProps> = ({name = 'アイテム', action}) => {
   return (
     <Card>
       <CardContent>
@@ -13,6 +14,11 @@ const NoResult: React.FC<NoResultProps> = ({name = 'アイテム'}) => {
           <Typography variant="body2" color="textSecondary" align="center">
             {name}が見つかりませんでした。
           </Typography>
+          {action && (
+            <Box mt={2} textAlign="center">
+              {action}
+            </Box>
+          )}
         </Box>
       </CardContent>
     </Card>
