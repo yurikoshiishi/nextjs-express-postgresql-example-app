@@ -35,5 +35,4 @@ config/
 # vercel
 .vercel
 
-
-
+dist
