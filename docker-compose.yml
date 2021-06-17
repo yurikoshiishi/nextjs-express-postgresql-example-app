@@ -17,6 +17,7 @@ services:
       - ./db/initdb.d:/docker-entrypoint-initdb.d
 
   server:
+    container_name: server
     build:
         context: ./server
     depends_on:
@@ -34,6 +35,7 @@ services:
       - ./server:/usr/src/server
 
   client:
+    container_name: client
     build:
         context: ./client
     depends_on:
