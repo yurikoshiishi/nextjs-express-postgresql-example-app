@@ -30,6 +30,8 @@ services:
       DB_NAME: protein_review
       DB_HOST: db
       DB_PORT: 5432
+    volumes:
+      - ./server:/usr/src/server
 
   client:
     build:
@@ -39,6 +41,8 @@ services:
         - server
     ports:
         - 3000:3000
+    volumes:
+      - ./client:/usr/src/client
 
 volumes:
   database:
