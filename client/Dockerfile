@@ -1,12 +1,12 @@
 FROM node:14
 
-COPY package*.json .
+COPY package*json .
 
 RUN npm i
 
 COPY . . 
 
-# TODO: change between environment
+# TODO: change between env
 # RUN npm run build
 
 # CMD ["npm", "run", "start"]
