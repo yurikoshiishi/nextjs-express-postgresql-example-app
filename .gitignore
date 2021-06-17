@@ -25,6 +25,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env.local
 .env.development
 .env.production
@@ -36,3 +37,8 @@ config/
 .vercel
 
 dist
+
+docker/db/data/*
+docker/initdb.d
+
+!.keep
