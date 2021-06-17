@@ -1,15 +1,24 @@
 import express, {Request, Response} from 'express';
-
-const app: express.Express = express();
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+import { createConnection } from 'typeorm';
+import dbConfig from './config/db';
 
 const PORT = process.env.PORT || 8000;
 
-app.listen(PORT, () => {
-  console.log(`Start on port ${PORT}.\n http://localhost:${PORT}`);
-});
+createConnection(dbConfig).then(async connection => {
 
-app.get('/', (req: Request, res: Response) => {
-  res.send("hello");
-});
+    // create express app
+   const app: express.Express = express();
+   app.use(express.json());
+   app.use(express.urlencoded({extended: true}));
+
+
+  app.listen(PORT, () => {
+    console.log(`Start on port ${PORT}.\n http://localhost:${PORT}`);
+  });
+
+  app.get('/', (req: Request, res: Response) => {
+    res.send('hello');
+  });
+
+}).catch(error => console.log("TypeORM connection error: ", error));
+

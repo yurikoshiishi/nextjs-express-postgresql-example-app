@@ -38,7 +38,7 @@ config/
 
 dist
 
-docker/db/data/*
-docker/initdb.d
+db/data/*
+initdb.d
 
 !.keep
