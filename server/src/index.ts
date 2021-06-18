@@ -7,6 +7,7 @@ import products from './routes/products';
 import sitemap from './routes/sitemap';
 import search from './routes/search';
 import reviews from './routes/reviews';
+import pages from './routes/pages';
 
 const PORT = process.env.PORT;
 
@@ -21,6 +22,7 @@ createConnection(dbConfig)
     app.use('/api/sitemap', sitemap);
     app.use('/api/search', search);
     app.use('/api/reviews', reviews);
+    app.use('/api/pages', pages);
 
     app.listen(PORT, () => {
       console.log(`Start on port ${PORT}.\n http://localhost:${PORT}`);
