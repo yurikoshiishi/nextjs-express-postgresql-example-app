@@ -24,10 +24,10 @@ createConnection(dbConfig)
     app.use('/api/reviews', reviews);
     app.use('/api/pages', pages);
 
+    app.use(errorHandler);
+
     app.listen(PORT, () => {
       console.log(`Start on port ${PORT}. http://localhost:${PORT}`);
     });
-
-    app.use(errorHandler);
   })
   .catch((error) => console.log('TypeORM connection error: ', error));
