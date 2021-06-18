@@ -66,4 +66,14 @@ export default class ProductController {
 
     res.json(result);
   }
+
+  static async getProductVariations(req: Request, res: Response) {
+    const query = getFormattedQueryString('../sql/getProductVariations.sql', {
+      product_master_id: req.params.id.toString(),
+    });
+
+    const variations = await manager.get().query(query);
+
+    res.status(200).json(variations);
+  }
 }

@@ -11,4 +11,4 @@ JOIN
 	FROM product_variations
 	GROUP BY  product_master_id 
 ) AS variations USING (product_master_id)
-WHERE masters.product_master_id = $1; 
+WHERE masters.product_master_id = ${product_master_id}; 

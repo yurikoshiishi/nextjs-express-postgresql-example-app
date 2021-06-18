@@ -7,4 +7,6 @@ router.get('/', use(ProductController.getProdustMasters));
 
 router.get('/:id', use(ProductController.getProductDetail));
 
+router.get('/:id/variations', use(ProductController.getProductVariations));
+
 export default router;
