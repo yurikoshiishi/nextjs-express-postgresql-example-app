@@ -5,6 +5,7 @@ import errorHandler from './middlewares/errorHandler';
 import brands from './routes/brands';
 import products from './routes/products';
 import sitemap from './routes/sitemap';
+import search from './routes/search';
 
 const PORT = process.env.PORT;
 
@@ -17,6 +18,7 @@ createConnection(dbConfig)
     app.use('/api/brands', brands);
     app.use('/api/products', products);
     app.use('/api/sitemap', sitemap);
+    app.use('/api/search', search);
 
     app.listen(PORT, () => {
       console.log(`Start on port ${PORT}.\n http://localhost:${PORT}`);

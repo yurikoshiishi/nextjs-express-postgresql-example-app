@@ -54,4 +54,16 @@ export default class ProductController {
 
     res.json(products);
   }
+
+  static async searchProducts(req: Request, res: Response) {
+    const query = getFormattedQueryString('../sql/getSearchResult.sql', {
+      query: decodeURIComponent(req.query.q.toString()).toLowerCase(),
+      perPage: PER_PAGE,
+      currentPage: (req.query.page || 1).toString(),
+    });
+
+    const result = await manager.get().query(query);
+
+    res.json(result);
+  }
 }
