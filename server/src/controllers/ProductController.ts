@@ -13,6 +13,21 @@ const DB_COLUMNS = {
   total_rating: 'total_rating',
 };
 
+const CATEGORIES = {
+  'top-rated': {
+    title: '最も高評価のプロテイン',
+    orderBy: 'avg_total_rating',
+  },
+  'most-reviewed': {
+    title: '最もレビューの多いプロテイン',
+    orderBy: 'review_count',
+  },
+};
+
+type CATEGORY_KEY = keyof typeof CATEGORIES;
+
+const NUMBER_OF_REVIEWS = 4;
+
 //TODO: create db access layer
 
 export default class ProductController {
@@ -76,4 +91,30 @@ export default class ProductController {
 
     res.status(200).json(variations);
   }
+
+  static async getProductsByCategory(req: Request, res: Response) {
+    const {id} = req.params;
+
+    const categoryId = id.toString();
+
+    if (!isValidCategory(categoryId)) {
+      return res.send(404);
+    }
+
+    const orderBy = CATEGORIES[categoryId].orderBy;
+
+    const query = getFormattedQueryString('../sql/getCategoryProducts.sql', {
+      orderBy: orderBy,
+      perPage: PER_PAGE,
+      numberOfReviews: NUMBER_OF_REVIEWS,
+    });
+
+    const variations = await manager.get().query(query);
+
+    res.status(200).json(variations);
+  }
+}
+
+function isValidCategory(category: string): category is CATEGORY_KEY {
+  return category in CATEGORIES;
 }
