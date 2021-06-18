@@ -5,7 +5,7 @@ import {getFormattedQueryString, getFormattedCondition} from '../sql';
 
 const manager = getConnectionManager();
 
-const PER_PAGE = 20;
+const PER_PAGE = 21;
 
 const DB_COLUMNS = {
   thumbsup_count: 'thumbsup_count',
