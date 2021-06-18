@@ -32,14 +32,12 @@ requested_product_master AS (SELECT brand_id FROM product_masters WHERE product_
 SELECT  *
 	   ,CEIL(review_count::decimal / ${perPage}) AS review_page_count
 FROM product_masters
--- get brand
 JOIN 
 (
 	SELECT brand_id, brand_name_ja, brand_name_en
 	FROM brands
 ) as brands
 USING (brand_id)
--- get variations and number of variations 
 JOIN 
 (
 	SELECT  product_master_id 
@@ -50,7 +48,6 @@ JOIN
 ) AS variations
 USING (product_master_id)
 
--- get review summary as well as total count
 LEFT JOIN 
 (
 	SELECT  product_master_id 
@@ -65,7 +62,6 @@ LEFT JOIN
 ) AS reviews_status
 USING (product_master_id)
 
--- get reviews for current page
 LEFT JOIN 
 (
 	SELECT  product_master_id
@@ -85,7 +81,6 @@ LEFT JOIN
 ) AS reviews_page
 USING (product_master_id)
 
--- get related products
 CROSS JOIN 
 (
 	SELECT  json_agg(t) AS related_product_masters
