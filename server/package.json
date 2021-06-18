@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "firebase-admin": "^9.9.0",
     "pg": "^8.6.0",
     "pg-promise": "^10.10.2",
     "typeorm": "^0.2.34"
