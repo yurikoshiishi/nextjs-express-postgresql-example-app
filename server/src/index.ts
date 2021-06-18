@@ -25,7 +25,7 @@ createConnection(dbConfig)
     app.use('/api/pages', pages);
 
     app.listen(PORT, () => {
-      console.log(`Start on port ${PORT}.\n http://localhost:${PORT}`);
+      console.log(`Start on port ${PORT}. http://localhost:${PORT}`);
     });
 
     app.use(errorHandler);
