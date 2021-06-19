@@ -8,9 +8,4 @@ RUN npm i
 
 COPY . . 
 
-# TODO: change between environment
-# RUN npm run build
-
-# CMD ["npm", "run", "start"]
-
 CMD ["npm", "run", "dev"]
