@@ -37,6 +37,7 @@ services:
     volumes:
       - ./server:/usr/src/server
       - /usr/src/server/node_modules
+      - /usr/src/server/dist
 
   client:
     container_name: client
