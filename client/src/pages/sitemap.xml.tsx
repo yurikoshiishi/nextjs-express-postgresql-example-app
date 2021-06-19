@@ -60,7 +60,7 @@ const Sitemap: React.FC = () => {
 
 export const getServerSideProps = async (ctx) => {
   const {res} = ctx;
-  const {data, error} = await fetchSitemapData(ctx);
+  const {data, error} = await fetchSitemapData();
 
   if (error) {
     res.status(500).end();
