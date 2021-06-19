@@ -1,5 +1,6 @@
 import express from 'express';
 import {createConnection} from 'typeorm';
+import cors from 'cors';
 import dbConfig from './config/db';
 import errorHandler from './middlewares/errorHandler';
 import brands from './routes/brands';
@@ -16,6 +17,10 @@ createConnection(dbConfig)
     const app: express.Express = express();
     app.use(express.json());
     app.use(express.urlencoded({extended: true}));
+
+    if (process.env.NODE_ENV !== 'production') {
+      app.use(cors());
+    }
 
     app.use('/api/brands', brands);
     app.use('/api/products', products);
