@@ -1,39 +1,19 @@
 {
   "name": "protein-review",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "export NODE_OPTIONS=\"--max-old-space-size=2048\" && next build",
-    "start": "next start"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "@material-ui/core": "^4.11.2",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.57",
-    "axios": "^0.21.0",
-    "cors": "^2.8.5",
-    "date-fns": "^2.16.1",
-    "firebase": "^8.2.1",
-    "firebase-admin": "^9.4.2",
-    "formik": "^2.2.6",
-    "lodash": "^4.17.20",
-    "next": "10.0.3",
-    "nookies": "^2.5.0",
-    "nprogress": "^0.2.0",
-    "pg-promise": "^10.8.1",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-scroll": "^1.8.1",
-    "react-slick": "^0.27.13",
-    "slick-carousel": "^1.8.1",
-    "yup": "^0.32.8"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurikoshiishi/protein-review.git"
   },
-  "devDependencies": {
-    "@types/gtag.js": "0.0.4",
-    "@types/cors": "^2.8.9",
-    "@types/node": "^14.14.14",
-    "@types/react": "^17.0.0",
-    "typescript": "^4.1.3"
-  }
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yurikoshiishi/protein-review/issues"
+  },
+  "homepage": "https://github.com/yurikoshiishi/protein-review#readme"
 }
