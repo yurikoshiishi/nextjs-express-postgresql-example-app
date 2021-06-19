@@ -15,7 +15,7 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <MuiPagination
       page={currentPage}
-      count={pageCount}
+      count={parseInt(`${pageCount}`)}
       onChange={onChange}
       shape="rounded"
       color="primary"
