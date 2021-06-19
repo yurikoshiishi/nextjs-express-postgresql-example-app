@@ -1,10 +1,10 @@
 import {NextPageContext} from 'next';
-import React from 'react';
 import nookies from 'nookies';
-import firebaseAdmin from '../utils/firebaseAdmin';
+import React from 'react';
 import PageWithImage from '../components/containers/PageWithImage';
 import FirebaseLogin from '../components/elements/FirebaseLogin';
 import DefaultLayout from '../components/layouts/DefaultLayout';
+import {checkAuth} from '../utils/api';
 
 interface LoginPageProps {
   [key: string]: any;
@@ -25,16 +25,22 @@ const LoginPage: React.FC<LoginPageProps> = (props) => {
 export const getServerSideProps = async (ctx: NextPageContext) => {
   try {
     const cookies = nookies.get(ctx);
-    await firebaseAdmin.auth().verifyIdToken(cookies.token);
+    const token = cookies.token;
+
+    const res = await checkAuth(token);
 
     //NOTE: if user is authenticated, refirect to home page
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/',
-      },
-      props: {},
-    };
+    if (res.data.status === 'success') {
+      return {
+        redirect: {
+          permanent: false,
+          destination: '/',
+        },
+        props: {},
+      };
+    } else {
+      throw Error('');
+    }
   } catch (err) {
     return {
       props: {},

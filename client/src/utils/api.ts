@@ -188,3 +188,14 @@ export const fetchSitemapData = async (): Promise<ApiResponse> => {
     .then(handleResponse)
     .catch(handleError);
 };
+
+export const checkAuth = async (token): Promise<ApiResponse> => {
+  return axios
+    .get(`${getBaseURL()}/api/auth/check`, {
+      params: {
+        token,
+      },
+    })
+    .then(handleResponse)
+    .catch(handleError);
+};

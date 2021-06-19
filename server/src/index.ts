@@ -9,6 +9,7 @@ import sitemap from './routes/sitemap';
 import search from './routes/search';
 import reviews from './routes/reviews';
 import pages from './routes/pages';
+import auth from './routes/auth';
 
 const PORT = process.env.PORT;
 
@@ -28,6 +29,7 @@ createConnection(dbConfig)
     app.use('/api/search', search);
     app.use('/api/reviews', reviews);
     app.use('/api/pages', pages);
+    app.use('/api/auth', auth);
 
     app.use(errorHandler);
 
