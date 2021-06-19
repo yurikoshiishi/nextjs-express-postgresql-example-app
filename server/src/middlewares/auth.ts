@@ -8,7 +8,7 @@ const auth =
     let user;
 
     try {
-      user = await firebase.auth().verifyIdToken(req.query.token.toString());
+      user = await firebase.auth().verifyIdToken(req.query.token?.toString());
     } catch (err) {
       console.log(err);
       return res.status(401).send({
