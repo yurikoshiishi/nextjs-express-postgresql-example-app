@@ -67,7 +67,7 @@ export default class ProductController {
 
     const products = await manager.get().query(query);
 
-    res.json(products);
+    res.json(products[0]);
   }
 
   static async searchProducts(req: Request, res: Response) {
@@ -79,7 +79,7 @@ export default class ProductController {
 
     const result = await manager.get().query(query);
 
-    res.json(result);
+    res.json(result[0]);
   }
 
   static async getProductVariations(req: Request, res: Response) {
@@ -89,7 +89,7 @@ export default class ProductController {
 
     const variations = await manager.get().query(query);
 
-    res.status(200).json(variations);
+    res.status(200).json(variations[0]);
   }
 
   static async getProductsByCategory(req: Request, res: Response) {

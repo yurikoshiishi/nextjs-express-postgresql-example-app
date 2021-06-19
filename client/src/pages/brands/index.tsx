@@ -21,7 +21,7 @@ const BrandProductsPage: React.FC<BrandProductsPageProps> = ({data}) => {
 };
 
 export const getServerSideProps = async (ctx: ContextWithParams) => {
-  const res = await fetchBrands(ctx);
+  const res = await fetchBrands();
 
   return {props: {data: res.data, error: res.error}};
 };

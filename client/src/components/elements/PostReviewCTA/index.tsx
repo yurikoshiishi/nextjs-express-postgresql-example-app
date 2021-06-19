@@ -4,6 +4,7 @@ import axios from 'axios';
 import ModalSearch from '../ModalSearch';
 import {getNumberWithCommas} from '../../../utils';
 import {PROTEIN_REQUEST_FORM} from '../../../constants';
+import {getBaseURL} from '../../../utils/api';
 
 const useStyles = makeStyles((theme) => ({
   copy: {
@@ -33,7 +34,7 @@ const PostReviewCTA: React.FC<PostReviewCTAProps> = ({}) => {
   useEffect(() => {
     const fetchTotalReviewCount = async () => {
       try {
-        const res = await axios.get(window.origin + '/api/reviews/count/');
+        const res = await axios.get(`${getBaseURL()}/api/reviews/count`);
         if (res.data?.total_review_count) {
           setReviewCount(res.data.total_review_count);
         }

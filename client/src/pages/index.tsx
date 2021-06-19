@@ -37,8 +37,8 @@ const Home: NextPage<HomeProps> = ({data}) => {
 };
 
 export const getServerSideProps = async (ctx) => {
-  const res = await fetchHomePage(ctx);
-  return {props: {data: res.data, error: res.error}};
+  const res = await fetchHomePage();
+  return {props: {data: res.data}};
 };
 
 export default Home;

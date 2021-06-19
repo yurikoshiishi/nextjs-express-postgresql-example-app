@@ -35,14 +35,14 @@ export default class ReviewController {
 
     const reviews = await manager.get().query(query);
 
-    res.json(reviews);
+    res.json(reviews[0]);
   }
 
   static async getTotalCount(req: CustomRequest, res: Response) {
     const data = await manager
       .get()
       .query('SELECT COUNT(*) as total_review_count FROM reviews');
-    res.json(data);
+    res.json(data[0]);
   }
 
   static async createReview(req: CustomRequest, res: Response) {

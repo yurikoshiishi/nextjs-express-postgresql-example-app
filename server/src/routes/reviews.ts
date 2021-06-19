@@ -8,10 +8,12 @@ router.get('/', use(ReviewController.getReviews));
 
 router.get('/count', use(ReviewController.getTotalCount));
 
-router.get('/:id/thumbsup/increment', use(ReviewController.incrementThumbsUp));
+router.post('/create', auth(ReviewController.createReview));
 
-router.get('/:id/thumbsup/decrement', use(ReviewController.decrementThumbsUp));
+router.post('/:id/thumbsup/increment', use(ReviewController.incrementThumbsUp));
 
-router.get('/my-reviews', auth(ReviewController.getReviews));
+router.post('/:id/thumbsup/decrement', use(ReviewController.decrementThumbsUp));
+
+router.get('/my-reviews', auth(ReviewController.getMyReviews));
 
 export default router;
